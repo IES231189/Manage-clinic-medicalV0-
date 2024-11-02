@@ -7,6 +7,7 @@ import { TableComponent } from './components/Table-crud-component/table/table.co
 import { EditFromTableComponent } from './components/Table-crud-component/edit-from-table/edit-from-table.component';
 import { DeleteFromTableComponent } from './components/Table-crud-component/delete-from-table/delete-from-table.component';
 import { FormsModule } from '@angular/forms';
+import { SearchComponent } from './components/search/search.component';
 
 
 
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
     ProfileUserComponentComponent,
     TableComponent,
     EditFromTableComponent,
-    DeleteFromTableComponent
+    DeleteFromTableComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +29,8 @@ import { FormsModule } from '@angular/forms';
     HeaderComponentComponent,
     TableComponent,
     EditFromTableComponent,
-    DeleteFromTableComponent
+    DeleteFromTableComponent,
+    SearchComponent
   ]
 })
 export class SharedModule { }
