@@ -1,0 +1,8 @@
+<div class="delete-modal">
+  <h3>¿Esta seguro de Eliminar este registro?</h3>
+  <p>{{registroTable?.Nombre || 'Este registro'}}</p>
+
+  <button (click)="onConfirmDelete()">Eliminar</button>
+  <button (click)="onCancel()">Cancelar</button>
+
+</div>

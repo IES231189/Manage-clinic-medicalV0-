@@ -1,0 +1,14 @@
+<div>
+  <div >
+    <h3>Registrar un Paciente</h3>
+  </div>
+  <form (ngSubmit)="OnSave()">
+    <div *ngFor="let key of getObjectKeys(editedData)">
+      <label>{{key}}</label>
+      <input [(ngModel)]= "editedData[key]" name="{{key}}">
+    </div>
+    <button type="submit">Guardar</button>
+    <button type="button" (click)="OnCancel()">Cancelar</button>
+  </form>
+
+</div>

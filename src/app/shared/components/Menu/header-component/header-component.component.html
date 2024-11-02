@@ -1,0 +1,15 @@
+<header class="bg-[#2563eb] text-white">
+    <div class="Logo">
+      <img src="" alt="Logo">
+    </div>
+
+    <nav class="nav-menu">
+      <a *ngFor="let link of navLinks" [routerLink]="link.path" class="nav-item">
+          {{link.label}}
+      </a>
+    </nav>
+
+    <app-profile-user-component [userName]="userName" [role]="role" ></app-profile-user-component>
+
+</header>
+

@@ -10,7 +10,8 @@ import { Observable, tap } from 'rxjs';
 
 export class AuthServiceService {
   private apiUrl = 'tu_api_url/aqui';
-  constructor(private http: HttpClient, private jwtHelper: JwtHelperService) {}
+
+  constructor(private http: HttpClient, private jwtHelper: JwtHelperService) { }
 
 
 
@@ -18,7 +19,7 @@ export class AuthServiceService {
   login(credentials: { username: string; password: string }): Observable<string> {
     return this.http.post<string>(`${this.apiUrl}/login`, credentials).pipe(
       tap((token: string) => {
-        localStorage.setItem('token', token); // Asegúrate de almacenar el token
+        localStorage.setItem('token', token);
       })
     );
   }
@@ -30,23 +31,25 @@ export class AuthServiceService {
   }
 
 
-  getRole():string | null {
+  getRole(): string | null {
     const token = localStorage.getItem('token');
-    if(!token) return null;
+    if (!token) return null;
 
     const decodeToken = this.jwtHelper.decodeToken(token);
     return decodeToken ? decodeToken.role : null;
   }
 
-  isAdmin():boolean{
+  isAdmin(): boolean {
     return this.getRole() === 'admin';
   }
 
-  isUser():boolean{
+  isUser(): boolean {
     return this.getRole() === 'user';
   }
 
-
+  getUsername(): string | null {
+    return 'nombre_usuario';
+  }
 
 
 
