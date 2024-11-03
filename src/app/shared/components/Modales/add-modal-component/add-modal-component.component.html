@@ -1,0 +1,18 @@
+<div class="modal-background" *ngIf="isVisible" (click)="onCancel()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h2>{{ title }}</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div *ngFor="let field of fields">
+        <label>{{ field.label }}</label>
+        <input
+          [type]="field.type"
+          [(ngModel)]="formData[field.name]"
+          [name]="field.name"
+          required
+        />
+      </div>
+      <button type="submit">Guardar</button>
+      <button type="button" (click)="onCancel()">Cancelar</button>
+    </form>
+  </div>
+</div>
