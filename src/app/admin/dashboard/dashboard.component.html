@@ -1,0 +1,10 @@
+
+<div class="dashboard">
+  <h3 class="title">Bienvenido Admnistrador</h3>
+  <div class="cards">
+    <div class="card" *ngFor="let card of cards" (click)="navigateTo(card.ruta)">
+        <img src={{card.icono}} alt="{{card.nombre}}" class="card-icon" >
+        <span class="card-title">{{card.nombre}}</span>
+      </div>
+  </div>
+</div>

@@ -7,7 +7,7 @@ interface NavLink {
 }
 
 @Component({
-  selector: 'app-header-component',
+  selector: 'app-header',
   templateUrl: './header-component.component.html',
   styleUrl: './header-component.component.css'
 })

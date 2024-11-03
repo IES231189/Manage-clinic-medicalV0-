@@ -8,11 +8,11 @@ import { AdminViewComponentComponent } from './admin/admin-view-component/admin-
 import { UserViewComponentComponent } from './users/user-view-component/user-view-component.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AdminViewComponentComponent,
     UserViewComponentComponent,
 
 
@@ -22,7 +22,8 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     AuthModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    AdminModule
 
   ],
   providers: [],

@@ -1,0 +1,52 @@
+.dashboard {
+  padding: 20px;
+
+}
+
+.cards {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card {
+  width: 150px;
+  height: 150px;
+  background-color: #fafafa;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-icon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.card-title {
+  font-size: medium;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  color: #027DC5;
+}
+
+.title{
+  margin-left: 9.5rem;
+  color: #fcfcfc;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight:bold;
+  font-size: xx-large;
+}

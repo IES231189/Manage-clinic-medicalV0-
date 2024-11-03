@@ -8,9 +8,8 @@ import { EditFromTableComponent } from './components/Table-crud-component/edit-f
 import { DeleteFromTableComponent } from './components/Table-crud-component/delete-from-table/delete-from-table.component';
 import { FormsModule } from '@angular/forms';
 import { SearchComponent } from './components/search/search.component';
-import { AddModalComponentComponent } from './components/add-modal-component/add-modal-component.component';
 import { AddButtonComponentComponent } from './components/Modales/add-button-component/add-button-component.component';
-
+import { AddModalComponentComponent } from './components/Modales/add-modal-component/add-modal-component.component';
 
 
 @NgModule({
@@ -20,6 +19,8 @@ import { AddButtonComponentComponent } from './components/Modales/add-button-com
     EditFromTableComponent,
     DeleteFromTableComponent,
     SearchComponent,
+    AddButtonComponentComponent,
+    AddModalComponentComponent
 
   ],
   imports: [

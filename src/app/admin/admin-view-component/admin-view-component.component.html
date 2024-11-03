@@ -1,1 +1,15 @@
-<p>admin-view-component works!</p>
+<app-header
+  [userName]="'ESDRAZ GABRIEL'"
+  [role]="'admin'"
+  [navLinks]="[
+    { label: 'Inicio', path: '/admin/dashboard' },
+    { label: 'Inventario', path: '/admin/inventario' },
+    { label: 'Enfermeros', path: '/admin/citas' },
+  ]">
+</app-header>
+
+
+<router-outlet></router-outlet>
+
+
+
