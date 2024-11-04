@@ -1,15 +1,34 @@
-<header class="bg-[#2563eb] text-white">
+<header class="Header-Component">
+  <div class="content-navbar">
     <div class="Logo">
-      <img src="" alt="Logo">
+      <img src="../../../../../assets/logo.png" alt="Logo" width="44px" height="44px">
     </div>
 
     <nav class="nav-menu">
+
       <a *ngFor="let link of navLinks" [routerLink]="link.path" class="nav-item">
-          {{link.label}}
+        {{link.label}}
       </a>
+
     </nav>
 
-    <app-profile-user-component [userName]="userName" [role]="role" ></app-profile-user-component>
+    <div class="profile-user-role">
+      <div class="contenido">
+        <img src="../../../../../assets/notificacion.png" width="34px" height="34px">
+        <div class="users-info">
+          <p>
+            {{userName}}
+          </p>
+
+          <span>{{role}}</span>
+        </div>
+        <img src="./../../../../../assets/bac78a9eb0706006b895449f6cbd30dc.png" width="34px" height="34px">
+
+      </div>
+
+    </div>
+
+
+  </div>
 
 </header>
-

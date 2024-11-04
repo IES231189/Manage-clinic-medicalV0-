@@ -34,7 +34,8 @@ import { AddModalComponentComponent } from './components/Modales/add-modal-compo
     TableComponent,
     EditFromTableComponent,
     DeleteFromTableComponent,
-    SearchComponent
+    SearchComponent,
+    ProfileUserComponentComponent
   ]
 })
 export class SharedModule { }

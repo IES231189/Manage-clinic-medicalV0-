@@ -8,7 +8,8 @@ const routes: Routes = [
     path:'' ,
     component: AdminViewComponentComponent,
     children:[
-      { path: 'dashboard', component: DashboardComponent },
+      { path: 'dashboard', loadChildren:() =>import('../admin/dashboard/dashboard.module').then(m=>m.DashboardModule) },
+     // {path:'inventario' , component:  }
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
     ]
   },
