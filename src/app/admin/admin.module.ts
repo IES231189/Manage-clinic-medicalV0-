@@ -5,20 +5,18 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminViewComponentComponent } from './admin-view-component/admin-view-component.component';
 import { SharedModule } from '../shared/shared.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 
 @NgModule({
   declarations: [
     AdminViewComponentComponent,
-    DashboardComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
-    SharedModule
-  ],
-  exports:[
-    DashboardComponent
+    SharedModule,
+    DashboardModule
   ]
 })
 export class AdminModule { }

@@ -12,7 +12,10 @@ const routes: Routes = [
     path:'admin',
     loadChildren:()=> import('./admin/admin.module').then(m =>m.AdminModule),
     //canActivate:[adminGuard]
+
   },
+  { path: '', redirectTo: 'admin/dashboard', pathMatch: 'full' },
+  { path: '**', redirectTo: 'admin/dashboard' },
   {
     path:'user',
     component:UserViewComponentComponent,

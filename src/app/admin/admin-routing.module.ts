@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminViewComponentComponent } from './admin-view-component/admin-view-component.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+
 
 const routes: Routes = [
   {
@@ -9,7 +9,6 @@ const routes: Routes = [
     component: AdminViewComponentComponent,
     children:[
       { path: 'dashboard', loadChildren:() =>import('../admin/dashboard/dashboard.module').then(m=>m.DashboardModule) },
-     // {path:'inventario' , component:  }
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
     ]
   },

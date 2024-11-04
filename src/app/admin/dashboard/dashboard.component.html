@@ -1,5 +1,7 @@
 
-<div class="dashboard">
+<app-profile-user-component [userName]="'ESDRAZ GABRIEL'" [role]="'admin'" *ngIf="!isChildRoute" ></app-profile-user-component>
+
+<div class="dashboard" *ngIf="!isChildRoute">
   <h3 class="title"> Administrador</h3>
   <div class="cards">
     <div class="card" *ngFor="let card of cards" (click)="navigateTo(card.ruta)">
@@ -8,3 +10,5 @@
       </div>
   </div>
 </div>
+
+<router-outlet></router-outlet>

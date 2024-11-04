@@ -1,20 +1,27 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.css'
+  styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
+  isChildRoute = false;
 
-  constructor(private router:Router){}
+  constructor(private router:Router , private route:ActivatedRoute ){
+    this.router.events.subscribe(() => {
+      const currentRoute = this.router.url;
+      this.isChildRoute = currentRoute !== '/admin/dashboard';
+    })
+  }
+
 
   cards = [
-    { nombre: 'Recetario', icono: '../../../assets/recetario.png', ruta: '/recetario' },
+    { nombre: 'Recetario', icono: '../../../assets/recetario.png', ruta: '/dashboard/recetario' },
     { nombre: 'Historial de Consultas', icono: '../../../assets/historial_consulta.png', ruta: '/historial-consultas' },
-    { nombre: 'Medicamentos', icono: '../../../assets/Medicamentos.png', ruta: '/medicamentos' },
+    { nombre: 'Medicamentos', icono: '../../../assets/Medicamentos.png', ruta: '/admin/dashboard/medicamentos' },
     { nombre: 'Agenda', icono: '../../../assets/Citas.png', ruta: '/agenda' },
     { nombre: 'Camillas', icono: '../../../assets/camillas.png', ruta: '/camillas' },
     { nombre: 'Usuarios', icono: '../../../assets/Usuarios.png', ruta: '/usuarios' }

@@ -1,14 +1,15 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
+import { MedicamentosComponent } from '../medicamentos/components/medicamentos/medicamentos.component';
 
 const routes: Routes = [
   {
     path:'',
     component:DashboardComponent,
-    /*  children:[
-      { path: 'recetario', loadChildren: () => import('').then(m => m.RecetarioModule) },
-    ]*/
+    children:[
+     { path: 'medicamentos', component:MedicamentosComponent}
+    ]
   }
 ];
 
