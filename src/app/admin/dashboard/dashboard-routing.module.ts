@@ -8,7 +8,7 @@ const routes: Routes = [
     path:'',
     component:DashboardComponent,
     children:[
-     { path: 'medicamentos', component:MedicamentosComponent}
+     { path: 'medicamentos', component: MedicamentosComponent}
     ]
   }
 ];

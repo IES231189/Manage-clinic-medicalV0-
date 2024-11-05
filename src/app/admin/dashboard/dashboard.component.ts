@@ -11,7 +11,7 @@ export class DashboardComponent {
   isChildRoute = false;
 
   constructor(private router:Router , private route:ActivatedRoute ){
-    this.router.events.subscribe(() => {
+   this.router.events.subscribe(() => {
       const currentRoute = this.router.url;
       this.isChildRoute = currentRoute !== '/admin/dashboard';
     })
@@ -30,6 +30,9 @@ export class DashboardComponent {
   navigateTo(ruta:string){
     this.router.navigate([ruta])
   }
+
+
+
 
 
 }

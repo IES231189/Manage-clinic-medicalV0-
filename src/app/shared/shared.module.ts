@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { SearchComponent } from './components/search/search.component';
 import { AddButtonComponentComponent } from './components/Modales/add-button-component/add-button-component.component';
 import { AddModalComponentComponent } from './components/Modales/add-modal-component/add-modal-component.component';
+import { ModalDeAccionesComponent } from './components/modal-de-acciones/modal-de-acciones.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { AddModalComponentComponent } from './components/Modales/add-modal-compo
     DeleteFromTableComponent,
     SearchComponent,
     AddButtonComponentComponent,
-    AddModalComponentComponent
+    AddModalComponentComponent,
+    ModalDeAccionesComponent
 
   ],
   imports: [
@@ -35,7 +37,8 @@ import { AddModalComponentComponent } from './components/Modales/add-modal-compo
     EditFromTableComponent,
     DeleteFromTableComponent,
     SearchComponent,
-    ProfileUserComponentComponent
+    ProfileUserComponentComponent,
+    ModalDeAccionesComponent
   ]
 })
 export class SharedModule { }

@@ -1,0 +1,24 @@
+<div class="modal-overlay" *ngIf="isOpen">
+  <div class="modal">
+    <h2 class="titulo-modal">{{ title }}</h2>
+    <div class="content-modal">
+      <p>{{ message }}</p>
+      <div class="card-container">
+        <div class="card" *ngFor="let card of cards" (click)="navigate(card.action)">
+          <p>{{ card.message }}</p>
+          <img *ngIf="card.url" [src]="card.url" alt="modal image" width="54px" height="54px">
+          <h3>{{ card.title }}</h3>
+        </div>
+      </div>
+      <div class="modal-buttons">
+        <button *ngFor="let b of buttons" (click)="b.action()">
+          {{ b.label }}
+        </button>
+        <button (click)="closeModal()" class="x">Cerrar</button>
+
+      </div>
+    </div>
+
+
+  </div>
+</div>

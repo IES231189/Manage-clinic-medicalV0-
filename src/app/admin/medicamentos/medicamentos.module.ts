@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MedicamentosComponent } from './components/medicamentos/medicamentos.component';
+import { SharedModule } from '../../shared/shared.module';
 
 
 
@@ -9,7 +10,8 @@ import { MedicamentosComponent } from './components/medicamentos/medicamentos.co
     MedicamentosComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule
   ],
   exports:[
     MedicamentosComponent
