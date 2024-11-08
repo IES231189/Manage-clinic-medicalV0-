@@ -6,6 +6,7 @@ import { userGuard } from './guards/user.guard';
 import { AdminViewComponentComponent } from './admin/admin-view-component/admin-view-component.component';
 import { UserViewComponentComponent } from './users/user-view-component/user-view-component.component';
 
+
 const routes: Routes = [
 
   {
@@ -14,12 +15,10 @@ const routes: Routes = [
     //canActivate:[adminGuard]
 
   },
-  { path: '', redirectTo: 'admin/dashboard', pathMatch: 'full' },
-  { path: '**', redirectTo: 'admin/dashboard' },
   {
     path:'user',
     component:UserViewComponentComponent,
-    canActivate:[userGuard]
+    /*canActivate:[userGuard]*/
   },
   {
     path:'login',
@@ -29,6 +28,7 @@ const routes: Routes = [
     path:'**' ,
     redirectTo :'/login'
   }
+
 
 ];
 

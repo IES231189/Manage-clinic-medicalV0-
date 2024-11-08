@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
-import { MedicamentosComponent } from '../medicamentos/components/medicamentos/medicamentos.component';
 import { MedicamentosModule } from '../medicamentos/medicamentos.module';
 import { SharedModule } from '../../shared/shared.module';
 

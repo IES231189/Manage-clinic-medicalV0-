@@ -2,16 +2,29 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MedicamentosComponent } from './components/medicamentos/medicamentos.component';
 import { SharedModule } from '../../shared/shared.module';
+import { medicamentosrouting } from './medicamentos-routing.module';
+import { AddMedicamentoComponent } from './components/add-medicamento/add-medicamento.component';
+import { ListaMedicamentosComponent } from './components/lista-medicamentos/lista-medicamentos.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BarcodeScannerComponent } from './components/barcode-scanner-component/barcode-scanner-component.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
 
 
 
 @NgModule({
   declarations: [
-    MedicamentosComponent
+    MedicamentosComponent,
+    AddMedicamentoComponent,
+    ListaMedicamentosComponent,
+   BarcodeScannerComponent
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    medicamentosrouting,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   exports:[
     MedicamentosComponent

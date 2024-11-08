@@ -16,7 +16,7 @@ export class LoginComponentComponent {
     this.authService.login({ username: this.username, password: this.password }).subscribe({
       next: (response: any) => {
         // Verifica si el token está presente en la respuesta
-        const token = response.token; // O la forma en que estás estructurando la respuesta
+        const token = response.token;
         if (typeof token === 'string') {
           localStorage.setItem('token', token);
         } else {

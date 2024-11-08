@@ -13,14 +13,15 @@ export class ModalDeAccionesComponent   {
   @Input() img: string = '';
   @Input() buttons: { label: string, action: () => void }[] = [];
   @Input() cards: Card[] = [];
+  @Input() navigation:string = '';
   isOpen:boolean = true;
 
 
   constructor(private router: Router) {}
 
-  closeModal() {
+  closeModal(){
     this.isOpen = false;
-    this.router.navigate(['medicamentos'])
+    this.router.navigate([this.navigation])
   }
 
   navigate(action: string) {

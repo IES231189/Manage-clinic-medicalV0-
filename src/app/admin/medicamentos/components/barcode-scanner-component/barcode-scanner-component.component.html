@@ -1,0 +1,6 @@
+<!-- barcode-scanner.component.html -->
+<div>
+  <video #video width="100%" height="auto" *ngIf="scanning"></video>
+  <button *ngIf="!scanning" (click)="startScanning()">Iniciar Escaneo</button>
+  <button *ngIf="scanning" (click)="stopScanning()">Detener Escaneo</button>
+</div>

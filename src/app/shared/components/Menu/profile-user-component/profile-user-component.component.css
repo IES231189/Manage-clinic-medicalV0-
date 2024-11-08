@@ -3,7 +3,7 @@
   align-items: center;
   gap: 10px;
   font-size: x-large;
-  color: #fdeeee;
+  color: #5075AA;
   padding: 8px 16px;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-weight: lighter;
@@ -30,7 +30,7 @@
 }
 
 .user-info span:first-child {
-  color: #eff2f4;
+  color: #5075AA;
   font-weight: 600;
 }
 
