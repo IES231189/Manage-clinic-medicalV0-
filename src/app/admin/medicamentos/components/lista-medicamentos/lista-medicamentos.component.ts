@@ -1,7 +1,6 @@
-
 import { Component, OnInit } from '@angular/core';
 import { ServicesMedicamentoService } from '../../services/services-medicamento.service';
-
+import { Medicamentos } from '../../models/medicamentos';// Asegúrate de que la ruta sea correcta
 
 @Component({
   selector: 'app-lista-medicamentos',
@@ -9,8 +8,8 @@ import { ServicesMedicamentoService } from '../../services/services-medicamento.
   styleUrls: ['./lista-medicamentos.component.css']
 })
 export class ListaMedicamentosComponent implements OnInit {
-  data: any[] = [];
-  
+  data: Medicamentos[] = [];
+
   columns = [
     { name: 'Nombre', type: 'text' },
     { name: 'Precio_Compra', type: 'number' },
@@ -22,12 +21,12 @@ export class ListaMedicamentosComponent implements OnInit {
     { name: 'Eliminar', type: 'button', action: 'delete' }
   ];
 
-  defaultData = [
+  defaultData: Medicamentos[] = [
     { id: 0, Nombre: 'Medicamento Ejemplo', Precio_Compra: 100, Precio_Venta: 150, Patente: 'Ejemplo', Gramaje: 'mg', Presentacion: 'tableta' }
   ];
 
   isLoading = true;
-  selectedRow: any;
+  selectedRow: Medicamentos | null = null;
   showEditModal = false;
   showDeleteModal = false;
 
@@ -37,13 +36,10 @@ export class ListaMedicamentosComponent implements OnInit {
     this.fetchData();
   }
 
-
-
-
   fetchData(): void {
     this.isLoading = true;
     this.medicamentoService.getMedicamentos().subscribe(
-      (response) => {
+      (response: Medicamentos[]) => {
         this.data = response && response.length > 0 ? response : this.defaultData;
         this.isLoading = false;
       },
@@ -55,18 +51,17 @@ export class ListaMedicamentosComponent implements OnInit {
     );
   }
 
-
-  onEdit(row: any): void {
+  onEdit(row: Medicamentos): void {
     this.selectedRow = row;
     this.showEditModal = true;
   }
 
-  onDelete(row: any): void {
+  onDelete(row: Medicamentos): void {
     this.selectedRow = row;
     this.showDeleteModal = true;
   }
 
-  onSaveChanges(updatedData: any): void {
+  onSaveChanges(updatedData: Medicamentos): void {
     const index = this.data.findIndex(item => item.id === updatedData.id);
     if (index > -1) {
       this.data[index] = updatedData;
@@ -75,8 +70,10 @@ export class ListaMedicamentosComponent implements OnInit {
   }
 
   onDeleteConfirm(): void {
-    this.data = this.data.filter(item => item.id !== this.selectedRow.id);
-    this.showDeleteModal = false;
+    if (this.selectedRow) {
+      this.data = this.data.filter(item => item.id !== this.selectedRow!.id);
+      this.showDeleteModal = false;
+    }
   }
 
   onCancel(): void {
