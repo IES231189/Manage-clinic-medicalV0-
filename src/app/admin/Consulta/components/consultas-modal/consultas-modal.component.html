@@ -1,0 +1,11 @@
+<app-modal
+  *ngIf="showModal"
+  title="Medicamentos"
+  message="¿Qué desea hacer?"
+  [cards]="cards"
+  [navigation]="'/admin'"
+  >
+</app-modal>
+
+
+<router-outlet></router-outlet>

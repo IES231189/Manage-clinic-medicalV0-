@@ -5,6 +5,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { MedicamentosModule } from '../medicamentos/medicamentos.module';
 import { SharedModule } from '../../shared/shared.module';
+import { ConsultaModule } from '../Consulta/consulta.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { SharedModule } from '../../shared/shared.module';
     CommonModule,
     DashboardRoutingModule,
     MedicamentosModule,
-    SharedModule
+    SharedModule,
+    ConsultaModule
   ],
   exports:[
     DashboardComponent,

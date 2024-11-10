@@ -1,0 +1,157 @@
+.container-main{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.contain-img{
+  flex: 1;
+  border-color:#333;
+}
+
+.contain-title{
+  flex: 2;
+  font-weight: lighter;
+  font-size: medium;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #4a6fae;
+}
+
+.contain-title p{
+  color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+  font-size: medium;
+  padding-top: 1rem;
+}
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Encabezado */
+h2 {
+  text-align: center;
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+/* Estilos del formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+label {
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #218DCC;
+  margin-bottom: 0.2rem;
+  font-weight: bold;
+}
+
+/* Estilos de los campos de entrada */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #333;
+  transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+textarea:focus {
+  border-color: #4a90e2;
+  outline: none;
+}
+
+/* Estilos específicos para el área de texto */
+textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+/* Botones */
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Botón de cancelar */
+button[type="button"] {
+  background-color: #f44336;
+  color: white;
+}
+
+button[type="button"]:hover {
+  background-color: #d32f2f;
+}
+
+/* Botón de guardar */
+button[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+}
+
+button[type="submit"]:hover {
+  background-color: #388e3c;
+}
+
+/* Diseño responsive */
+@media (max-width: 480px) {
+  .modal-content {
+    padding: 15px;
+    width: 95%;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+}
