@@ -30,9 +30,7 @@ export class NuevaConsultaComponent {
   guardarConsulta() {
     console.log('Consulta guardada:', this.consulta);
 
-    // Lógica para guardar los datos (puedes agregar llamada a servicio aquí)
-
-    // Después de guardar, redirigir a otra ruta
+   //logica aqui para enviar formulario
     this.router.navigate(['/admin/dashboard/consultas']); // Cambia '/ruta-destino' por la ruta a la que quieras redirigir
 
     this.closeModal();
