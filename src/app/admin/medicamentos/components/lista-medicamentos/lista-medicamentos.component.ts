@@ -10,6 +10,7 @@ import { ServicesMedicamentoService } from '../../services/services-medicamento.
 })
 export class ListaMedicamentosComponent implements OnInit {
   data: any[] = [];
+  
   columns = [
     { name: 'Nombre', type: 'text' },
     { name: 'Precio_Compra', type: 'number' },

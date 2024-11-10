@@ -4,6 +4,9 @@ import { AdminViewComponentComponent } from './admin-view-component/admin-view-c
 import { InventarioComponent } from './inventario/inventario.component';
 import { AddMedicamentoComponent } from './medicamentos/components/add-medicamento/add-medicamento.component';
 import { ListaMedicamentosComponent } from './medicamentos/components/lista-medicamentos/lista-medicamentos.component';
+import { AgregarEnfermeras } from './gestionEnfermeras/components/agregar-enfermeras/agregar-enfermeras.component';
+import { version } from 'vite';
+import { VerEnfermerasComponent } from './gestionEnfermeras/components/ver-enfermeras/ver-enfermeras.component';
 
 
 
@@ -16,7 +19,9 @@ const routes: Routes = [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       {path:'inventario', component: InventarioComponent },
       {path:'all-medicamentos' , component: ListaMedicamentosComponent},
-      {path:'addMedicamentos' , component:AddMedicamentoComponent}
+      {path:'addMedicamentos' , component:AddMedicamentoComponent},
+      {path:'Enfermeras' , component:AgregarEnfermeras},
+      {path:'verEnfermeras' , component:VerEnfermerasComponent}
     ]
   },
 

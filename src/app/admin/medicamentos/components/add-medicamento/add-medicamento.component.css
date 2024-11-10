@@ -1,12 +1,12 @@
 .title{
   float: left;
-  padding:1rem;
+ padding:1rem;
   font-weight: bold;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding-left: 18rem;
 }
 .form-container {
-  padding: 1rem;
+ padding: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;

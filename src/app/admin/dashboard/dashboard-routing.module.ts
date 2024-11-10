@@ -9,6 +9,8 @@ const routes: Routes = [
     component:DashboardComponent,
     children:[
      { path: 'medicamentos', loadChildren:()=>import('../medicamentos/medicamentos.module').then(m=>m.MedicamentosModule)}
+      
+
     ]
   }
 ];
