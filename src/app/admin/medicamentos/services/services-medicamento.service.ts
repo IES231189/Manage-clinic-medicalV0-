@@ -13,7 +13,7 @@ export class ServicesMedicamentoService {
   //na mas 2 metodos falta el update y delete
 
   private getMedicamentosUrl = 'https://api.tu-servidor.com/medicamentos'; // URL para obtener medicamentos
-  private addMedicamentoUrl = 'https://api.tu-servidor.com/medicamentos/add'; // URL para agregar un medicamento
+  private addMedicamentoUrl = 'http://52.203.29.27/inventory/add-inventory'; // URL para agregar un medicamento
 
   constructor(private http: HttpClient) {}
 
@@ -31,7 +31,7 @@ export class ServicesMedicamentoService {
     return this.http.post<any>(this.addMedicamentoUrl, medicamento).pipe(
       catchError(error => {
         console.error('Error al agregar medicamento:', error);
-        return of(null); 
+        return of(null);
       })
     )
 

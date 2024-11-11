@@ -24,18 +24,18 @@ export class AddMedicamentoComponent implements OnInit {
       gramaje: ['', Validators.required],
       presentacion: ['', Validators.required],
       fechaCaducidad: ['', Validators.required],
-      barcodeDisplay: [{ value: '', disabled: true }] 
+      barcodeDisplay: [{ value: '', disabled: true }]
     });
   }
 
   ngOnInit(): void {}
 
-  //  asignar el código detectado al campo del formulario
-  onBarcodeDetected(): void {
-    this.medicamentoForm.patchValue({
-      barcodeDisplay: this.barcodeScanner.resultText // Asigna el código detectado
-    });
-  }
+  // //  asignar el código detectado al campo del formulario
+  // onBarcodeDetected(): void {
+  //   this.medicamentoForm.patchValue({
+  //     barcodeDisplay: this.barcodeScanner.resultText // Asigna el código detectado
+  //   });
+  // }
 
   onSubmit(): void {
     if (this.medicamentoForm.valid) {
@@ -43,7 +43,7 @@ export class AddMedicamentoComponent implements OnInit {
       this.medicamentosService.addMedicamento(formData).subscribe(
         (response) => {
           console.log('Medicamento agregado con éxito:', response);
-          this.router.navigate(['/admin/dashboard/medicamentos']);
+          // this.router.navigate(['/admin/dashboard/medicamentos']);
         },
         (error) => {
           console.error('Error al enviar el medicamento:', error);
