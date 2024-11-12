@@ -1,4 +1,4 @@
-// add-medicamento.component.ts
+
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BarcodeScannerComponent } from '../barcode-scanner-component/barcode-scanner-component.component';
@@ -24,7 +24,7 @@ export class AddMedicamentoComponent implements OnInit {
       gramaje: ['', Validators.required],
       presentacion: ['', Validators.required],
       fechaCaducidad: ['', Validators.required],
-      barcodeDisplay: [{ value: '', disabled: true }]
+      // barcodeDisplay: [{ value: '', disabled: true }]
     });
   }
 

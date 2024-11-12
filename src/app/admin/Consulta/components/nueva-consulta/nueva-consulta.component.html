@@ -1,0 +1,49 @@
+<div *ngIf="showModal" class="modal-overlay">
+  <div class="modal-content">
+
+    <div class="container-main">
+      <div class="contain-img">
+        <img src="../../../../../assets/logo2.png" alt="logo2" width="120px" height="120px">
+      </div>
+      <div class="contain-title">
+        <h1>LA PAZ CENTRO MEDICO</h1>
+        <p>Clinica la paz</p>
+      </div>
+
+    </div>
+
+    <form (ngSubmit)="guardarConsulta()">
+      <label for="nombrePaciente">Nombre del Paciente:</label>
+      <input type="text" id="nombrePaciente" [(ngModel)]="consulta.nombrePaciente" name="nombrePaciente" required>
+
+      <label for="edad">Edad:</label>
+      <input type="number" id="edad" [(ngModel)]="consulta.edad" name="edad" required>
+
+      <label for="alergias">Alergias:</label>
+      <input type="text" id="alergias" [(ngModel)]="consulta.alergias" name="alergias">
+
+      <label for="nombreMedico">Nombre del Médico:</label>
+      <input type="text" id="nombreMedico" [(ngModel)]="consulta.nombreMedico" name="nombreMedico">
+
+      <label for="fecha">Fecha:</label>
+      <input type="date" id="fecha" [(ngModel)]="consulta.fecha" name="fecha" required>
+
+      <label for="idx">IDX:</label>
+      <textarea id="idx" [(ngModel)]="consulta.idx" name="idx"></textarea>
+
+      <label for="dieta">Dieta:</label>
+      <textarea id="dieta" [(ngModel)]="consulta.dieta" name="dieta"></textarea>
+
+      <label for="medicamento">Medicamento:</label>
+      <textarea id="medicamento" [(ngModel)]="consulta.medicamento" name="medicamento"></textarea>
+
+      <label for="medidasGenerales">Medidas Generales:</label>
+      <textarea id="medidasGenerales" [(ngModel)]="consulta.medidasGenerales" name="medidasGenerales"></textarea>
+
+      <div class="button-group">
+        <button type="button" (click)="closeModal()">Cancelar</button>
+        <button type="submit">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>

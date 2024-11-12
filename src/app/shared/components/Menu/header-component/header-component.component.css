@@ -1,8 +1,10 @@
 .Header-Component{
   height: 5rem;
   background-color: #027DC5;
-  margin: 0%;
   color: #ede5e5;
+  z-index: 100;
+  position: fixed;
+  width: 100%;
 }
 
 .content-navbar{
@@ -13,8 +15,10 @@
   padding: 12px;
   gap: 20px;
   margin: 0%;
+  box-sizing: border-box;
   align-items: center;
   padding-left: 2rem;
+
 }
 
 .nav-menu{

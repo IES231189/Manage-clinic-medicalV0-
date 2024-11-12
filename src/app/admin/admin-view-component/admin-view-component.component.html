@@ -1,17 +1,22 @@
-<app-header
+
+<div class="header-tests">
+  <app-header
   [userName]="'ESDRAZ GABRIEL'"
   [role]="'admin'"
   [navLinks]="[
     { label: 'Inicio', path: '/admin/dashboard' },
     { label: 'Inventario', path: '/admin/inventario' },
-    { label: 'Enfermeros', path: '/admin/citas' },
+    { label: 'Enfermeros', path: '/admin/Enfermeras' },
   ]">
 
 </app-header>
+</div>
+
+<div class="container-admin">
+  <router-outlet></router-outlet>
+</div>
 
 
-
-<router-outlet></router-outlet>
 
 
 

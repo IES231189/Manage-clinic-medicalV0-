@@ -20,7 +20,7 @@ export class DashboardComponent {
 
   cards = [
     { nombre: 'Recetario', icono: '../../../assets/recetario.png', ruta: '/dashboard/recetario' },
-    { nombre: 'Historial de Consultas', icono: '../../../assets/historial_consulta.png', ruta: '/historial-consultas' },
+    { nombre: 'Consultas', icono: '../../../assets/historial_consulta.png', ruta: '/admin/dashboard/consultas' },
     { nombre: 'Medicamentos', icono: '../../../assets/Medicamentos.png', ruta: '/admin/dashboard/medicamentos' },
     { nombre: 'Agenda', icono: '../../../assets/Citas.png', ruta: '/agenda' },
     { nombre: 'Camillas', icono: '../../../assets/camillas.png', ruta: '/camillas' },

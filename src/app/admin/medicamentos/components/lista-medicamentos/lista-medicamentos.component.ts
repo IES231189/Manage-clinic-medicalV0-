@@ -1,7 +1,6 @@
-
 import { Component, OnInit } from '@angular/core';
 import { ServicesMedicamentoService } from '../../services/services-medicamento.service';
-
+import { Medicamentos } from '../../models/medicamentos';
 
 @Component({
   selector: 'app-lista-medicamentos',
@@ -9,24 +8,9 @@ import { ServicesMedicamentoService } from '../../services/services-medicamento.
   styleUrls: ['./lista-medicamentos.component.css']
 })
 export class ListaMedicamentosComponent implements OnInit {
-  data: any[] = [];
-  columns = [
-    { name: 'Nombre', type: 'text' },
-    { name: 'Precio_Compra', type: 'number' },
-    { name: 'Precio_Venta', type: 'number' },
-    { name: 'Patente', type: 'text' },
-    { name: 'Gramaje', type: 'text' },
-    { name: 'Presentacion', type: 'text' },
-    { name: 'Editar', type: 'button', action: 'edit' },
-    { name: 'Eliminar', type: 'button', action: 'delete' }
-  ];
-
-  defaultData = [
-    { id: 0, Nombre: 'Medicamento Ejemplo', Precio_Compra: 100, Precio_Venta: 150, Patente: 'Ejemplo', Gramaje: 'mg', Presentacion: 'tableta' }
-  ];
-
+  data: Medicamentos[] = [];
   isLoading = true;
-  selectedRow: any;
+  selectedRow: Medicamentos | null = null;
   showEditModal = false;
   showDeleteModal = false;
 
@@ -36,47 +20,56 @@ export class ListaMedicamentosComponent implements OnInit {
     this.fetchData();
   }
 
-
-
-
   fetchData(): void {
     this.isLoading = true;
     this.medicamentoService.getMedicamentos().subscribe(
-      (response) => {
-        this.data = response && response.length > 0 ? response : this.defaultData;
+      (response: Medicamentos[]) => {
+        console.log('Datos recibidos:', response);  // Verifica qué se está recibiendo
+        this.data = response && response.length > 0 ? response : [];
         this.isLoading = false;
       },
       (error) => {
-        console.error('Error fetching data:', error);
-        this.data = this.defaultData;
+        console.error('Error al obtener los medicamentos:', error);
         this.isLoading = false;
       }
     );
   }
 
-
-  onEdit(row: any): void {
+  onEdit(row: Medicamentos): void {
     this.selectedRow = row;
     this.showEditModal = true;
   }
 
-  onDelete(row: any): void {
+  onDelete(row: Medicamentos): void {
     this.selectedRow = row;
     this.showDeleteModal = true;
   }
 
-  onSaveChanges(updatedData: any): void {
-    const index = this.data.findIndex(item => item.id === updatedData.id);
-    if (index > -1) {
-      this.data[index] = updatedData;
+  onDeleteConfirm(): void {
+    if (this.selectedRow) {
+      console.log('Nombre del medicamento a eliminar:', this.selectedRow.nombre); // Verificar el nombre
+      this.medicamentoService.deleteMedicamentos(this.selectedRow.nombre).subscribe({
+        next: (response) => {
+          if (response && response.success) {
+            this.data = this.data.filter(item => item.nombre !== this.selectedRow!.nombre);
+            this.showDeleteModal = false;
+            this.selectedRow = null;
+          } else {
+            console.error(response?.message || 'Error desconocido');
+            this.showDeleteModal = false;
+            this.selectedRow = null;
+          }
+        },
+        error: (err) => {
+          console.error('Error al eliminar:', err);
+          this.showDeleteModal = false;
+          this.selectedRow = null;
+        }
+      });
     }
-    this.showEditModal = false;
   }
 
-  onDeleteConfirm(): void {
-    this.data = this.data.filter(item => item.id !== this.selectedRow.id);
-    this.showDeleteModal = false;
-  }
+
 
   onCancel(): void {
     this.showEditModal = false;
