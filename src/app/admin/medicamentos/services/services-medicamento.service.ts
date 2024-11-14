@@ -36,7 +36,7 @@ export class ServicesMedicamentoService {
   }
 
 
-  updateMedicamento(id: number,medicamento:Medicamentos):Observable<any>{
+  updateMedicamento(id: string,medicamento:Medicamentos):Observable<any>{
     return this.http.put(`http://52.203.29.27/inventory/actualizar/${id}`,medicamento)
   }
 

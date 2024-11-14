@@ -6,7 +6,7 @@ import { AdminViewComponentComponent } from './admin-view-component/admin-view-c
 import { SharedModule } from '../shared/shared.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { MedicamentosModule } from './medicamentos/medicamentos.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EnfermerasModuloModule } from './gestionEnfermeras/enfermeras-modulo.module';
 
 
@@ -22,7 +22,8 @@ import { EnfermerasModuloModule } from './gestionEnfermeras/enfermeras-modulo.mo
     SharedModule,
     DashboardModule,
     EnfermerasModuloModule,
-    
+    FormsModule
+
   ]
 })
 export class AdminModule { }
