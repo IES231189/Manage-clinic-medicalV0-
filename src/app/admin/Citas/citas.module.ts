@@ -1,21 +1,26 @@
-import { NgModule } from '@angular/core';
+import { NgModule  , CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ModalCitasComponent } from './components/modal-citas/modal-citas.component';
-import { CalendarModule, DateAdapter } from 'angular-calendar';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+
+import { FormsModule } from '@angular/forms';
+
+import { CalendarioCitasComponent } from './components/calendario-citas/calendario-citas.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 
 
 @NgModule({
   declarations: [
-    ModalCitasComponent
+    
+    CalendarioCitasComponent
   ],
   imports: [
     CommonModule ,
-    CalendarModule.forRoot({
-      provide: DateAdapter,
-      useFactory: adapterFactory,
-    }),
-  ]
+    FormsModule,
+   FullCalendarModule
+  ] ,
+  exports:[
+    CalendarioCitasComponent
+  ],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class CitasModule { }

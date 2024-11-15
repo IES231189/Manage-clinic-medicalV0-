@@ -1,0 +1,20 @@
+.container-calendario{
+
+  padding-top: 40px;
+}
+
+/* calendario-citas.component.css */
+.fc-event {
+  color: #000; /* Color del texto */
+  padding: 5px; /* Espaciado interno */
+  border-radius: 5px; /* Bordes redondeados */
+}
+
+.fc .fc-toolbar-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.fc-timegrid-slot-label-cushion {
+  font-weight: 600;
+}
