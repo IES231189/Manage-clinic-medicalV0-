@@ -9,13 +9,14 @@ import { MedicamentosModule } from './medicamentos/medicamentos.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EnfermerasModuloModule } from './gestionEnfermeras/enfermeras-modulo.module';
 import { CalendarioCitasComponent } from './Citas/components/calendario-citas/calendario-citas.component';
+import { CitasModule } from './Citas/citas.module';
 
 
 
 @NgModule({
   declarations: [
     AdminViewComponentComponent,
-    CalendarioCitasComponent,
+
 
   ],
   imports: [
@@ -24,7 +25,8 @@ import { CalendarioCitasComponent } from './Citas/components/calendario-citas/ca
     SharedModule,
     DashboardModule,
     EnfermerasModuloModule,
-    
+    CitasModule
+
   ]
 })
 export class AdminModule { }
