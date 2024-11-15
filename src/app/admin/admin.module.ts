@@ -8,12 +8,14 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { MedicamentosModule } from './medicamentos/medicamentos.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EnfermerasModuloModule } from './gestionEnfermeras/enfermeras-modulo.module';
+import { CalendarioCitasComponent } from './Citas/components/calendario-citas/calendario-citas.component';
 
 
 
 @NgModule({
   declarations: [
     AdminViewComponentComponent,
+    CalendarioCitasComponent,
 
   ],
   imports: [
