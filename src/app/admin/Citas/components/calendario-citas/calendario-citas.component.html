@@ -2,3 +2,12 @@
   <full-calendar [options]="calendarOptions"></full-calendar>
 </div>
 
+<app-modal-agenda
+*ngIf="showModal"
+[selectedDate]="selectedDate"
+[selectedTime]="selectedTime"
+(appointmentSubmitted)="onAppointmentSubmitted($event)"
+(modalClosed)="closeModal()"
+>>
+
+</app-modal-agenda>
