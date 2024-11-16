@@ -24,7 +24,7 @@ export class DashboardComponent {
     { nombre: 'Medicamentos', icono: '../../../assets/Medicamentos.png', ruta: '/admin/dashboard/medicamentos' },
     { nombre: 'Agenda', icono: '../../../assets/Citas.png', ruta: 'admin/citas' },
     { nombre: 'Camillas', icono: '../../../assets/camillas.png', ruta: '/camillas' },
-    { nombre: 'Usuarios', icono: '../../../assets/Usuarios.png', ruta: '/usuarios' }
+    { nombre: 'Usuarios', icono: '../../../assets/Usuarios.png', ruta: 'admin/dashboard/usuarios' }
   ]
 
   navigateTo(ruta:string){

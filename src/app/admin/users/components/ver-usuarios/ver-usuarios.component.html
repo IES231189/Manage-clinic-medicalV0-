@@ -1,0 +1,34 @@
+<div class="container-usuarios">
+
+  <div *ngIf="isLoading">Cargando Usuarios...</div>
+
+    <div *ngIf="!isLoading && data.length === 0" class="no-results">
+      <p>No se encontraron registros.</p>
+    </div>
+
+    <app-table
+      *ngIf="!isLoading && data.length > 0"
+      [data]="data"
+      [columns]="columns"
+      (edit)="onEdit($event)"
+      (delete)="onDelete($event)">
+    </app-table>
+
+    <app-edit-from-table
+     *ngIf="showEditModal"
+     [registroTable]="selectedRow"
+      (GuardarCambios)="onSaveChanges($event)"
+      (cancelEdit)="onCancel()">
+    </app-edit-from-table>
+
+
+    <app-delete-from-table
+     *ngIf="showDeleteModal"
+      [registroTable]="selectedRow"
+       (confirmDelete)="onDeleteConfirm()"
+      (cancelDelete)="onCancel()">
+    </app-delete-from-table>
+
+
+  </div>
+
