@@ -9,6 +9,8 @@ import { version } from 'vite';
 import { VerEnfermerasComponent } from './gestionEnfermeras/components/ver-enfermeras/ver-enfermeras.component';
 import { VerConsultaComponent } from './Consulta/components/ver-consulta/ver-consulta.component';
 import { CalendarioCitasComponent } from './Citas/components/calendario-citas/calendario-citas.component';
+import { FormAddUsuariosComponent } from './users/components/form-add-usuarios/form-add-usuarios.component';
+import { VerUsuariosComponent } from './users/components/ver-usuarios/ver-usuarios.component';
 
 
 
@@ -24,8 +26,9 @@ const routes: Routes = [
       {path:'Enfermeras' , component:AgregarEnfermeras},
       {path:'verEnfermeras' , component:VerEnfermerasComponent},
       {path:'verConsultas' , component:VerConsultaComponent},
-      {path:'citas' , component:CalendarioCitasComponent}
-
+      {path:'citas' , component:CalendarioCitasComponent} ,
+      {path:'register' , component:FormAddUsuariosComponent},
+      {path:'all-usuarios' , component: VerUsuariosComponent}
     ]
   },
 
