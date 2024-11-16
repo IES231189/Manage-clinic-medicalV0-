@@ -22,7 +22,7 @@ export class DashboardComponent {
     { nombre: 'Recetario', icono: '../../../assets/recetario.png', ruta: '/dashboard/recetario' },
     { nombre: 'Consultas', icono: '../../../assets/historial_consulta.png', ruta: '/admin/dashboard/consultas' },
     { nombre: 'Medicamentos', icono: '../../../assets/Medicamentos.png', ruta: '/admin/dashboard/medicamentos' },
-    { nombre: 'Agenda', icono: '../../../assets/Citas.png', ruta: '/agenda' },
+    { nombre: 'Agenda', icono: '../../../assets/Citas.png', ruta: 'admin/citas' },
     { nombre: 'Camillas', icono: '../../../assets/camillas.png', ruta: '/camillas' },
     { nombre: 'Usuarios', icono: '../../../assets/Usuarios.png', ruta: '/usuarios' }
   ]
