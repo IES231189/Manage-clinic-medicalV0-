@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Medicamentos } from '../models/medicamentos';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +11,23 @@ import { Medicamentos } from '../models/medicamentos';
 export class ServicesMedicamentoService {
 
 
-  private getMedicamentosUrl = 'http://52.203.29.27/inventory/view'; // URL para obtener medicamentos
-  private addMedicamentoUrl = 'http://52.203.29.27/inventory/add-inventory'; // URL para agregar un medicamento
+  private getMedicamentosUrl = 'http://localhost:3000/inventory/view'; // URL para obtener medicamentos
+  private addMedicamentoUrl = 'http://localhost:3000/inventory/add-inventory'; // URL para agregar un medicamento
 
   constructor(private http: HttpClient) {}
 
   getMedicamentos(): Observable<Medicamentos[]> {
-    return this.http.get<Medicamentos[]>(this.getMedicamentosUrl).pipe(
+    const token = localStorage.getItem('token');
+    if (!token) {
+      throw new Error('Token no encontrado');
+    }
+
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,  // El token debe ir en el encabezado 'Authorization'
+      'Content-Type': 'application/json'  // El tipo de contenido para enviar JSON
+    });
+    return this.http.get<Medicamentos[]>(this.getMedicamentosUrl,{headers}).pipe(
       catchError(error => {
         console.error('Error al obtener medicamentos:', error);
         return of([]);
@@ -25,14 +36,19 @@ export class ServicesMedicamentoService {
   }
 
 
-  addMedicamento(medicamento: Medicamentos): Observable<any> {
-    return this.http.post<any>(this.addMedicamentoUrl, medicamento).pipe(
+
+
+  addMedicamento(data:{}): Observable<any> {
+    return this.http.post<any>(this.addMedicamentoUrl,data).pipe(
       catchError(error => {
         console.error('Error al agregar medicamento:', error);
         return of(null);
       })
     )
+  }
 
+  addPresentacion(medicamento:Medicamentos):Observable<any>{
+    return this.http.post<any>('http://localhost:3000/inventory/add-presentacion',medicamento)
   }
 
 

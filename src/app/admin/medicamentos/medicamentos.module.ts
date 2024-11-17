@@ -8,6 +8,7 @@ import { ListaMedicamentosComponent } from './components/lista-medicamentos/list
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BarcodeScannerComponent } from './components/barcode-scanner-component/barcode-scanner-component.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AddMedicamentoGeneralComponent } from './components/add-medicamento-general/add-medicamento-general.component';
 
 
 
@@ -17,7 +18,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     MedicamentosComponent,
     AddMedicamentoComponent,
     ListaMedicamentosComponent,
-   BarcodeScannerComponent
+   BarcodeScannerComponent,
+   AddMedicamentoGeneralComponent
   ],
   imports: [
     CommonModule,

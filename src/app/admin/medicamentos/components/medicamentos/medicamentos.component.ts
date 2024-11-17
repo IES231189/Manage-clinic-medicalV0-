@@ -17,7 +17,8 @@ export class MedicamentosComponent {
 
   cards: Card[] = [
     { title: 'Agregar Medicamento', message: '', action: 'admin/addMedicamentos', url: '../../../assets/medicineAdd.png' },
-    { title: 'Ver Medicamentos', message: '', action: '/admin/all-medicamentos', url: '../../../assets/historialMedico.png' }
+    { title: 'Ver Medicamentos', message: '', action: '/admin/all-medicamentos', url: '../../../assets/historialMedico.png' },
+    {title: 'agregar presentacion',message:'',action:'/admin/addPresentacion',url:'../../../../../assets/o.png'}
   ];
 
   openModal() {

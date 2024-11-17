@@ -1,0 +1,12 @@
+<div class="body">
+  <div class="form-container">
+    <h3 class="title">Agregar Formula de Medicamento</h3>
+    <form>
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input id="nombre" [(ngModel)]="data.nombre" name="nombre" type="text"/>
+      </div>
+      <button type="submit" (click)="onSubmit()">Guardar</button>
+    </form>
+  </div>
+</div>

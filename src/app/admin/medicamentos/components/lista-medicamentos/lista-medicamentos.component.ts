@@ -19,6 +19,7 @@ export class ListaMedicamentosComponent implements OnInit {
   ngOnInit(): void {
     this.fetchData();
   }
+  
 
   fetchData(): void {
     this.isLoading = true;
@@ -53,7 +54,7 @@ export class ListaMedicamentosComponent implements OnInit {
           if (response && response.success) {
             this.data = this.data.filter(item => item.nombre !== this.selectedRow!.nombre);
             this.showDeleteModal = false;
-            
+
             this.selectedRow = null;
           } else {
             console.error(response?.message || 'Error desconocido');
