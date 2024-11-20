@@ -1,30 +1,31 @@
 .dashboard {
-  /*padding: 20px;*/
   margin: 40px;
-
 }
 
 .cards {
-  margin-top: 1rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+  gap: 30px; /* Increase gap to space out the larger cards */
+  justify-content: space-between;
+  max-width: 900px; /* Adjust max-width for larger cards to fit three per row */
+  margin: 0 auto;
 }
 
 .card {
-  width: 190px;
-  height: 190px;
+  width: 270px; /* Increased width */
+  height: 270px; /* Increased height */
   background-color: #254A84;
-  border-radius: 10px;
+  border-radius: 15px; /* Slightly more rounded corners for larger cards */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease;
+  position: relative;
+  top: 60px;
 }
 
 .card:hover {
@@ -32,13 +33,13 @@
 }
 
 .card-icon {
-  width: 50px;
-  height: 50px;
-  margin-bottom: 10px;
+  width: 70px; /* Increased icon size to match larger card */
+  height: 70px;
+  margin-bottom: 15px;
 }
 
 .card-title {
-  font-size: medium;
+  font-size: large; /* Larger font size */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
   color: #FFFFFF;
@@ -50,4 +51,17 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: xx-large;
   font-weight: 400;
+}
+
+/* Responsive layout for smaller screens */
+@media (max-width: 768px) {
+  .cards {
+    max-width: 100%;
+    justify-content: center;
+  }
+
+  .card {
+    width: 100%; /* Full width on small screens */
+    height: auto;
+  }
 }

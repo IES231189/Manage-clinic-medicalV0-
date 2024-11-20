@@ -13,11 +13,16 @@ export class LoginComponentComponent {
 
   constructor(private authService: AuthServiceService, private router : Router) {}
 
+  rol:String = ""
+
   login() {
     this.authService.login({ email: this.email, contra: this.contra }).subscribe({
       next: (response: any) => {
         // Verifica si el token está presente en la respuesta
         const token = response.token;
+        this.rol = response.rol
+        console.log(this.rol);
+
         if (typeof token === 'string') {
           localStorage.setItem('token', token);
           this.router.navigate(['/admin'])

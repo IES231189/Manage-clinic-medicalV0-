@@ -5,16 +5,10 @@ import { AdminViewComponentComponent } from './admin-view-component/admin-view-c
 import { AddMedicamentoComponent } from './medicamentos/components/add-medicamento/add-medicamento.component';
 import { ListaMedicamentosComponent } from './medicamentos/components/lista-medicamentos/lista-medicamentos.component';
 import { AgregarEnfermeras } from './gestionEnfermeras/components/agregar-enfermeras/agregar-enfermeras.component';
-import { version } from 'vite';
 import { VerEnfermerasComponent } from './gestionEnfermeras/components/ver-enfermeras/ver-enfermeras.component';
 import { VerConsultaComponent } from './Consulta/components/ver-consulta/ver-consulta.component';
-
 import { CalendarioCitasComponent } from './Citas/components/calendario-citas/calendario-citas.component';
-
 import { AddMedicamentoGeneralComponent } from './medicamentos/components/add-medicamento-general/add-medicamento-general.component';
-
-
-
 
 const routes: Routes = [
   {
@@ -29,14 +23,11 @@ const routes: Routes = [
       {path:'Enfermeras' , component:AgregarEnfermeras},
       {path:'verEnfermeras' , component:VerEnfermerasComponent},
       {path:'verConsultas' , component:VerConsultaComponent},
-      {path:'addPresentacion',component:AddMedicamentoComponent}
-
+      {path:'addPresentacion',component:AddMedicamentoComponent},
+      {path:'calendario',component:CalendarioCitasComponent}
 
     ]
   },
-
-
-
 
 ];
 

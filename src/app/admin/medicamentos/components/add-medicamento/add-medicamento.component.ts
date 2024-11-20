@@ -13,7 +13,7 @@ import { Medicamentos } from '../../models/medicamentos';
 export class AddMedicamentoComponent implements OnInit {
   medicamentoForm: FormGroup;
 
-  data: Medicamentos[] = [];    
+  data: Medicamentos[] = [];
 
   @ViewChild(BarcodeScannerComponent) barcodeScanner!: BarcodeScannerComponent;
 
@@ -26,11 +26,7 @@ export class AddMedicamentoComponent implements OnInit {
       gramaje: ['', Validators.required],
       presentacion: ['', Validators.required],
       fechaCaducidad: ['', Validators.required],
-<<<<<<< HEAD
-      barcodeDisplay: [{ value: '', disabled: true }]
-=======
-      // barcodeDisplay: [{ value: '', disabled: true }]
->>>>>>> repuesto
+
     });
   }
 
