@@ -27,7 +27,7 @@ export class ServicesMedicamentoService {
       'Authorization': `Bearer ${token}`,  // El token debe ir en el encabezado 'Authorization'
       'Content-Type': 'application/json'  // El tipo de contenido para enviar JSON
     });
-    return this.http.get<Medicamentos[]>(this.getMedicamentosUrl,{headers}).pipe(
+    return this.http.get<Medicamentos[]>('http://localhost:3000/inventory/view-all',{headers}).pipe(
       catchError(error => {
         console.error('Error al obtener medicamentos:', error);
         return of([]);
@@ -55,7 +55,11 @@ export class ServicesMedicamentoService {
     )
   }
 
-  addPresentacion(medicamento:Medicamentos):Observable<any>{
+  addPresentacion(nombre : string,medicamento:Medicamentos):Observable<any>{
+
+    console.log(nombre);
+
+
     const token = localStorage.getItem('token');
     if (!token) {
       throw new Error('Token no encontrado');
@@ -66,7 +70,7 @@ export class ServicesMedicamentoService {
       'Authorization': `Bearer ${token}`,  // El token debe ir en el encabezado 'Authorization'
       'Content-Type': 'application/json'  // El tipo de contenido para enviar JSON
     });
-    return this.http.post<any>('http://localhost:3000/inventory/add-presentacion',medicamento,{headers})
+    return this.http.put<any>(`http://localhost:3000/inventory/add/${nombre}`,medicamento,{headers})
   }
 
 

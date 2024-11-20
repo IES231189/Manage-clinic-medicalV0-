@@ -1,9 +1,9 @@
-import { Component , Input , Output , EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-modal-agenda',
   templateUrl: './modal-agenda.component.html',
-  styleUrl: './modal-agenda.component.css'
+  styleUrls: ['./modal-agenda.component.css'] // Asegúrate de que el nombre sea "styleUrls"
 })
 export class ModalAgendaComponent {
   @Input() selectedDate: string = '';
@@ -13,15 +13,19 @@ export class ModalAgendaComponent {
 
   patientName: string = '';
 
-
   submitAppointment() {
-   if (this.patientName.trim() === '') {
-    alert('Por favor, ingrese el nombre del paciente.'); // Validación simple
-    return;
-  }
-  this.appointmentSubmitted.emit({ patientName: this.patientName });
-  this.patientName = '';
+    if (this.patientName.trim() === '') {
+      alert('Por favor, ingrese el nombre del paciente.'); // Validación simple
+      return;
+    }
 
+    if (!this.isValidDate()) {
+      alert('No se puede agendar una cita en un día anterior al actual.');
+      return;
+    }
+
+    this.appointmentSubmitted.emit({ patientName: this.patientName });
+    this.patientName = '';
   }
 
   closeModal() {
@@ -29,6 +33,15 @@ export class ModalAgendaComponent {
     this.modalClosed.emit();
   }
 
-    //realizar una api 
+  /**
+   * Valida si la fecha seleccionada es válida (no es anterior a la fecha actual).
+   * @returns boolean
+   */
+  isValidDate(): boolean {
+    const today = new Date(); 
+    today.setHours(0, 0, 0, 0);
+    const selected = new Date(this.selectedDate);
 
+    return selected >= today;
+  }
 }
