@@ -7,3 +7,11 @@
 .container-admin{
  padding-top: 40px;
 }
+
+
+@media (max-width:600px){
+    .header-tests{
+      width: auto;
+    }
+}
+

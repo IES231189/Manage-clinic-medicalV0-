@@ -1,18 +1,40 @@
-  <h3 class="title">Agregar Medicamentos</h3>
-  <div class="form-container">
+
+ <div class="body">
+   <div class="form-container">
+
+      <!-- <div class="image-background">
+        <img src="/src/assets/istockphoto-1363129327-2048x2048-removebg-preview.png" alt="debe haber una img" srcset="">
+      </div> -->
+
+      <h3 class="title">Agregar Presentacion de Medicamentos</h3>
 
   <form [formGroup]="medicamentoForm" (ngSubmit)="onSubmit()">
     <!-- Campos del formulario -->
-    <div class="form-group">
+    <!-- <div class="form-group">
       <label for="nombre">Nombre:</label>
       <input id="nombre" formControlName="nombre" type="text" />
+    </div> -->
+    <div class="form-group">
+      <label for="formula">seleccione la formula</label>
+      <select name="" class="select">
+        <option *ngFor="let item of data" class="select-option">{{item.nombre}}</option>
+      </select>
     </div>
+
     <div class="form-group">
       <label for="precio">Precio:</label>
       <input id="precio" formControlName="precio" type="number" />
     </div>
     <div class="form-group">
       <label for="precioCompra">Precio de Compra:</label>
+      <input id="precioCompra" formControlName="precioCompra" type="number" />
+    </div>
+    <div class="form-group">
+      <label for="precioCompra">cantidad de cajas:</label>
+      <input id="precioCompra" formControlName="precioCompra" type="number" />
+    </div>
+    <div class="form-group">
+      <label for="precioCompra">unidades  por caja:</label>
       <input id="precioCompra" formControlName="precioCompra" type="number" />
     </div>
     <div class="form-group">
@@ -33,15 +55,16 @@
     </div>
 
     <!-- Escáner de código de barras -->
-    <div class="form-group">
+    <!-- <div class="form-group">
       <label for="barcodeDisplay">Código de Barras Escaneado:</label>
       <input id="barcodeDisplay" formControlName="barcodeDisplay" type="text" readonly />
       <button type="button" (click)="barcodeScanner.startScanning()">Escanear Código</button>
     </div>
 
-    <app-barcode-scanner (ngModelChange)="onBarcodeDetected()"></app-barcode-scanner>
+    <app-barcode-scanner (ngModelChange)="onBarcodeDetected()"></app-barcode-scanner> -->
 
-    <button type="submit" (click)="onSubmit()">Guardar</button>
+    <button type="submit">Guardar</button>
   </form>
 </div>
+ </div>
 

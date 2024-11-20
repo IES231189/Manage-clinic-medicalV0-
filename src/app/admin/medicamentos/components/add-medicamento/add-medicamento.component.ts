@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BarcodeScannerComponent } from '../barcode-scanner-component/barcode-scanner-component.component';
 import { Router } from '@angular/router';
 import { ServicesMedicamentoService } from '../../services/services-medicamento.service';
-
+import { Medicamentos } from '../../models/medicamentos';
 @Component({
   selector: 'app-add-medicamento',
   templateUrl: './add-medicamento.component.html',
@@ -12,6 +12,8 @@ import { ServicesMedicamentoService } from '../../services/services-medicamento.
 })
 export class AddMedicamentoComponent implements OnInit {
   medicamentoForm: FormGroup;
+
+  data: Medicamentos[] = [];    
 
   @ViewChild(BarcodeScannerComponent) barcodeScanner!: BarcodeScannerComponent;
 
@@ -24,17 +26,37 @@ export class AddMedicamentoComponent implements OnInit {
       gramaje: ['', Validators.required],
       presentacion: ['', Validators.required],
       fechaCaducidad: ['', Validators.required],
+<<<<<<< HEAD
       barcodeDisplay: [{ value: '', disabled: true }]
+=======
+      // barcodeDisplay: [{ value: '', disabled: true }]
+>>>>>>> repuesto
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.fetchData()
+  }
 
-  //  asignar el código detectado al campo del formulario
-  onBarcodeDetected(): void {
-    this.medicamentoForm.patchValue({
-      barcodeDisplay: this.barcodeScanner.resultText // Asigna el código detectado
-    });
+  // //  asignar el código detectado al campo del formulario
+  // onBarcodeDetected(): void {
+  //   this.medicamentoForm.patchValue({
+  //     barcodeDisplay: this.barcodeScanner.resultText // Asigna el código detectado
+  //   });
+  // }
+
+
+  fetchData(): void {
+    this.medicamentosService.getMedicamentos().subscribe(
+      (response: Medicamentos[]) => {
+        console.log('Datos recibidos:', response);  // Verifica qué se está recibiendo
+        //si response envia datos de tipo medicamento correctamente asignamos los datos recibidos a un arreglo
+        this.data = response && response.length > 0 ? response : [];
+      },
+      (error) => {
+        console.error('Error al obtener los medicamentos:', error);
+      }
+    );
   }
 
   onSubmit(): void {
@@ -43,7 +65,7 @@ export class AddMedicamentoComponent implements OnInit {
       this.medicamentosService.addMedicamento(formData).subscribe(
         (response) => {
           console.log('Medicamento agregado con éxito:', response);
-          this.router.navigate(['/admin/dashboard/medicamentos']);
+         this.router.navigate(['/admin']);
         },
         (error) => {
           console.error('Error al enviar el medicamento:', error);

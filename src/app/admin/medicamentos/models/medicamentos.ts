@@ -1,9 +1,11 @@
 export interface Medicamentos {
-  id: number;
-  Nombre: string;
-  Precio_Compra: number;
-  Precio_Venta: number;
-  Patente: string;
-  Gramaje: string;
-  Presentacion: string;
+
+  fechaCaducidad: string;
+  gramaje: string;
+  nombre: string;
+  patente: string;
+  precio: number;
+  precioCompra: number;
+  presentacion: string;
+
 }

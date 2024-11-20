@@ -6,7 +6,8 @@ import { AdminViewComponentComponent } from './admin-view-component/admin-view-c
 import { SharedModule } from '../shared/shared.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { MedicamentosModule } from './medicamentos/medicamentos.module';
-import { ReactiveFormsModule } from '@angular/forms';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EnfermerasModuloModule } from './gestionEnfermeras/enfermeras-modulo.module';
 import { CalendarioCitasComponent } from './Citas/components/calendario-citas/calendario-citas.component';
 import { CitasModule } from './Citas/citas.module';
@@ -25,8 +26,8 @@ import { CitasModule } from './Citas/citas.module';
     SharedModule,
     DashboardModule,
     EnfermerasModuloModule,
-    CitasModule
-
+    CitasModule,
+    FormsModule
   ]
 })
 export class AdminModule { }

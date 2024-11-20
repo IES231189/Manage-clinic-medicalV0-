@@ -24,7 +24,8 @@ import { AdminModule } from './admin/admin.module';
     AuthModule,
     HttpClientModule,
     SharedModule,
-    AdminModule
+    AdminModule,
+    FormsModule
 
   ],
   providers: [],

@@ -8,7 +8,11 @@ import { AgregarEnfermeras } from './gestionEnfermeras/components/agregar-enferm
 import { version } from 'vite';
 import { VerEnfermerasComponent } from './gestionEnfermeras/components/ver-enfermeras/ver-enfermeras.component';
 import { VerConsultaComponent } from './Consulta/components/ver-consulta/ver-consulta.component';
+
 import { CalendarioCitasComponent } from './Citas/components/calendario-citas/calendario-citas.component';
+
+import { AddMedicamentoGeneralComponent } from './medicamentos/components/add-medicamento-general/add-medicamento-general.component';
+
 
 
 
@@ -20,11 +24,13 @@ const routes: Routes = [
       { path: 'dashboard', loadChildren:() =>import('../admin/dashboard/dashboard.module').then(m=>m.DashboardModule) },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       {path:'all-medicamentos' , component: ListaMedicamentosComponent},
-      {path:'addMedicamentos' , component:AddMedicamentoComponent},
+
+      {path:'addMedicamentos' , component:AddMedicamentoGeneralComponent},
       {path:'Enfermeras' , component:AgregarEnfermeras},
       {path:'verEnfermeras' , component:VerEnfermerasComponent},
       {path:'verConsultas' , component:VerConsultaComponent},
-      {path:'citas' , component:CalendarioCitasComponent}
+      {path:'addPresentacion',component:AddMedicamentoComponent}
+
 
     ]
   },

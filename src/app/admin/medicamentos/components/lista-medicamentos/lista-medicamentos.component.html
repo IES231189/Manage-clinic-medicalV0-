@@ -1,32 +1,47 @@
-<div class="container-medicamentos">
-
+<div class="container">
   <div *ngIf="isLoading">Cargando medicamentos...</div>
 
-  <div *ngIf="!isLoading && data.length === 0" class="no-results">
-    <p>No se encontraron medicamentos.</p>
+  <table *ngIf="!isLoading">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Precio Compra</th>
+        <th>Precio Venta</th>
+        <th>Patente</th>
+        <th>Gramaje</th>
+        <th>Presentación</th>
+        <th>Fecha de Caducidad</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let medicamento of data">
+        <td>{{ medicamento.nombre }}</td>
+        <td>{{ medicamento.precioCompra }}</td>
+        <td>{{ medicamento.precio }}</td>
+        <td>{{ medicamento.patente }}</td>
+        <td>{{ medicamento.gramaje }}</td>
+        <td>{{ medicamento.presentacion }}</td>
+        <td>{{ medicamento.fechaCaducidad }}</td>
+        <td>
+          <button (click)="onEdit(medicamento)">Editar</button>
+          <button (click)="onDelete(medicamento)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Modal de confirmación para eliminar -->
+  <div *ngIf="showDeleteModal" class="modal">
+    <p>¿Estás seguro de que deseas eliminar el medicamento {{ selectedRow?.nombre }}?</p>
+    <button (click)="onDeleteConfirm()">Confirmar</button>
+    <button (click)="onCancel()">Cancelar</button>
   </div>
 
-  <app-table
-    *ngIf="!isLoading && data.length > 0"
-    [data]="data"
-    [columns]="columns"
-    (edit)="onEdit($event)"
-    (delete)="onDelete($event)">
-  </app-table>
+  <!-- Modal para editar -->
+  <div *ngIf="showEditModal" class="modal">
+    <p>Editando: {{ selectedRow?.nombre }}</p>
 
-  <app-edit-from-table
-   *ngIf="showEditModal"
-   [registroTable]="selectedRow"
-    (GuardarCambios)="onSaveChanges($event)"
-    (cancelEdit)="onCancel()">
-  </app-edit-from-table>
-
-
-  <app-delete-from-table
-   *ngIf="showDeleteModal"
-    [registroTable]="selectedRow"
-     (confirmDelete)="onDeleteConfirm()"
-    (cancelDelete)="onCancel()">
-  </app-delete-from-table>
-
+    <button (click)="onCancel()">Cerrar</button>
+  </div>
 </div>

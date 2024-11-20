@@ -1,9 +1,73 @@
-.container-medicamentos{
-  width: 100%;
+/* Contenedor principal para centrar la tabla en la página */
+.container {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 4rem;
+
+  min-height: 100vh; /* Altura mínima para centrar verticalmente */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Estilos de la tabla */
+table {
+  width: 100%;
+  max-width: 800px; /* Tamaño máximo de la tabla */
+  border-collapse: collapse;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Cabecera de la tabla */
+thead {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Fila destacada al pasar el ratón */
+tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Botones de acción */
+button {
+  padding: 5px 10px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+button:nth-child(1) {
+  background-color: #4CAF50;
+  color: white;
+}
+
+button:nth-child(2) {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Responsividad */
+@media (max-width: 600px) {
+  th, td {
+    font-size: 14px;
+    padding: 8px;
+  }
+  table {
+    max-width: 100%;
+  }
 
 }

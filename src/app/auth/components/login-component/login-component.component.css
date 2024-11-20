@@ -1,0 +1,91 @@
+
+
+.login-container {
+  width: 90%;
+  max-width: 400px;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  left: 700px;
+  top: 200px;
+}
+
+.login-container h2 {
+  margin-bottom: 1.5rem;
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+/* Estilos para los inputs */
+.form-control {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Botón */
+.btn-primary {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #007bff;
+  color: #ffffff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Ajuste de etiquetas */
+label {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}
+
+/* Media Queries para diseño responsivo */
+@media (max-width: 768px) {
+  .login-container {
+    width: 80%;
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    width: 90%;
+    padding: 1rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  .btn-primary {
+    font-size: 0.9rem;
+  }
+}

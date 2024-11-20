@@ -9,14 +9,12 @@ import { Observable, tap } from 'rxjs';
 })
 
 export class AuthServiceService {
-  private apiUrl = 'tu_api_url/aqui';
+  private apiUrl = 'http://localhost:5000/usuarios';
 
   constructor(private http: HttpClient, private jwtHelper: JwtHelperService) { }
 
 
-
-
-  login(credentials: { username: string; password: string }): Observable<string> {
+  login(credentials: { email: string; contra: string }): Observable<string> {
     return this.http.post<string>(`${this.apiUrl}/login`, credentials).pipe(
       tap((token: string) => {
         localStorage.setItem('token', token);

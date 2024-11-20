@@ -40,12 +40,13 @@ export class AgregarEnfermeras implements OnInit {
         },
         (error) => {
           console.error('Error al registrar enfermera:', error);
-          
         }
       );
     } else {
       console.log('Formulario no válido');
+
       console.log(this.enfermeraForm.errors);
+
       Object.keys(this.enfermeraForm.controls).forEach((key) => {
         const controlErrors = this.enfermeraForm.get(key)?.errors;
         if (controlErrors) {

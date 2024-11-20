@@ -11,15 +11,15 @@
 }
 
 .modal {
-  background: #A0C3E2;
-  width: 550px;
+  background: #ffffff;
+  width: 750px;
   padding-top: 0;
-  border-radius: 5px;
+  border-radius: 25px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .titulo-modal{
-  background-color: #027DC5;
+  background-color: #00436a;
   color: aliceblue;
   font-weight: lighter;
   font-size: larger;
@@ -47,12 +47,12 @@
 
 .card{
   width: 200px;
-  background-color: aliceblue;
+  background-color: rgb(7, 61, 109);
   padding: 2rem;
   justify-content: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
-  color: #027DC5;
+  color: #ffffff;
   border-radius: 2rem;
 }
 
