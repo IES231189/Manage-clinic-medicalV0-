@@ -29,6 +29,6 @@ export class ModalAgendaComponent {
     this.modalClosed.emit();
   }
 
-
+    //realizar una api 
 
 }

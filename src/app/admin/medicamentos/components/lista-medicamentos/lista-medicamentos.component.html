@@ -20,8 +20,18 @@
         <td>{{ medicamento.precioCompra }}</td>
         <td>{{ medicamento.precio }}</td>
         <td>{{ medicamento.patente }}</td>
-        <td>{{ medicamento.gramaje }}</td>
-        <td>{{ medicamento.presentacion }}</td>
+        <td>
+          <!-- Iterar sobre el array 'gramaje' si está dentro de presentacion -->
+          <div *ngFor="let item of medicamento.presentacion">
+            {{ item}}
+          </div>
+        </td>
+        <td>
+          <!-- Iterar sobre el array 'presentacion' -->
+          <div *ngFor="let item of medicamento.presentacion">
+            {{ item }} <!-- Cambia 'presentacionPropiedad' por el nombre exacto de la propiedad -->
+          </div>
+        </td>
         <td>{{ medicamento.fechaCaducidad }}</td>
         <td>
           <button (click)="onEdit(medicamento)">Editar</button>

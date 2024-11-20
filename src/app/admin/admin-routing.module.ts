@@ -25,7 +25,6 @@ const routes: Routes = [
       {path:'verConsultas' , component:VerConsultaComponent},
       {path:'addPresentacion',component:AddMedicamentoComponent},
       {path:'calendario',component:CalendarioCitasComponent}
-
     ]
   },
 

@@ -24,7 +24,7 @@ import { CitasModule } from './Citas/citas.module';
     DashboardModule,
     EnfermerasModuloModule,
     CitasModule,
-    FormsModule
+    FormsModule,
   ]
 })
 export class AdminModule { }

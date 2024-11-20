@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicesMedicamentoService } from '../../services/services-medicamento.service';
 
-import { Medicamentos } from '../../models/medicamentos';// Asegúrate de que la ruta sea correcta
-
+import { Medicamentos } from '../../models/medicamentos';
 
 @Component({
   selector: 'app-lista-medicamentos',
@@ -11,21 +10,6 @@ import { Medicamentos } from '../../models/medicamentos';// Asegúrate de que la
 })
 export class ListaMedicamentosComponent implements OnInit {
   data: Medicamentos[] = [];
-
-
-  columns = [
-    { name: 'Nombre', type: 'text' },
-    { name: 'Precio_Compra', type: 'number' },
-    { name: 'Precio_Venta', type: 'number' },
-    { name: 'Patente', type: 'text' },
-    { name: 'Gramaje', type: 'text' },
-    { name: 'Presentacion', type: 'text' },
-    { name: 'Editar', type: 'button', action: 'edit' },
-    { name: 'Eliminar', type: 'button', action: 'delete' }
-  ];
-
-
-
   isLoading = true;
   selectedRow: Medicamentos | null = null;
   showEditModal = false;
@@ -37,15 +21,12 @@ export class ListaMedicamentosComponent implements OnInit {
     this.fetchData();
   }
 
-
   fetchData(): void {
     this.isLoading = true;
     this.medicamentoService.getMedicamentos().subscribe(
       (response: Medicamentos[]) => {
-
-        console.log('Datos recibidos:', response);  // Verifica qué se está recibiendo
+        console.log('Datos recibidos:', response); // Log data structure
         this.data = response && response.length > 0 ? response : [];
-
         this.isLoading = false;
       },
       (error) => {
@@ -55,10 +36,9 @@ export class ListaMedicamentosComponent implements OnInit {
     );
   }
 
+
   onEdit(row: Medicamentos): void {
-
-    this.selectedRow = {...row};
-
+    this.selectedRow = { ...row };
     this.showEditModal = true;
   }
 
@@ -69,13 +49,11 @@ export class ListaMedicamentosComponent implements OnInit {
 
   onDeleteConfirm(): void {
     if (this.selectedRow) {
-      console.log('Nombre del medicamento a eliminar:', this.selectedRow.nombre); // Verificar el nombre
       this.medicamentoService.deleteMedicamentos(this.selectedRow.nombre).subscribe({
         next: (response) => {
           if (response && response.success) {
             this.data = this.data.filter(item => item.nombre !== this.selectedRow!.nombre);
             this.showDeleteModal = false;
-
             this.selectedRow = null;
           } else {
             console.error(response?.message || 'Error desconocido');
@@ -89,11 +67,8 @@ export class ListaMedicamentosComponent implements OnInit {
           this.selectedRow = null;
         }
       });
-
     }
   }
-
-
 
   onCancel(): void {
     this.showEditModal = false;
