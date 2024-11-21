@@ -9,8 +9,9 @@ const routes: Routes = [
     component:DashboardComponent,
     children:[
      { path: 'medicamentos', loadChildren:()=>import('../medicamentos/medicamentos.module').then(m=>m.MedicamentosModule)},
-     { path:'consultas' , loadChildren:()=>import('../Consulta/consulta.module').then(m=>m.ConsultaModule)}
-     
+     { path:'consultas' , loadChildren:()=>import('../Consulta/consulta.module').then(m=>m.ConsultaModule)},
+     {path:'usuarios' , loadChildren: ()=> import('../users/users.module').then(m =>m.UsersModule)}
+
     ]
   }
 ];

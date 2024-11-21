@@ -8,6 +8,8 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EnfermerasModuloModule } from './gestionEnfermeras/enfermeras-modulo.module';
 import { CitasModule } from './Citas/citas.module';
+import { FormAddUsuariosComponent } from './users/components/form-add-usuarios/form-add-usuarios.component';
+import { UsersModule } from './users/users.module';
 
 
 
@@ -24,7 +26,9 @@ import { CitasModule } from './Citas/citas.module';
     DashboardModule,
     EnfermerasModuloModule,
     CitasModule,
-    FormsModule
+    FormsModule,
+    UsersModule
+
   ]
 })
 export class AdminModule { }

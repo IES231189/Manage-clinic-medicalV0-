@@ -10,12 +10,11 @@ import { SharedModule } from './shared/shared.module';
 import { AdminModule } from './admin/admin.module';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     UserViewComponentComponent,
-
-
 
   ],
   imports: [
