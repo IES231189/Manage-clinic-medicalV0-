@@ -1,36 +1,32 @@
+<!-- src/app/components/modal-agenda/modal-agenda.component.html -->
 <div *ngIf="selectedDate" class="modal-overlay">
-
   <div class="modal">
-
     <h2>Agregar Cita</h2>
 
     <form (ngSubmit)="submitAppointment()">
       <div class="container-form">
-                <div class="flex1">
-                  <label for="patientName">Nombre del Paciente:</label>
-                  <input id="patientName" [(ngModel)]="patientName" name="patientName" required>
+        <div class="flex1">
+          <label for="patientName">Nombre del Paciente:</label>
+          <input id="patientName" [(ngModel)]="patientName" name="patientName" required>
 
-                  <label for="appointmentTime">Hora de la Cita:</label>
-                  <input id="appointmentTime" [value]="selectedTime | date:'shortTime'" readonly>
-                </div>
+          <label for="patientLastName">Apellidos del Paciente:</label>
+          <input id="patientLastName" [(ngModel)]="patientLastName" name="patientLastName" required>
 
-                  <div class="flex2">
-                    <img src="../../../../../assets/citas_agenda.png" width="130px" height="100px">
-                    <button type="submit">GuardarCita</button>
-                    <br>
-                    <button type="button" (click)="closeModal()">Cancelar</button>
-                  </div>
+          <label for="patientPhone">Número de Teléfono:</label>
+          <input id="patientPhone" type="tel" [(ngModel)]="patientPhone" name="patientPhone" required>
 
+          <label for="appointmentTime">Hora de la Cita:</label>
+          <input id="appointmentTime" [value]="selectedTime | date:'shortTime'" readonly>
+        </div>
 
-
-
+        <div class="flex2">
+          <img src="../../../../../assets/citas_agenda.png" width="130px" height="100px">
+          <button type="submit">Guardar Cita</button>
+          <br>
+          <button type="button" (click)="closeModal()">Cancelar</button>
+        </div>
       </div>
-
-
-
     </form>
-
-
   </div>
 
 </div>

@@ -10,12 +10,15 @@ import { Medicamentos } from '../../models/medicamentos';
 })
 export class ListaMedicamentosComponent implements OnInit {
   data: Medicamentos[] = [];
+  presentaciones: any[] = [];
   isLoading = true;
   selectedRow: Medicamentos | null = null;
   showEditModal = false;
   showDeleteModal = false;
 
   constructor(private medicamentoService: ServicesMedicamentoService) {}
+
+
 
   ngOnInit(): void {
     this.fetchData();
@@ -28,6 +31,7 @@ export class ListaMedicamentosComponent implements OnInit {
         console.log('Datos recibidos:', response); // Log data structure
         this.data = response && response.length > 0 ? response : [];
         this.isLoading = false;
+      //  this.extraerPresentaciones();
       },
       (error) => {
         console.error('Error al obtener los medicamentos:', error);
@@ -35,6 +39,7 @@ export class ListaMedicamentosComponent implements OnInit {
       }
     );
   }
+
 
 
   onEdit(row: Medicamentos): void {
@@ -74,4 +79,21 @@ export class ListaMedicamentosComponent implements OnInit {
     this.showEditModal = false;
     this.showDeleteModal = false;
   }
+
+  // extraerPresentaciones(): void {
+  //   this.presentaciones = [];
+  //   this.data.forEach(medicamento => {
+  //     const { nombre, presentacion } = medicamento;
+  //     if (presentacion && presentacion.length > 0) {
+  //       presentacion.forEach(item => {
+  //         // Añadimos la propiedad 'nombre' para poder identificar a qué medicamento pertenece
+  //         this.presentaciones.push({ ...item, nombre });
+  //       });
+  //     }
+  //   });
+  // }
 }
+
+
+
+

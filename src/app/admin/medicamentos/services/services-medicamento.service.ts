@@ -35,7 +35,6 @@ export class ServicesMedicamentoService {
     );
   }
 
-
   addMedicamento(data:{}): Observable<any> {
     const token = localStorage.getItem('token');
     if (!token) {
