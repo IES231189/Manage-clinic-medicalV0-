@@ -34,7 +34,7 @@ export class CalendarioCitasComponent {
     plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
     locale: esLocale,
     editable: true,
-    slotDuration: '00:30:00',
+    slotDuration: '00:10:00',
     slotMinTime: '08:00:00',
     headerToolbar: {
       left: 'prev,next today',
@@ -112,5 +112,15 @@ export class CalendarioCitasComponent {
     this.showModal = false;
   }
 
+
+  deleteEvent() {
+    if (this.selectedEvent) {
+      this.selectedEvent.remove(); // Elimina el evento seleccionado del calendario
+      this.selectedEvent = null;
+      this.showModal = false; // Cierra el modal
+    } else {
+      alert('No hay evento seleccionado para eliminar.');
+    }
+  }
 
 }
