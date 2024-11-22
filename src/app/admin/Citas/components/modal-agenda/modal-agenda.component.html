@@ -17,8 +17,9 @@
                   <div class="flex2">
                     <img src="../../../../../assets/citas_agenda.png" width="130px" height="100px">
                     <button type="submit">GuardarCita</button>
-                    <br>
+      
                     <button type="button" (click)="closeModal()">Cancelar</button>
+                    <button *ngIf="selectedDate" (click)="deleteEvent()">Eliminar</button>
                   </div>
 
       </div>

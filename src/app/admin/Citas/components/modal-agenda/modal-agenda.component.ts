@@ -10,8 +10,15 @@ export class ModalAgendaComponent {
   @Input() selectedTime: any = '';
   @Output() appointmentSubmitted = new EventEmitter<{ patientName: string }>();
   @Output() modalClosed = new EventEmitter<void>();
-
+  @Output() eventDeleted = new EventEmitter<void>();
   patientName: string = '';
+
+
+
+deleteEvent() {
+  this.eventDeleted.emit(); // Emite un evento para notificar al componente padre
+  this.closeModal(); // Cierra el modal
+}
 
 
   submitAppointment() {

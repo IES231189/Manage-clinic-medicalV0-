@@ -71,6 +71,7 @@
   display: flex;
   flex-direction: column;
   width: 30%;
+  gap: 1;
 }
 
 .modal input {
@@ -82,7 +83,7 @@
   color: #333;
 }
 
-.modal button {
+button {
  padding-inline: 40px;
   border: none;
   background-color: #21882FCC;
@@ -91,7 +92,7 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-top: 1px;
+  margin-top: 1rem;
 }
 
 .modal button:hover {
