@@ -65,16 +65,17 @@ export class VerConsultaComponent {
     this.isLoading = true;
     this.consultaService.getConsultas().subscribe(
       (response: Consulta[]) => {
-        this.data = response.length > 0 ? response : this.defaultData;
+        console.log('Datos obtenidos de la API:', response); // Verifica lo que devuelve la API
+        this.data = response; // Asigna directamente los datos de la API
         this.isLoading = false;
       },
       (error) => {
-        console.error('Error fetching data:', error);
-        this.data = this.defaultData;
+        console.error('Error al obtener datos de la API:', error);
         this.isLoading = false;
       }
     );
   }
+  
 
   // Editar consulta
   onEdit(row: Consulta): void {
@@ -90,12 +91,13 @@ export class VerConsultaComponent {
 
   // Guardar cambios de la consulta
   onSaveChanges(updatedData: Consulta): void {
-    if (updatedData.idx) {
-      this.consultaService.updateConsulta(updatedData).subscribe(
+    if (updatedData.id) {
+     
+      this.consultaService.updateConsulta(updatedData.id, updatedData).subscribe(
         (response) => {
-          const index = this.data.findIndex(item => item.idx === updatedData.idx);
+          const index = this.data.findIndex(item => item.id === updatedData.id);
           if (index > -1) {
-            this.data[index] = updatedData;  // Actualizamos la fila en la tabla
+            this.data[index] = updatedData;  
           }
           this.showEditModal = false;
         },
@@ -106,10 +108,10 @@ export class VerConsultaComponent {
 
   // Confirmar eliminación de la consulta
   onDeleteConfirm(): void {
-    if (this.selectedRow && this.selectedRow.idx) {
-      this.consultaService.deleteConsulta(this.selectedRow.idx).subscribe(
+    if (this.selectedRow && this.selectedRow.id) {
+      this.consultaService.deleteConsulta(this.selectedRow.id).subscribe(
         () => {
-          this.data = this.data.filter(item => item.idx !== this.selectedRow!.idx);
+          this.data = this.data.filter(item => item.id !== this.selectedRow!.id);
           this.showDeleteModal = false;
         },
         (error) => console.error('Error deleting consulta:', error)
