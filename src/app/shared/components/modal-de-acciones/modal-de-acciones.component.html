@@ -4,9 +4,10 @@
     <div class="content-modal">
       <p>{{ message }}</p>
       <div class="card-container">
+
         <div class="card" *ngFor="let card of cards" (click)="navigate(card.action)">
           <p>{{ card.message }}</p>
-          <img *ngIf="card.url" [src]="card.url" alt="modal image" width="54px" height="54px">
+          <img *ngIf="card.url" [src]="card.url" alt="modal image" width="64px" height="64px">
           <h3>{{ card.title }}</h3>
         </div>
       </div>

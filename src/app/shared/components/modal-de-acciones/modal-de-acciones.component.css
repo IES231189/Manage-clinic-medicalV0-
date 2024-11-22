@@ -50,10 +50,21 @@
   background-color: rgb(7, 61, 109);
   padding: 2rem;
   justify-content: center;
+  align-items: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
   color: #ffffff;
   border-radius: 2rem;
+
+}
+
+.card img{
+  margin-left: 2rem;
+
+}
+
+.card h3{
+  margin-top: 1rem;
 }
 
 .card:hover{

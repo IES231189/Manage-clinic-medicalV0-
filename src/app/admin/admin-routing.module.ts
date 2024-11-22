@@ -9,6 +9,10 @@ import { VerEnfermerasComponent } from './gestionEnfermeras/components/ver-enfer
 import { VerConsultaComponent } from './Consulta/components/ver-consulta/ver-consulta.component';
 import { CalendarioCitasComponent } from './Citas/components/calendario-citas/calendario-citas.component';
 import { AddMedicamentoGeneralComponent } from './medicamentos/components/add-medicamento-general/add-medicamento-general.component';
+import { FormAddUsuariosComponent } from './users/components/form-add-usuarios/form-add-usuarios.component';
+import { VerUsuariosComponent } from './users/components/ver-usuarios/ver-usuarios.component';
+
+
 
 const routes: Routes = [
   {
@@ -24,7 +28,11 @@ const routes: Routes = [
       {path:'verEnfermeras' , component:VerEnfermerasComponent},
       {path:'verConsultas' , component:VerConsultaComponent},
       {path:'addPresentacion',component:AddMedicamentoComponent},
-      {path:'calendario',component:CalendarioCitasComponent}
+      {path:'calendario',component:CalendarioCitasComponent},
+      {path:'citas' , component:CalendarioCitasComponent} ,
+      {path:'register' , component:FormAddUsuariosComponent},
+      {path:'all-usuarios' , component: VerUsuariosComponent}
+
     ]
   },
 

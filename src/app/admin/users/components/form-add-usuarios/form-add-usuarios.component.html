@@ -1,0 +1,49 @@
+
+
+<div class="container-register-users">
+
+  <div class="container-form">
+
+    <form [formGroup]="usuariosForms" (ngSubmit)="onSubmit()">
+      <h3 class="title">Formulario de Registro de Enfermera</h3>
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input id="nombre" formControlName="nombre" type="text" required />
+      </div>
+
+      <div class="form-group">
+        <label for="apellidoPaterno">Apellido Paterno:</label>
+        <input id="apellidoPaterno" formControlName="apellidoPaterno" type="text" required />
+      </div>
+
+      <div class="form-group">
+        <label for="apellidoMaterno">Apellido Materno:</label>
+        <input id="apellidoMaterno" formControlName="apellidoMaterno" type="text" required />
+      </div>
+
+      <div class="form-group">
+        <label for="correo">Correo:</label>
+        <input id="correo" formControlName="correo" type="email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="usuario">Usuario:</label>
+        <input id="usuario" formControlName="usuario" type="text" required />
+      </div>
+
+      <div class="form-group">
+        <label for="contrasena">Contraseña:</label>
+        <input id="contrasena" formControlName="contrasena" type="password" required />
+      </div>
+
+      <button type="submit" >Registrar</button>
+    </form>
+
+    <div class="image">
+      <img src="../../../../../assets/profile.png" width="330px" height="330px">
+    </div>
+
+  </div>
+
+
+</div>
