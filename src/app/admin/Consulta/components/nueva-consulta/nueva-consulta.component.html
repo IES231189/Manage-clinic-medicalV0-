@@ -9,7 +9,6 @@
         <h1>LA PAZ CENTRO MEDICO</h1>
         <p>Clinica la paz</p>
       </div>
-
     </div>
 
     <form (ngSubmit)="guardarConsulta()">
@@ -39,6 +38,9 @@
 
       <label for="medidasGenerales">Medidas Generales:</label>
       <textarea id="medidasGenerales" [(ngModel)]="consulta.medidasGenerales" name="medidasGenerales"></textarea>
+
+     
+      <input type="hidden" [(ngModel)]="consulta.id" name="id">
 
       <div class="button-group">
         <button type="button" (click)="closeModal()">Cancelar</button>

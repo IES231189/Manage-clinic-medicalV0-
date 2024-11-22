@@ -1,15 +1,18 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Consulta } from '../../models/consulta';
+import { ConsultaService } from '../../Services/consulta.service';
+import { v4 as uuidv4 } from 'uuid'; 
 
 @Component({
   selector: 'app-nueva-consulta',
   templateUrl: './nueva-consulta.component.html',
-  styleUrl: './nueva-consulta.component.css'
+  styleUrls: ['./nueva-consulta.component.css']
 })
 export class NuevaConsultaComponent {
   showModal: boolean = true;
   consulta: Consulta = {
+    id: '', 
     nombrePaciente: '',
     edad: 0,
     alergias: '',
@@ -21,17 +24,29 @@ export class NuevaConsultaComponent {
     fecha: new Date()
   };
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private consultaService: ConsultaService) {}
 
   closeModal() {
     this.showModal = false;
   }
 
   guardarConsulta() {
-    console.log('Consulta guardada:', this.consulta);
+    // Generar un ID único antes de guardar
+    this.consulta.id = uuidv4();
 
-   //logica aqui para enviar formulario
-    this.router.navigate(['/admin/dashboard/consultas']); // Cambia '/ruta-destino' por la ruta a la que quieras redirigir
+    console.log('Consulta con ID generado:', this.consulta);
+
+    // Llamar al servicio para enviar los datos a la API
+    this.consultaService.createConsulta(this.consulta).subscribe(
+      (response) => {
+        console.log('Consulta guardada correctamente:', response);
+        // Redirigir al usuario si es necesario
+        // this.router.navigate(['/admin/dashboard/consultas']);
+      },
+      (error) => {
+        console.error('Error al guardar la consulta:', error);
+      }
+    );
 
     this.closeModal();
   }
