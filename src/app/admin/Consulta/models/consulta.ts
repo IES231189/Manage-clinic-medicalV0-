@@ -1,4 +1,5 @@
 export interface Consulta {
+  id?: string;
   nombrePaciente: string;
   edad: number;
   alergias: string;

@@ -1,37 +1,48 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Consulta } from '../models/consulta';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ConsultaService {
-
-  //crear nuevas rutas aqui  y sustituir en los metodos de abajo mostrados
-  private apiUrl = 'https://your-api-url.com/consultas';
-
-
+  private apiUrl = 'http://localhost:3000/consults';
+ 
 
   constructor(private http: HttpClient) {}
 
-  // mostrar consultas
+  // Headers con Token JWT (si aplica)
+  private getHeaders() {
+    return {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${localStorage.getItem('token')}`, // JWT guardado en localStorage
+      }),
+    };
+  }
+
+  // Mostrar todas las consultas
   getConsultas(): Observable<Consulta[]> {
-    return this.http.get<Consulta[]>(this.apiUrl);
+    return this.http.get<Consulta[]>(`${this.apiUrl}/view-consults`);
   }
 
-  // nueva consulta
+  // Buscar consulta por nombre
+  getConsultaByNombre(nombre: string): Observable<Consulta> {
+    return this.http.get<Consulta>(`${this.apiUrl}/view-consult/${nombre}`, this.getHeaders());
+  }
+
+  // Crear una nueva consulta
   createConsulta(consulta: Consulta): Observable<Consulta> {
-    return this.http.post<Consulta>(this.apiUrl, consulta);
+    return this.http.post<any>(`http://localhost:3000/consults/add-consult`,consulta);
   }
 
-  // Actualizar
-  updateConsulta(consulta: Consulta): Observable<Consulta> {
-    return this.http.put<Consulta>(`${this.apiUrl}/${consulta.idx}`, consulta);
+  // Actualizar una consulta existente
+  updateConsulta(id: string, consulta: Consulta): Observable<Consulta> {
+    return this.http.put<Consulta>(`http://localhost:3000/consults/edit-consult/${id}`, consulta, this.getHeaders());
   }
 
-  // Elimina
-  deleteConsulta(idx: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${idx}`);
+  // Eliminar una consulta por su ID
+  deleteConsulta(id: string): Observable<void> {
+    return this.http.delete<void>(`http://localhost:3000/consults/delete-consult/${id}`, this.getHeaders());
   }
 }
