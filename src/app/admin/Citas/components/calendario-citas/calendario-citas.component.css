@@ -18,3 +18,8 @@
 .fc-timegrid-slot-label-cushion {
   font-weight: 600;
 }
+
+.fc-view-timeGridWeek .fc-timegrid-slot {
+  height: 40px !important;
+}
+
