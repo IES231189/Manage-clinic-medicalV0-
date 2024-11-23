@@ -16,14 +16,14 @@ export class ModalAgendaComponent {
 
 
 deleteEvent() {
-  this.eventDeleted.emit(); // Emite un evento para notificar al componente padre
-  this.closeModal(); // Cierra el modal
+  this.eventDeleted.emit();
+  this.closeModal();
 }
 
 
   submitAppointment() {
    if (this.patientName.trim() === '') {
-    alert('Por favor, ingrese el nombre del paciente.'); // Validación simple
+    alert('Por favor, ingrese el nombre del paciente.'); 
     return;
   }
   this.appointmentSubmitted.emit({ patientName: this.patientName });

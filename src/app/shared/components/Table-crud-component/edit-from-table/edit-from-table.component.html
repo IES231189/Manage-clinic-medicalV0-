@@ -24,8 +24,8 @@
 <div class="modal-overlay">
   <div class="modal-content">
     <form (ngSubmit)="OnSave()">
-      <div class="form-group" *ngFor="let key of getObjectKeys(editedData)">
-        <label>{{ key }}</label>
+      <div class="form-group" *ngFor="let key of getFilteredKeys(editedData)">
+        <label>{{ key | titlecase }}</label>
         <input [(ngModel)]="editedData[key]" name="{{key}}" type="text" required />
       </div>
       <div class="button-group">
