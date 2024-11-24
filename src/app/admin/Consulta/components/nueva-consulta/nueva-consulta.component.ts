@@ -10,6 +10,7 @@ import { Consulta } from '../../models/consulta';
 export class NuevaConsultaComponent {
   showModal: boolean = true;
   consulta: Consulta = {
+    id: 0,
     nombrePaciente: '',
     edad: 0,
     alergias: '',
@@ -31,6 +32,7 @@ export class NuevaConsultaComponent {
     console.log('Consulta guardada:', this.consulta);
 
    //logica aqui para enviar formulario
+   
     this.router.navigate(['/admin/dashboard/consultas']); // Cambia '/ruta-destino' por la ruta a la que quieras redirigir
 
     this.closeModal();

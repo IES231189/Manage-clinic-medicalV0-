@@ -23,6 +23,7 @@ export class VerConsultaComponent {
     { name: 'Eliminar', type: 'button', action: 'delete' }
   ];
 
+  
   isLoading = true;
   selectedRow: Consulta | null = null;
   showEditModal = false;
@@ -31,7 +32,8 @@ export class VerConsultaComponent {
   // Datos predeterminados en caso de que no haya resultados de la API
   defaultData: Consulta[] = [
     {
-      idx: '1',
+      id:1,
+      idx: 'vbvnvnnn',
       nombrePaciente: 'Juan Pérez',
       edad: 30,
       alergias: 'Ninguna',
@@ -42,7 +44,8 @@ export class VerConsultaComponent {
       fecha: new Date(2024, 10, 5)
     },
     {
-      idx: '2',
+      id:2,
+      idx: 'dfmdsfdskfmd',
       nombrePaciente: 'Ana Gómez',
       edad: 45,
       alergias: 'Polen',
