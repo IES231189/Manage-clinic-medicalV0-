@@ -1,0 +1,126 @@
+.hospitalizacion-container {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 34%;
+
+
+}
+
+.hospitalizacion-container h2{
+  font-weight: lighter;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: x-large;
+  margin-bottom: 2rem;
+}
+
+.table {
+  overflow-x: auto;
+  display: block;
+  width: 100%;
+
+}
+
+thead {
+  width: 100%;
+  background-color: #408CB9;
+  color: antiquewhite;
+  font-weight: lighter;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: medium;
+}
+
+td {
+  background-color: rgb(248, 247, 252);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: lighter;
+  font-size: small;
+  padding: 1rem 2rem; /* Ajustar padding para mayor legibilidad */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem; /* Espacio debajo de la tabla */
+}
+
+th, td {
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid #408CB9;
+}
+
+.edit {
+  background-color: #408CB9;
+  color: aliceblue;
+  padding: 0.5rem;
+  border: 1px solid #408CB9;
+  border-radius: 1rem;
+}
+
+.delete {
+  background-color: brown;
+  color: aliceblue;
+  padding: 0.5rem;
+  border: 1px solid #408CB9;
+  border-radius: 1rem;
+}
+
+.btn-open-hoja {
+  background-color: rgb(131, 152, 176);
+  color: aliceblue;
+  padding: 1rem;
+  border-radius: 1rem; /* Agregar border-radius para mejor estética */
+}
+
+/* Media Queries para pantallas pequeñas */
+
+@media (max-width: 768px) {
+  .hospitalizacion-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .table {
+    margin: 2rem 0;
+    padding: 1rem;
+  }
+
+  table {
+    width: 100%;
+    display: block;
+    overflow-x: auto;
+  }
+
+  th, td {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  td {
+    display: block;
+    width: 100%;
+  }
+
+  tr {
+    display: block;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hospitalizacion-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  th, td {
+    font-size: 12px;
+    padding: 5px;
+  }
+
+  .btn-open-hoja {
+    padding: 0.8rem; /* Reducir el tamaño del botón en pantallas pequeñas */
+  }
+}

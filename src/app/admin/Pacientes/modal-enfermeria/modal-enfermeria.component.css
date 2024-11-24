@@ -1,0 +1,71 @@
+.container-title{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.container-title h2 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: lighter;
+  font-size: x-large;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 800px; /* Ancho máximo para el modal */
+  max-height: 80vh; /* Altura máxima para el modal */
+  overflow-y: auto; /* Permite el scroll si el contenido excede el tamaño */
+  padding: 2rem;
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: #e22b21;
+  color: white;
+  border: none;
+  padding: 1rem;
+  padding-inline: 1.5rem;
+  border-radius: 100%;
+  cursor: pointer;
+  font-weight: bold;
+font-size: larger;
+}
+
+h3 {
+  margin-top: 0;
+}
+
+/* Estilo para el contenido dentro del modal */
+.modal-content > div {
+  max-height: 70vh; /* Limitar el tamaño del contenido dentro del modal */
+  overflow-y: auto; /* Habilitar scroll dentro del contenido del modal */
+  padding-right: 15px; /* Agregar espacio extra para no ocultar el scroll */
+}
+
+.modal-content p {
+  margin: 1rem 0;
+}
+.imprimir{
+  background-color: rgb(202, 61, 61);
+  color: aliceblue;
+  padding-inline: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}

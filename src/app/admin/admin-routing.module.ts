@@ -11,6 +11,7 @@ import { CalendarioCitasComponent } from './Citas/components/calendario-citas/ca
 import { AddMedicamentoGeneralComponent } from './medicamentos/components/add-medicamento-general/add-medicamento-general.component';
 import { FormAddUsuariosComponent } from './users/components/form-add-usuarios/form-add-usuarios.component';
 import { VerUsuariosComponent } from './users/components/ver-usuarios/ver-usuarios.component';
+import { HospitalizacionComponent } from './Pacientes/hospitalizacion/hospitalizacion.component';
 
 
 
@@ -31,7 +32,8 @@ const routes: Routes = [
       {path:'calendario',component:CalendarioCitasComponent},
       {path:'citas' , component:CalendarioCitasComponent} ,
       {path:'register' , component:FormAddUsuariosComponent},
-      {path:'all-usuarios' , component: VerUsuariosComponent}
+      {path:'all-usuarios' , component: VerUsuariosComponent},
+      {path:'Pacientes' , component:HospitalizacionComponent}
     ]
   },
 
