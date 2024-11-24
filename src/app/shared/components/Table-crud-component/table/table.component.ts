@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { el } from '@fullcalendar/core/internal-common';
 
 @Component({
   selector: 'app-table',
@@ -12,7 +13,7 @@ export class TableComponent {
 
   @Output() edit = new EventEmitter<any>();
   @Output() delete = new EventEmitter<any>();
-
+  @Output() abrirHoja = new EventEmitter<any>();
 
 
   onAction(row: any, action:string) {
@@ -20,6 +21,11 @@ export class TableComponent {
       this.edit.emit(row);
     } else if (action === "delete") {
       this.delete.emit(row)
+    } else if(action === 'abrirHoja'){
+      this.abrirHoja.emit(row)
     }
   }
 }
+
+
+
