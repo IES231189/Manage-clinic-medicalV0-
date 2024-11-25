@@ -5,35 +5,35 @@
   <div class="container-form">
 
     <form [formGroup]="usuariosForms" (ngSubmit)="onSubmit()">
-      <h3 class="title">Formulario de Registro de Enfermera</h3>
+      <h3 class="title">Formulario de Registro de usuarios</h3>
+      <div class="form-group">
+        <label for="nombre">rol:</label>
+        <input id="rol" formControlName="rol" type="text" required />
+      </div>
       <div class="form-group">
         <label for="nombre">Nombre:</label>
         <input id="nombre" formControlName="nombre" type="text" required />
       </div>
 
       <div class="form-group">
-        <label for="apellidoPaterno">Apellido Paterno:</label>
-        <input id="apellidoPaterno" formControlName="apellidoPaterno" type="text" required />
+        <label for="apellidoPaterno">Apellidos:</label>
+        <input id="apellido" formControlName="apellido" type="text" required />
       </div>
 
-      <div class="form-group">
-        <label for="apellidoMaterno">Apellido Materno:</label>
-        <input id="apellidoMaterno" formControlName="apellidoMaterno" type="text" required />
-      </div>
 
       <div class="form-group">
         <label for="correo">Correo:</label>
-        <input id="correo" formControlName="correo" type="email" required />
-      </div>
-
-      <div class="form-group">
-        <label for="usuario">Usuario:</label>
-        <input id="usuario" formControlName="usuario" type="text" required />
+        <input id="email" formControlName="email" type="email" required />
       </div>
 
       <div class="form-group">
         <label for="contrasena">Contraseña:</label>
-        <input id="contrasena" formControlName="contrasena" type="password" required />
+        <input id="contra" formControlName="contra" type="password" required />
+      </div>
+
+      <div class="form-group">
+        <label for="contrasena">numero de telefono:</label>
+        <input id="num_tel" formControlName="num_tel" type="password" required />
       </div>
 
       <button type="submit" >Registrar</button>

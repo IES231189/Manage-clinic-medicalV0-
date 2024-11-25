@@ -38,6 +38,9 @@ export class NuevaConsultaComponent {
 
     console.log('Consulta con ID generado:', this.consulta);
 
+
+    
+
     // Llamar al servicio para enviar los datos a la API
     this.consultaService.createConsulta(this.consulta).subscribe(
       (response) => {

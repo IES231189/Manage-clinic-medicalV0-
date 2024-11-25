@@ -14,10 +14,25 @@ export class AuthServiceService {
   constructor(private http: HttpClient, private jwtHelper: JwtHelperService) { }
 
 
-  login(credentials: { email: string; contra: string }): Observable<string> {
-    return this.http.post<string>(`${this.apiUrl}/login`, credentials).pipe(
-      tap((token: string) => {
-        localStorage.setItem('token', token);
+  // login(credentials: { email: string; contra: string }): Observable<string> {
+  //   return this.http.post<string>(`${this.apiUrl}/login`, credentials).pipe(
+  //     tap((token: string) => {
+  //       localStorage.setItem('token', token);
+
+  //     })
+  //   );
+  // }
+
+    login(credentials: { email: string; contra: string }): Observable<{ token: string; rol: string; nombre : string }> {
+    return this.http.post<{ mensaje: string; token: string; rol: string; nombre : string }>(
+      `${this.apiUrl}/login`,
+      credentials
+    ).pipe(
+      tap((response: { mensaje: string; token: string; rol: string; nombre : string }) => {
+        // Guardar el token y el rol en el localStorage
+        localStorage.setItem('token', response.token);
+        localStorage.setItem('rol', response.rol);
+        localStorage.setItem('nombre',response.nombre)
       })
     );
   }
@@ -29,16 +44,21 @@ export class AuthServiceService {
   }
 
 
-  getRole(): string | null {
-    const token = localStorage.getItem('token');
-    if (!token) return null;
 
-    const decodeToken = this.jwtHelper.decodeToken(token);
-    return decodeToken ? decodeToken.role : null;
+  getRole(): string | null {
+    // const token = localStorage.getItem('token');
+    // if (!token) return null;
+
+    // const decodeToken = this.jwtHelper.decodeToken(token);
+    // return decodeToken ? decodeToken.role : null;
+    return localStorage.getItem('rol');
   }
 
+
+
+
   isAdmin(): boolean {
-    return this.getRole() === 'admin';
+    return this.getRole() === 'doctor';
   }
 
   isUser(): boolean {
@@ -46,7 +66,8 @@ export class AuthServiceService {
   }
 
   getUsername(): string | null {
-    return 'nombre_usuario';
+
+    return localStorage.getItem('nombre');
   }
 
 

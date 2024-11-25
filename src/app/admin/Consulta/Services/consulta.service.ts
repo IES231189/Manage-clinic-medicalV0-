@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Cons, Observable } from 'rxjs';
 import { Consulta } from '../models/consulta';
 
 @Injectable({
@@ -50,7 +50,8 @@ export class ConsultaService {
       'Authorization': `Bearer ${token}`,  // El token debe ir en el encabezado 'Authorization'
       'Content-Type': 'application/json'  // El tipo de contenido para enviar JSON
     });
-    return this.http.post<any>(`http://localhost:3000/consults/add-consult`,consulta,{headers});
+
+    return this.http.post<Consulta>(`http://localhost:3000/consults/add-consult`,consulta,{headers});
   }
 
   // Actualizar una consulta existente

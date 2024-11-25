@@ -23,39 +23,14 @@ export class VerConsultaComponent {
     { name: 'Eliminar', type: 'button', action: 'delete' }
   ];
 
-  
+
   isLoading = true;
   selectedRow: Consulta | null = null;
   showEditModal = false;
   showDeleteModal = false;
 
   // Datos predeterminados en caso de que no haya resultados de la API
-  defaultData: Consulta[] = [
-    {
-      id:1,
-      idx: 'vbvnvnnn',
-      nombrePaciente: 'Juan Pérez',
-      edad: 30,
-      alergias: 'Ninguna',
-      nombreMedico: 'Dr. López',
-      dieta: 'Normal',
-      medicamento: 'Paracetamol',
-      medidasGenerales: 'Control de presión',
-      fecha: new Date(2024, 10, 5)
-    },
-    {
-      id:2,
-      idx: 'dfmdsfdskfmd',
-      nombrePaciente: 'Ana Gómez',
-      edad: 45,
-      alergias: 'Polen',
-      nombreMedico: 'Dr. Fernández',
-      dieta: 'Baja en sal',
-      medicamento: 'Ibuprofeno',
-      medidasGenerales: 'Revisión regular',
-      fecha: new Date(2024, 10, 3)
-    }
-  ];
+  defaultData: Consulta[] = [];
 
   constructor(private consultaService: ConsultaService) {}
 
@@ -78,7 +53,7 @@ export class VerConsultaComponent {
       }
     );
   }
-  
+
 
   // Editar consulta
   onEdit(row: Consulta): void {
@@ -95,12 +70,12 @@ export class VerConsultaComponent {
   // Guardar cambios de la consulta
   onSaveChanges(updatedData: Consulta): void {
     if (updatedData.id) {
-     
+
       this.consultaService.updateConsulta(updatedData.id, updatedData).subscribe(
         (response) => {
           const index = this.data.findIndex(item => item.id === updatedData.id);
           if (index > -1) {
-            this.data[index] = updatedData;  
+            this.data[index] = updatedData;
           }
           this.showEditModal = false;
         },

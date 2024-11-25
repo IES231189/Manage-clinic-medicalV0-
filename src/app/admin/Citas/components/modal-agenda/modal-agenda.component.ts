@@ -52,19 +52,19 @@ deleteEvent() {
 
 
   submitAppointment() {
-<<<<<<< HEAD
-    if (this.patientName.trim() === '' || this.patientLastName.trim() === '' || this.patientPhone === 0) {
-      alert('Por favor, ingrese todos los datos del paciente.');
-      return;
-    }
-=======
+// <<<<<<< HEAD
+//     if (this.patientName.trim() === '' || this.patientLastName.trim() === '' || this.patientPhone === 0) {
+//       alert('Por favor, ingrese todos los datos del paciente.');
+//       return;
+//     }
+// =======
    if (this.patientName.trim() === '') {
-    alert('Por favor, ingrese el nombre del paciente.'); 
+    alert('Por favor, ingrese el nombre del paciente.');
     return;
   }
   this.appointmentSubmitted.emit({ patientName: this.patientName });
   this.patientName = '';
->>>>>>> e660141625b8ddb536cf77a73ad211268cdd8415
+
 
     if (!this.isValidDate()) {
       alert('No se puede agendar una cita en un día anterior al actual.');

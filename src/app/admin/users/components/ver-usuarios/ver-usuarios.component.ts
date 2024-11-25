@@ -1,38 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../models/usuario';
 import { UsuariosService } from '../../services/usuarios.service';
-
 
 @Component({
   selector: 'app-ver-usuarios',
   templateUrl: './ver-usuarios.component.html',
-  styleUrl: './ver-usuarios.component.css'
+  styleUrls: ['./ver-usuarios.component.css']
 })
-export class VerUsuariosComponent {
+export class VerUsuariosComponent implements OnInit {
   data: Usuario[] = [];
-
   columns = [
+    { name: 'rol', type: 'text' },
     { name: 'nombre', type: 'text' },
-    { name: 'apellidoPaterno', type: 'text' },
-    { name: 'apellidoMaterno', type: 'text' },
-    { name: 'correo', type: 'text' },
-    { name: 'usuario', type: 'text' },
-    { name: 'contrasena', type: 'text' },
+    { name: 'apellido', type: 'text' },
+    { name: 'email', type: 'text' },
+    { name: 'num_tel', type: 'text' },
     { name: 'Editar', type: 'button', action: 'edit' },
     { name: 'Eliminar', type: 'button', action: 'delete' }
   ];
 
-
-  defaultData: Usuario[] = [
-    { nombre: 'Ejemplo', apellidoPaterno: 'Ejemplo', apellidoMaterno: 'Ejemplo', correo: 'ejemplo@correo.com', usuario: 'ejemplo', contrasena: 'ejemplo123' }
-  ];
+  defaultData: Usuario[] = [];
 
   isLoading = true;
   selectedRow: Usuario | null = null;
   showEditModal = false;
   showDeleteModal = false;
 
-  constructor(private usuario: UsuariosService) {}
+  constructor(private usuarioService: UsuariosService) {}
 
   ngOnInit(): void {
     this.fetchData();
@@ -40,14 +34,18 @@ export class VerUsuariosComponent {
 
   fetchData(): void {
     this.isLoading = true;
-    this.usuario.mostrarUsuario().subscribe(
-      (response: Usuario[]) => {
-        this.data = response && response.length > 0 ? response : this.defaultData;
-        this.isLoading = false;
+    this.usuarioService.mostrarUsuario().subscribe(
+      (response: any) => {  // Asegúrate de manejar correctamente el tipo de respuesta
+        if (response && response.data && response.data.length > 0) {
+          this.data = response.data;  // Asignamos los datos a la variable 'data'
+        } else {
+          this.data = [];  // Si no hay datos, dejamos el arreglo vacío
+        }
+        this.isLoading = false;  // Cambiamos el estado de carga
       },
       (error) => {
-        console.error('Error fetching data:', error);
-        this.data = this.defaultData;
+        console.error('Error al obtener los usuarios:', error);
+        this.data = [];  // En caso de error, mostramos un arreglo vacío
         this.isLoading = false;
       }
     );
@@ -64,7 +62,8 @@ export class VerUsuariosComponent {
   }
 
   onSaveChanges(updatedData: Usuario): void {
-    const index = this.data.findIndex(item => item.id === updatedData.id);
+    // Aquí iría la lógica para enviar los cambios al backend
+    const index = this.data.findIndex(item => item.id_user === updatedData.id_user);
     if (index > -1) {
       this.data[index] = updatedData;
     }
@@ -73,7 +72,8 @@ export class VerUsuariosComponent {
 
   onDeleteConfirm(): void {
     if (this.selectedRow) {
-      this.data = this.data.filter(item => item.id !== this.selectedRow!.id);
+      // Aquí agregas la llamada al servicio para eliminar el usuario
+      this.data = this.data.filter(item => item.id_user !== this.selectedRow!.id_user);
       this.showDeleteModal = false;
     }
   }
