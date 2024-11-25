@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Medicamentos } from '../models/medicamentos';
+import { Medicamentos, Presentacion } from '../models/medicamentos';
 
 
 @Injectable({
@@ -16,7 +16,26 @@ export class ServicesMedicamentoService {
 
   constructor(private http: HttpClient) {}
 
-  getMedicamentos(): Observable<Medicamentos[]> {
+  getMedicamentos(): Observable<Presentacion[]> {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      throw new Error('Token no encontrado');
+    }
+
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,  // El token debe ir en el encabezado 'Authorization'
+      'Content-Type': 'application/json'  // El tipo de contenido para enviar JSON
+    });
+    return this.http.get<Presentacion[]>('http://localhost:3000/inventory/view-all',{headers}).pipe(
+      catchError(error => {
+        console.error('Error al obtener medicamentos:', error);
+        return of([]);
+      })
+    );
+  }
+
+  getName(): Observable<Medicamentos[]> {
     const token = localStorage.getItem('token');
     if (!token) {
       throw new Error('Token no encontrado');

@@ -36,7 +36,7 @@ export class AddMedicamentoComponent implements OnInit {
   }
 
   fetchData(): void {
-    this.medicamentosService.getMedicamentos().subscribe(
+    this.medicamentosService.getName().subscribe(
       (response: Medicamentos[]) => {
         console.log('Datos recibidos:', response);
         this.data = response && response.length > 0 ? response : [];

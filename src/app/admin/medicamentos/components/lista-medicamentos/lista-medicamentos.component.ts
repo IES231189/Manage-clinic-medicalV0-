@@ -1,7 +1,8 @@
+import { Presentacion } from './../../models/medicamentos';
 import { Component, OnInit } from '@angular/core';
 import { ServicesMedicamentoService } from '../../services/services-medicamento.service';
 
-import { Medicamentos } from '../../models/medicamentos';
+import { Medicamentos} from '../../models/medicamentos';
 
 @Component({
   selector: 'app-lista-medicamentos',
@@ -10,15 +11,13 @@ import { Medicamentos } from '../../models/medicamentos';
 })
 export class ListaMedicamentosComponent implements OnInit {
   data: Medicamentos[] = [];
-  presentaciones: any[] = [];
+  presentaciones: Presentacion[] = [];
   isLoading = true;
   selectedRow: Medicamentos | null = null;
   showEditModal = false;
   showDeleteModal = false;
 
   constructor(private medicamentoService: ServicesMedicamentoService) {}
-
-
 
   ngOnInit(): void {
     this.fetchData();
@@ -27,9 +26,9 @@ export class ListaMedicamentosComponent implements OnInit {
   fetchData(): void {
     this.isLoading = true;
     this.medicamentoService.getMedicamentos().subscribe(
-      (response: Medicamentos[]) => {
+      (response: Presentacion[]) => {
         console.log('Datos recibidos:', response); // Log data structure
-        this.data = response && response.length > 0 ? response : [];
+        this.presentaciones = response && response.length > 0 ? response : [];
         this.isLoading = false;
       //  this.extraerPresentaciones();
       },
