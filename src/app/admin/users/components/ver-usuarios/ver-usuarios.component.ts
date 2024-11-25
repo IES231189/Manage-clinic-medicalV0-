@@ -51,35 +51,56 @@ export class VerUsuariosComponent implements OnInit {
     );
   }
 
-  onEdit(row: Usuario): void {
-    this.selectedRow = row;
-    this.showEditModal = true;
-  }
+ // Abre el modal de edición
+ onEdit(row: Usuario): void {
+  this.selectedRow = row;
+  this.showEditModal = true;
+}
 
-  onDelete(row: Usuario): void {
-    this.selectedRow = row;
-    this.showDeleteModal = true;
-  }
+// Abre el modal de eliminación
+onDelete(row: Usuario): void {
+  this.selectedRow = row;
+  this.showDeleteModal = true;
+}
 
-  onSaveChanges(updatedData: Usuario): void {
-    // Aquí iría la lógica para enviar los cambios al backend
-    const index = this.data.findIndex(item => item.id_user === updatedData.id_user);
-    if (index > -1) {
-      this.data[index] = updatedData;
-    }
-    this.showEditModal = false;
+// Guarda los cambios después de editar el usuario
+onSaveChanges(updatedData: Usuario): void {
+  if (this.selectedRow) {
+    this.usuarioService.editarUsuarioPorId(this.selectedRow.id_user, updatedData).subscribe(
+      (response) => {
+        // Actualizar el usuario en la lista después de editarlo
+        const index = this.data.findIndex(item => item.id_user === updatedData.id_user);
+        if (index > -1) {
+          this.data[index] = updatedData;
+        }
+        this.showEditModal = false;
+      },
+      (error) => {
+        console.error('Error al editar el usuario:', error);
+      }
+    );
   }
+}
 
-  onDeleteConfirm(): void {
-    if (this.selectedRow) {
-      // Aquí agregas la llamada al servicio para eliminar el usuario
-      this.data = this.data.filter(item => item.id_user !== this.selectedRow!.id_user);
-      this.showDeleteModal = false;
-    }
+// Confirma la eliminación del usuario
+onDeleteConfirm(): void {
+  if (this.selectedRow) {
+    this.usuarioService.eliminarUsuarioPorId(this.selectedRow.id_user).subscribe(
+      (response) => {
+        // Elimina el usuario de la lista después de eliminarlo
+        this.data = this.data.filter(item => item.id_user !== this.selectedRow!.id_user);
+        this.showDeleteModal = false;
+      },
+      (error) => {
+        console.error('Error al eliminar el usuario:', error);
+      }
+    );
   }
+}
 
-  onCancel(): void {
-    this.showEditModal = false;
-    this.showDeleteModal = false;
-  }
+// Cancela el modal de edición o eliminación
+onCancel(): void {
+  this.showEditModal = false;
+  this.showDeleteModal = false;
+}
 }

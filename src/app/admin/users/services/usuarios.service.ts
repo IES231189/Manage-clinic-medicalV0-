@@ -10,6 +10,8 @@ export class UsuariosService {
 
   private crearUsuarios = 'http://localhost:5000/usuarios/users';
   private OptenerUsuarios = 'http://localhost:5000/usuarios/profile';
+  private eliminarUsuario = 'http://localhost:5000/usuarios/users'; // Endpoint para eliminar usuario
+  private editarUsuario = 'http://localhost:5000/usuarios/edit'; // Endpoint para editar usuario
 
 
   constructor( private http:HttpClient) { }
@@ -29,5 +31,18 @@ export class UsuariosService {
   }
 
 
+  // Método para eliminar un usuario
+  eliminarUsuarioPorId(id_user: number): Observable<any> {
+    return this.http.delete<any>(`${this.eliminarUsuario}/${id_user}`);
+  }
 
+  // Método para actualizar un usuario
+  editarUsuarioPorId(id_user: number, updatedData: any): Observable<any> {
+    return this.http.put<any>(`${this.editarUsuario}/${id_user}`, updatedData);
+  }
 }
+
+
+
+
+

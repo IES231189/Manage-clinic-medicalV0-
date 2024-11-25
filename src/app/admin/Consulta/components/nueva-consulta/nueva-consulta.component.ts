@@ -39,14 +39,15 @@ export class NuevaConsultaComponent {
     console.log('Consulta con ID generado:', this.consulta);
 
 
-    
+
 
     // Llamar al servicio para enviar los datos a la API
     this.consultaService.createConsulta(this.consulta).subscribe(
       (response) => {
-        console.log('Consulta guardada correctamente:', response);
+        alert("consulta guardada correctamente")
+        // console.log('Consulta guardada correctamente:', response);
         // Redirigir al usuario si es necesario
-        // this.router.navigate(['/admin/dashboard/consultas']);
+        this.router.navigate(['/admin/dashboard']);
       },
       (error) => {
         console.error('Error al guardar la consulta:', error);
