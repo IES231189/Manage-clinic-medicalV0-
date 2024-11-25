@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Consulta } from '../../models/consulta';
 import { ConsultaService } from '../../Services/consulta.service';
-import { v4 as uuidv4 } from 'uuid'; 
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-nueva-consulta',
@@ -12,7 +12,9 @@ import { v4 as uuidv4 } from 'uuid';
 export class NuevaConsultaComponent {
   showModal: boolean = true;
   consulta: Consulta = {
-    id: '', 
+
+    id: '',
+
     nombrePaciente: '',
     edad: 0,
     alergias: '',
@@ -47,6 +49,9 @@ export class NuevaConsultaComponent {
         console.error('Error al guardar la consulta:', error);
       }
     );
+
+
+    this.router.navigate(['/admin/dashboard/consultas']); // Cam73ad211268cdd8415
 
     this.closeModal();
   }

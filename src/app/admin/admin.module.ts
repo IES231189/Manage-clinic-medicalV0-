@@ -10,6 +10,7 @@ import { EnfermerasModuloModule } from './gestionEnfermeras/enfermeras-modulo.mo
 import { CitasModule } from './Citas/citas.module';
 import { FormAddUsuariosComponent } from './users/components/form-add-usuarios/form-add-usuarios.component';
 import { UsersModule } from './users/users.module';
+import { PacientesModule } from './Pacientes/pacientes.module';
 
 
 
@@ -27,7 +28,9 @@ import { UsersModule } from './users/users.module';
     EnfermerasModuloModule,
     CitasModule,
     FormsModule,
-    UsersModule
+    UsersModule,
+    PacientesModule
+
   ]
 })
 export class AdminModule { }

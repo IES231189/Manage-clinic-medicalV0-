@@ -1,0 +1,40 @@
+<div class="modal-overlay">
+  <div class="modal-content" >
+      <button (click)="onClose()" class="close-button">X</button>
+    <div id="hoja-enfermeria-content">
+
+      <div class="container-title" >
+        <img src="./../../../../assets/logo2.png" alt="" width="74px" height="64px">
+        <h2>CLINICA LA PAZ</h2>
+
+      </div>
+          <h3>Paciente: {{ paciente.nombre }}</h3>
+
+      <div *ngIf="isLoading">Cargando datos...</div>
+      <div *ngIf="!isLoading" >
+        <p><strong>Fecha:</strong> {{ hojaEnfermeria.fecha | date }}</p>
+        <p><strong>Signos Vitales:</strong></p>
+        <ul>
+          <li>Temperatura: {{ hojaEnfermeria.signosVitales.temperatura }} °C</li>
+          <li>Presión Arterial: {{ hojaEnfermeria.signosVitales.presionArterial }}</li>
+          <li>Frecuencia Cardíaca: {{ hojaEnfermeria.signosVitales.frecuenciaCardiaca }} bpm</li>
+          <li>Saturación de Oxígeno: {{ hojaEnfermeria.signosVitales.saturacionOxigeno }} %</li>
+        </ul>
+        <p><strong>Medicamentos Administrados:</strong></p>
+        <ul>
+          <li *ngFor="let med of hojaEnfermeria.medicamentosAdministrados">
+            {{ med.nombre }} - {{ med.dosis }} ({{ med.hora }})
+          </li>
+        </ul>
+        <p><strong>Notas:</strong> {{ hojaEnfermeria.notas }}</p>
+        <p><strong>Enfermero Responsable:</strong> {{ hojaEnfermeria.enfermeroResponsable }}</p>
+      </div>
+    </div>
+
+     <button (click)="printHojaEnfermeria()" class="imprimir">Imprimir</button>
+  </div>
+
+
+
+
+</div>

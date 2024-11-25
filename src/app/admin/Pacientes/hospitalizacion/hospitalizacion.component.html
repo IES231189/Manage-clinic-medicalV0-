@@ -1,0 +1,36 @@
+<div class="hospitalizacion-container">
+  <h2>Pacientes Hospitalizados</h2>
+
+  <!-- Tabla de pacientes -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th *ngFor="let column of columns">{{ column.name }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let paciente of data">
+        <td *ngFor="let column of columns">
+          <ng-container *ngIf="column.type === 'text'">
+            {{ paciente[column.key] }}
+          </ng-container>
+          <ng-container *ngIf="column.type === 'number'">
+            {{ paciente[column.key] }}
+          </ng-container>
+          <ng-container *ngIf="column.type === 'button'">
+            <button (click)="onOpenHoja(paciente)" class="btn-open-hoja">
+              {{ column.name }}
+            </button>
+          </ng-container>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  
+  <app-hoja-enfermeria-modal
+    *ngIf="showHojaModal"
+    [paciente]="selectedPaciente"
+    (close)="onCloseModal()">
+  </app-hoja-enfermeria-modal>
+</div>

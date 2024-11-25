@@ -1,4 +1,3 @@
-// edit-from-table.component.ts
 import { Component, EventEmitter, Input, Output, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
@@ -18,15 +17,17 @@ export class EditFromTableComponent implements OnChanges {
     }
   }
 
-  OnSave() {
+  OnSave(): void {
     this.GuardarCambios.emit(this.editedData);
   }
 
-  OnCancel() {
+  OnCancel(): void {
     this.editedData = { ...this.registroTable };
   }
 
-  getObjectKeys(obj: any): string[] {
-    return Object.keys(obj);
+
+  getFilteredKeys(obj: any): string[] {
+    const excludedKeys = ['id', 'idx'];
+    return Object.keys(obj).filter(key => !excludedKeys.includes(key));
   }
 }
