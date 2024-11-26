@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { HojaEnfermeriaService } from '../services/pacientes.service';
+import { HospitalizacionService } from '../services/pacientes.service';
 
 @Component({
   selector: 'app-hoja-enfermeria-modal',
@@ -10,10 +10,10 @@ export class HojaEnfermeriaModalComponent {
   @Input() paciente: any;
   @Output() close = new EventEmitter<void>();
 
-  hojaEnfermeria: any = null; // Datos de la hoja de enfermería
+  hojaEnfermeria: any = null; 
   isLoading = true;
 
-  constructor(private hojaService: HojaEnfermeriaService) {}
+  constructor(private hojaService: HospitalizacionService) {}
 
   ngOnInit(): void {
     if (this.paciente) {
@@ -23,7 +23,7 @@ export class HojaEnfermeriaModalComponent {
 
   cargarHojaEnfermeria(): void {
     this.isLoading = true;
-    this.hojaService.getHojasPorPaciente(this.paciente.id).subscribe(
+    this.hojaService.getHospitalizacionesPorNombre(this.paciente.nombre).subscribe(
       (data) => {
         this.hojaEnfermeria = data;
         this.isLoading = false;
@@ -35,7 +35,7 @@ export class HojaEnfermeriaModalComponent {
       }
     );
   }
-
+  
   onClose(): void {
     this.close.emit();
   }

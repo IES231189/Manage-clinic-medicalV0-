@@ -1,20 +1,29 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { HojaEnfermeria } from '../model/hoja-enfermeria';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HojaEnfermeriaService {
+export class HospitalizacionService {
 
-  private apiUrl = 'https://api-ejemplo.com/hoja-enfermeria'; // URL de la API
+  private apiUrl = 'http://localhost:3000/hospitalizacion'; 
 
   constructor(private http: HttpClient) {}
 
-  createHojaEnfermeria(hoja: HojaEnfermeria): Observable<any> {
-    return this.http.post(this.apiUrl, hoja);
+  // Obtener todas las hospitalizaciones
+  getHospitalizaciones(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/add-hosts`);
   }
 
-  
+  // Obtener hospitalización por nombre del paciente
+  getHospitalizacionesPorNombre(nombrePaciente: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/view-host/${nombrePaciente}`);
+  }
+
+  // Agregar una nueva hospitalización
+  addHospitalizacion(hospitalizacion: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/add-host`, hospitalizacion);
+  }
 }
+
