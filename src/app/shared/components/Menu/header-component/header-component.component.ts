@@ -24,5 +24,17 @@ export class HeaderComponentComponent {
   }
 
 
+  showMobileMenu = false;
+
+  toggleMenu() {
+    this.showMobileMenu = !this.showMobileMenu;
+  }
+
+  isActive(link: any) {
+    // Lógica para resaltar el enlace activo
+    return window.location.pathname === link.path;
+  }
+
+
 }
 

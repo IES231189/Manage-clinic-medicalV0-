@@ -1,5 +1,5 @@
 <div class="container">
-  <div *ngIf="isLoading">Cargando medicamentos...</div>
+  <div *ngIf="isLoading" class="isLoading">Cargando medicamentos...</div>
 
   <table *ngIf="!isLoading">
     <thead>
@@ -24,10 +24,7 @@
         <td>{{medicamentoTotal.presentacion}}</td>
         <td>{{ medicamentoTotal.fechaCaducidad }}</td>
         <td>
-          <button>actualizar</button>
-        </td>
-        <td>
-          
+          <button *ngIf="isDoctor()">actualizar</button>
         </td>
       </tr>
     </tbody>
@@ -35,17 +32,18 @@
 
   <!-- Modal de confirmación para eliminar -->
   <div *ngIf="showDeleteModal" class="modal">
-    <p>¿Estás seguro de que deseas eliminar el medicamento {{ selectedRow?.nombre }}?</p>
-    <button (click)="onDeleteConfirm()">Confirmar</button>
-    <button (click)="onCancel()">Cancelar</button>
+    <div>
+      <p>¿Estás seguro de que deseas eliminar el medicamento {{ selectedRow?.nombre }}?</p>
+      <button (click)="onDeleteConfirm()">Confirmar</button>
+      <button (click)="onCancel()">Cancelar</button>
+    </div>
   </div>
 
   <!-- Modal para editar -->
   <div *ngIf="showEditModal" class="modal">
-    <p>Editando: {{ selectedRow?.nombre }}</p>
-
-    <button (click)="onCancel()">Cerrar</button>
+    <div>
+      <p>Editando: {{ selectedRow?.nombre }}</p>
+      <button (click)="onCancel()">Cerrar</button>
+    </div>
   </div>
 </div>
-
-

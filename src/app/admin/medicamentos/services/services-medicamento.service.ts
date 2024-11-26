@@ -11,8 +11,8 @@ import { Medicamentos, Presentacion } from '../models/medicamentos';
 export class ServicesMedicamentoService {
 
 
-  private getMedicamentosUrl = 'http://localhost:3000/inventory/view/okoko'; // URL para obtener medicamentos
-  private addMedicamentoUrl = 'http://localhost:3000/inventory/add-inventory'; // URL para agregar un medicamento
+  private getMedicamentosUrl = 'http://52.203.29.27/inventory/view/okoko'; // URL para obtener medicamentos
+  private addMedicamentoUrl = 'http://52.203.29.27/inventory/add-inventory'; // URL para agregar un medicamento
 
   constructor(private http: HttpClient) {}
 
@@ -27,7 +27,7 @@ export class ServicesMedicamentoService {
       'Authorization': `Bearer ${token}`,  // El token debe ir en el encabezado 'Authorization'
       'Content-Type': 'application/json'  // El tipo de contenido para enviar JSON
     });
-    return this.http.get<Presentacion[]>('http://localhost:3000/inventory/view-all',{headers}).pipe(
+    return this.http.get<Presentacion[]>('http://52.203.29.27/inventory/view-all',{headers}).pipe(
       catchError(error => {
         console.error('Error al obtener medicamentos:', error);
         return of([]);
@@ -46,7 +46,7 @@ export class ServicesMedicamentoService {
       'Authorization': `Bearer ${token}`,  // El token debe ir en el encabezado 'Authorization'
       'Content-Type': 'application/json'  // El tipo de contenido para enviar JSON
     });
-    return this.http.get<Medicamentos[]>('http://localhost:3000/inventory/view-all',{headers}).pipe(
+    return this.http.get<Medicamentos[]>('http://52.203.29.27/inventory/view-all',{headers}).pipe(
       catchError(error => {
         console.error('Error al obtener medicamentos:', error);
         return of([]);
@@ -88,7 +88,7 @@ export class ServicesMedicamentoService {
       'Authorization': `Bearer ${token}`,  // El token debe ir en el encabezado 'Authorization'
       'Content-Type': 'application/json'  // El tipo de contenido para enviar JSON
     });
-    return this.http.put<any>(`http://localhost:3000/inventory/add/${nombre}`,medicamento,{headers})
+    return this.http.put<any>(`http://52.203.29.27/inventory/add/${nombre}`,medicamento,{headers})
   }
 
 

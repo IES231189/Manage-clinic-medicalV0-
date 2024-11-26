@@ -41,6 +41,16 @@ export class ListaMedicamentosComponent implements OnInit {
 
 
 
+  isDoctor():boolean{
+
+    let umm = localStorage.getItem('rol')
+    if(umm!='doctor'){
+        return false
+    }
+      return true
+  }
+
+
   onEdit(row: Medicamentos): void {
     this.selectedRow = { ...row };
     this.showEditModal = true;

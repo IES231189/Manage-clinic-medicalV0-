@@ -8,14 +8,14 @@ import { Medicamentos } from '../../../admin/medicamentos/models/medicamentos'; 
 })
 export class MedicamentosService {
 
-  
-  private apiUrl = 'http://localhost:3000/inventory';
+
+  private apiUrl = 'http://52.203.29.27/inventory';
 
   constructor(private http: HttpClient) {}
 
   // Método para obtener todos los medicamentos guardados
   getMedicamentos(): Observable<Medicamentos[]> {
-    return this.http.get<Medicamentos[]>(this.apiUrl); // Realizamos la llamada a la API que devuelve todos los medicamentos
+    return this.http.get<Medicamentos[]>(`${this.apiUrl}/view-all`); // Realizamos la llamada a la API que devuelve todos los medicamentos
   }
 
   // Método para actualizar un medicamento
