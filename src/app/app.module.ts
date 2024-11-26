@@ -8,13 +8,14 @@ import { UserViewComponentComponent } from './users/user-view-component/user-vie
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { AdminModule } from './admin/admin.module';
+import { UsersModule } from './users/users.module';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    UserViewComponentComponent,
+    AppComponent
+
 
   ],
   imports: [
@@ -24,7 +25,8 @@ import { AdminModule } from './admin/admin.module';
     HttpClientModule,
     SharedModule,
     AdminModule,
-    FormsModule
+    FormsModule ,
+    UsersModule
 
   ],
   providers: [],

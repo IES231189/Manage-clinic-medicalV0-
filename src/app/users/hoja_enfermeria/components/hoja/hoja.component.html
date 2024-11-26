@@ -1,0 +1,108 @@
+<div class="modal-overlay">
+  <div class="modal-content">
+    <button (click)="onClose()" class="close-button">X</button>
+
+    <h2>Hoja de Enfermería</h2>
+
+    <form [formGroup]="hojaForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label>Nombre del Paciente:</label>
+        <input formControlName="nombrePaciente" type="text" />
+        <small *ngIf="hojaForm.get('nombrePaciente')?.invalid && hojaForm.get('nombrePaciente')?.touched">
+          El nombre del paciente es obligatorio.
+        </small>
+      </div>
+
+      <div>
+        <label>Número de Camilla:</label>
+        <input formControlName="numeroCamilla" type="text" />
+        <small *ngIf="hojaForm.get('numeroCamilla')?.invalid && hojaForm.get('numeroCamilla')?.touched">
+          El número de camilla es obligatorio.
+        </small>
+      </div>
+
+      <div>
+        <label>Diagnóstico:</label>
+        <textarea formControlName="diagnostico"></textarea>
+        <small *ngIf="hojaForm.get('diagnostico')?.invalid && hojaForm.get('diagnostico')?.touched">
+          El diagnóstico es obligatorio.
+        </small>
+      </div>
+
+      <div>
+        <label>Indicaciones Médicas:</label>
+        <textarea formControlName="indicacionesMedicas"></textarea>
+      </div>
+
+      <h3>Medicamentos Administrados</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Presentación</th>
+            <th>Dosis</th>
+            <th>Vía</th>
+            <th>Hora</th>
+            <th>Día de Tratamiento</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let medicamento of medicamentoControls; let i = index" [formGroupName]="i">
+            <td>
+              <input formControlName="nombre" type="text" />
+              <small *ngIf="medicamento.get('nombre')?.invalid && medicamento.get('nombre')?.touched">
+                Campo obligatorio.
+              </small>
+            </td>
+            <td>
+              <input formControlName="presentacion" type="text" />
+              <small *ngIf="medicamento.get('presentacion')?.invalid && medicamento.get('presentacion')?.touched">
+                Campo obligatorio.
+              </small>
+            </td>
+            <td>
+              <input formControlName="dosis" type="text" />
+              <small *ngIf="medicamento.get('dosis')?.invalid && medicamento.get('dosis')?.touched">
+                Campo obligatorio.
+              </small>
+            </td>
+            <td>
+              <input formControlName="via" type="text" />
+              <small *ngIf="medicamento.get('via')?.invalid && medicamento.get('via')?.touched">
+                Campo obligatorio.
+              </small>
+            </td>
+            <td>
+              <input formControlName="hora" type="time" />
+              <small *ngIf="medicamento.get('hora')?.invalid && medicamento.get('hora')?.touched">
+                Campo obligatorio.
+              </small>
+            </td>
+            <td>
+              <input formControlName="diaTratamiento" type="text" />
+              <small *ngIf="medicamento.get('diaTratamiento')?.invalid && medicamento.get('diaTratamiento')?.touched">
+                Campo obligatorio.
+              </small>
+            </td>
+            <td>
+              <button type="button" (click)="removeMedicamento(i)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div>
+        <button type="button" (click)="addMedicamento()">Agregar Medicamento</button>
+        <small *ngIf="medicamentos.length === 0">
+          Debe agregar al menos un medicamento.
+        </small>
+      </div>
+
+      <div class="modal-actions">
+        <button type="submit" [disabled]="isSubmitting || !hojaForm.valid">Guardar</button>
+        <button type="button" (click)="onClose()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>

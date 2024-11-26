@@ -1,0 +1,124 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 30px; /* Más espacio interior */
+  border-radius: 10px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más fuerte */
+  width: 95%; /* Más ancho */
+  max-width: 1100px; /* Aumenta el límite de ancho */
+  max-height: 85vh; /* Aumenta la altura máxima */
+  overflow: auto; /* Habilita el scroll si el contenido se desborda */
+  display: flex;
+  flex-direction: column;
+}
+
+.close-button {
+  font-weight: bold;
+  font-size: 1.2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  align-self: flex-end;
+}
+
+.table-container {
+  margin-top: 20px;
+  overflow-x: auto; /* Scroll horizontal si es necesario */
+  max-height: 50vh; /* Limita la altura de la tabla */
+  border: 1px solid #ccc; /* Borde alrededor de la tabla */
+  border-radius: 6px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+th, td {
+  padding: 10px 15px; /* Más espacio entre celdas */
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.actions {
+  margin-top: 30px; /* Más espacio superior */
+  display: flex;
+  justify-content: space-between;
+}
+
+.actions button {
+  padding: 10px 15px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.actions button:hover {
+  background: #e0e0e0;
+}
+
+/* Formulario más espacioso */
+form div {
+  margin-bottom: 15px; /* Más espacio entre los campos del formulario */
+}
+
+form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+form input, form textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+form textarea {
+  resize: vertical;
+}
+
+.modal-actions
+{
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+
+}
+
+button{
+  background-color: #e0e0e0;
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+h2{
+  font-weight: bold;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: x-large;
+}
