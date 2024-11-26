@@ -8,30 +8,34 @@ import { Consulta } from '../models/consulta';
 })
 export class ConsultaService {
 
-  //crear nuevas rutas aqui  y sustituir en los metodos de abajo mostrados
-  private apiUrl = 'https://your-api-url.com/consultas';
 
-
+  private apiUrl = 'http://localhost:3000/consults';
 
   constructor(private http: HttpClient) {}
 
-  // mostrar consultas
+  // Mostrar todas las consultas
   getConsultas(): Observable<Consulta[]> {
-    return this.http.get<Consulta[]>(this.apiUrl);
+    return this.http.get<Consulta[]>(`${this.apiUrl}/view-consults`);
   }
 
-  // nueva consulta
+  // Crear nueva consulta
   createConsulta(consulta: Consulta): Observable<Consulta> {
-    return this.http.post<Consulta>(this.apiUrl, consulta);
+    return this.http.post<Consulta>(`${this.apiUrl}/add-consult`, consulta);
   }
 
-  // Actualizar
+  // Actualizar una consulta
   updateConsulta(consulta: Consulta): Observable<Consulta> {
-    return this.http.put<Consulta>(`${this.apiUrl}/${consulta.idx}`, consulta);
+    return this.http.put<Consulta>(`${this.apiUrl}/edit-consult/${consulta.id}`, consulta);
   }
 
-  // Elimina
-  deleteConsulta(idx: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${idx}`);
+  // Eliminar consulta por ID
+  deleteConsulta(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/delete-consult/${id}`);
+  }
+
+  // Obtener consulta por nombre (requiere autenticación)
+  getConsultaByName(nombre: string, token: string): Observable<Consulta> {
+    const headers = { Authorization: `Bearer ${token}` }; 
+    return this.http.get<Consulta>(`${this.apiUrl}/view-consult/${nombre}`, { headers });
   }
 }

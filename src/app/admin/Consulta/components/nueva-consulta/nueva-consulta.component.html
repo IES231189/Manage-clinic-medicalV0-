@@ -1,6 +1,5 @@
 <div *ngIf="showModal" class="modal-overlay">
   <div class="modal-content">
-
     <div class="container-main">
       <div class="contain-img">
         <img src="../../../../../assets/logo2.png" alt="logo2" width="120px" height="120px">
@@ -9,40 +8,129 @@
         <h1>LA PAZ CENTRO MEDICO</h1>
         <p>Clinica la paz</p>
       </div>
-
     </div>
 
-    <form (ngSubmit)="guardarConsulta()">
+    <!-- Formulario con validaciones -->
+    <form (ngSubmit)="guardarConsulta()" #consultaForm="ngForm">
+      
       <label for="nombrePaciente">Nombre del Paciente:</label>
-      <input type="text" id="nombrePaciente" [(ngModel)]="consulta.nombrePaciente" name="nombrePaciente" required>
+      <input 
+        type="text" 
+        id="nombrePaciente" 
+        [(ngModel)]="consulta.nombrePaciente" 
+        name="nombrePaciente" 
+        required 
+        pattern="^[a-zA-ZÀ-ÿ\s]+$"
+        #nombrePaciente="ngModel">
+      <div *ngIf="nombrePaciente.invalid && nombrePaciente.touched">
+        <small *ngIf="nombrePaciente.errors?.['required']">Este campo es obligatorio.</small>
+        <small *ngIf="nombrePaciente.errors?.['pattern']">Solo se permiten letras.</small>
+      </div>
 
+      <!-- Edad -->
       <label for="edad">Edad:</label>
-      <input type="number" id="edad" [(ngModel)]="consulta.edad" name="edad" required>
+      <input 
+        type="number" 
+        id="edad" 
+        [(ngModel)]="consulta.edad" 
+        name="edad" 
+        required 
+        min="1"
+        #edad="ngModel">
+      <div *ngIf="edad.invalid && edad.touched">
+        <small *ngIf="edad.errors?.['required']">Este campo es obligatorio.</small>
+        <small *ngIf="edad.errors?.['min']">La edad debe ser mayor a 0.</small>
+      </div>
 
+      <!-- Alergias -->
       <label for="alergias">Alergias:</label>
-      <input type="text" id="alergias" [(ngModel)]="consulta.alergias" name="alergias">
+      <input 
+        type="text" 
+        id="alergias" 
+        [(ngModel)]="consulta.alergias" 
+        name="alergias" 
+        required 
+        #alergias="ngModel">
+      <div *ngIf="alergias.invalid && alergias.touched">
+        <small>Este campo es obligatorio.</small>
+      </div>
 
+      <!-- Nombre del Médico -->
       <label for="nombreMedico">Nombre del Médico:</label>
-      <input type="text" id="nombreMedico" [(ngModel)]="consulta.nombreMedico" name="nombreMedico">
+      <input 
+        type="text" 
+        id="nombreMedico" 
+        [(ngModel)]="consulta.nombreMedico" 
+        name="nombreMedico" 
+        required 
+        #nombreMedico="ngModel">
+      <div *ngIf="nombreMedico.invalid && nombreMedico.touched">
+        <small>Este campo es obligatorio.</small>
+      </div>
 
+      <!-- Fecha -->
       <label for="fecha">Fecha:</label>
-      <input type="date" id="fecha" [(ngModel)]="consulta.fecha" name="fecha" required>
+      <input 
+        type="date" 
+        id="fecha" 
+        [(ngModel)]="consulta.fecha" 
+        name="fecha" 
+        required 
+        #fecha="ngModel">
+      <div *ngIf="fecha.invalid && fecha.touched">
+        <small>Este campo es obligatorio.</small>
+      </div>
 
+      <!-- IDX -->
       <label for="idx">IDX:</label>
-      <textarea id="idx" [(ngModel)]="consulta.idx" name="idx"></textarea>
+      <textarea 
+        id="idx" 
+        [(ngModel)]="consulta.idx" 
+        name="idx" 
+        required 
+        #idx="ngModel"></textarea>
+      <div *ngIf="idx.invalid && idx.touched">
+        <small>Este campo es obligatorio.</small>
+      </div>
 
+      <!-- Otros campos (dieta, medicamento, medidas generales) -->
       <label for="dieta">Dieta:</label>
-      <textarea id="dieta" [(ngModel)]="consulta.dieta" name="dieta"></textarea>
+      <textarea 
+        id="dieta" 
+        [(ngModel)]="consulta.dieta" 
+        name="dieta" 
+        required 
+        #dieta="ngModel"></textarea>
+      <div *ngIf="dieta.invalid && dieta.touched">
+        <small>Este campo es obligatorio.</small>
+      </div>
 
       <label for="medicamento">Medicamento:</label>
-      <textarea id="medicamento" [(ngModel)]="consulta.medicamento" name="medicamento"></textarea>
+      <textarea 
+        id="medicamento" 
+        [(ngModel)]="consulta.medicamento" 
+        name="medicamento" 
+        required 
+        #medicamento="ngModel"></textarea>
+      <div *ngIf="medicamento.invalid && medicamento.touched">
+        <small>Este campo es obligatorio.</small>
+      </div>
 
       <label for="medidasGenerales">Medidas Generales:</label>
-      <textarea id="medidasGenerales" [(ngModel)]="consulta.medidasGenerales" name="medidasGenerales"></textarea>
+      <textarea 
+        id="medidasGenerales" 
+        [(ngModel)]="consulta.medidasGenerales" 
+        name="medidasGenerales" 
+        required 
+        #medidasGenerales="ngModel"></textarea>
+      <div *ngIf="medidasGenerales.invalid && medidasGenerales.touched">
+        <small>Este campo es obligatorio.</small>
+      </div>
 
+      <!-- Botones -->
       <div class="button-group">
         <button type="button" (click)="closeModal()">Cancelar</button>
-        <button type="submit">Guardar</button>
+        <button type="submit" [disabled]="consultaForm.invalid">Guardar</button>
       </div>
     </form>
   </div>

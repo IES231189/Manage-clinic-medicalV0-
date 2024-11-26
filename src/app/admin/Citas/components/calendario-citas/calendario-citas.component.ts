@@ -89,7 +89,7 @@ export class CalendarioCitasComponent {
       // Crear un nuevo evento
       const startDate = new Date(this.selectedDate);
       const endDate = new Date(startDate);
-      endDate.setHours(startDate.getHours() + 1);
+      endDate.setHours(startDate.getHours() + .5);
 
       const newEvent = {
         title: 'Cita General',
