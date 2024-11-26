@@ -30,7 +30,11 @@ export class VerConsultaComponent {
   showDeleteModal = false;
 
   // Datos predeterminados en caso de que no haya resultados de la API
-  defaultData: Consulta[] = [];
+
+  defaultData: Consulta[] = [
+   
+    
+  ];
 
   constructor(private consultaService: ConsultaService) {}
 
@@ -71,7 +75,9 @@ export class VerConsultaComponent {
   onSaveChanges(updatedData: Consulta): void {
     if (updatedData.id) {
 
+
       this.consultaService.updateConsulta(updatedData.id, updatedData).subscribe(
+
         (response) => {
           const index = this.data.findIndex(item => item.id === updatedData.id);
           if (index > -1) {

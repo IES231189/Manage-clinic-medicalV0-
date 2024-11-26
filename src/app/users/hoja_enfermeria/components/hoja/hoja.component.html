@@ -44,63 +44,60 @@
             <th>Vía</th>
             <th>Hora</th>
             <th>Día de Tratamiento</th>
-            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let medicamento of medicamentoControls; let i = index" [formGroupName]="i">
+          <tr>
             <td>
               <input formControlName="nombre" type="text" />
-              <small *ngIf="medicamento.get('nombre')?.invalid && medicamento.get('nombre')?.touched">
-                Campo obligatorio.
+              <small *ngIf="hojaForm.get('nombre')?.invalid && hojaForm.get('nombre')?.touched">
+                El nombre del medicamento es obligatorio.
               </small>
             </td>
             <td>
               <input formControlName="presentacion" type="text" />
-              <small *ngIf="medicamento.get('presentacion')?.invalid && medicamento.get('presentacion')?.touched">
-                Campo obligatorio.
+              <small *ngIf="hojaForm.get('presentacion')?.invalid && hojaForm.get('presentacion')?.touched">
+                La presentación es obligatoria.
               </small>
             </td>
             <td>
               <input formControlName="dosis" type="text" />
-              <small *ngIf="medicamento.get('dosis')?.invalid && medicamento.get('dosis')?.touched">
-                Campo obligatorio.
+              <small *ngIf="hojaForm.get('dosis')?.invalid && hojaForm.get('dosis')?.touched">
+                La dosis es obligatoria.
               </small>
             </td>
             <td>
               <input formControlName="via" type="text" />
-              <small *ngIf="medicamento.get('via')?.invalid && medicamento.get('via')?.touched">
-                Campo obligatorio.
+              <small *ngIf="hojaForm.get('via')?.invalid && hojaForm.get('via')?.touched">
+                La vía es obligatoria.
               </small>
             </td>
             <td>
               <input formControlName="hora" type="time" />
-              <small *ngIf="medicamento.get('hora')?.invalid && medicamento.get('hora')?.touched">
-                Campo obligatorio.
+              <small *ngIf="hojaForm.get('hora')?.invalid && hojaForm.get('hora')?.touched">
+                La hora es obligatoria.
               </small>
             </td>
             <td>
               <input formControlName="diaTratamiento" type="text" />
-              <small *ngIf="medicamento.get('diaTratamiento')?.invalid && medicamento.get('diaTratamiento')?.touched">
-                Campo obligatorio.
+              <small *ngIf="hojaForm.get('diaTratamiento')?.invalid && hojaForm.get('diaTratamiento')?.touched">
+                El día de tratamiento es obligatorio.
               </small>
-            </td>
-            <td>
-              <button type="button" (click)="removeMedicamento(i)">Eliminar</button>
             </td>
           </tr>
         </tbody>
       </table>
 
       <div>
-        <button type="button" (click)="addMedicamento()">Agregar Medicamento</button>
-        <small *ngIf="medicamentos.length === 0">
-          Debe agregar al menos un medicamento.
+        <small *ngIf="hojaForm.get('nombre')?.value && hojaForm.get('presentacion')?.value &&
+                       hojaForm.get('dosis')?.value && hojaForm.get('via')?.value &&
+                       hojaForm.get('hora')?.value && hojaForm.get('diaTratamiento')?.value">
+          Asegúrese de completar todos los campos de medicamentos.
         </small>
       </div>
 
       <div class="modal-actions">
-        <button type="submit" [disabled]="isSubmitting || !hojaForm.valid">Guardar</button>
+        <button type="submit">Guardar</button>
         <button type="button" (click)="onClose()">Cancelar</button>
       </div>
     </form>

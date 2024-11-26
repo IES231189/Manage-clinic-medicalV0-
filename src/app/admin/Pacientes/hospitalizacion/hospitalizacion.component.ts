@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HojaEnfermeriaService } from '../services/pacientes.service';
+import { HospitalizacionService } from '../services/pacientes.service';
 import { HojaEnfermeria } from '../models/hoja-enfermeria';
 
 type TextColumn = { name: string, type: 'text' | 'number', key: string };
@@ -22,7 +22,7 @@ export class HospitalizacionComponent implements OnInit {
     { name: 'Hoja de Enfermería', type: 'button', action: 'openHoja' }
   ];
 
-  constructor(private hojaEnfermeriaService: HojaEnfermeriaService) {}
+  constructor(private HospitalizacionService: HospitalizacionService) {}
 
   ngOnInit(): void {
     this.cargarPacientes();

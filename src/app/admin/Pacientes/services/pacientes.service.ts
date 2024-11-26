@@ -5,11 +5,24 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class HojaEnfermeriaService {
+export class HospitalizacionService {
+
+  private apiUrl = 'http://localhost:3000/consults'; 
 
   constructor(private http: HttpClient) {}
 
-  getHojasPorPaciente(pacienteId: number): Observable<any> {
-    return this.http.get<any>(`/api/hoja-enfermeria/${pacienteId}`);
+  
+  getHospitalizaciones(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/view-hosts`);
+  }
+
+  
+  getHospitalizacionesPorNombre(nombre: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/view-host/${nombre}`);
+  }
+
+  
+  addHospitalizacion(hospitalizacion: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/add-host`, hospitalizacion);
   }
 }

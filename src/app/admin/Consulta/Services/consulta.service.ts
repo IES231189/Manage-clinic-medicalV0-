@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Cons, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Consulta } from '../models/consulta';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ConsultaService {
+
+
   private apiUrl = 'http://localhost:3000/consults';
 
-
   constructor(private http: HttpClient) {}
+
 
   // Headers con Token JWT (si aplica)
 
@@ -78,5 +80,6 @@ export class ConsultaService {
       'Content-Type': 'application/json'  // El tipo de contenido para enviar JSON
     });
     return this.http.delete<void>(`http://localhost:3000/consults/delete-consult/${id}`,{headers});
+
   }
 }

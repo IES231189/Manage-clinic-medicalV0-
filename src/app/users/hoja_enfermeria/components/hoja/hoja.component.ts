@@ -1,9 +1,8 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
-import { Medicamento, HojaEnfermeria } from '../../model/hoja-enfermeria';
-import { HojaEnfermeriaService } from '../../service/hoja-enfermeria.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HojaEnfermeria } from '../../model/hoja-enfermeria';
+import { HospitalizacionService } from '../../service/hoja-enfermeria.service';
 import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-hoja',
@@ -16,85 +15,67 @@ export class HojaComponent {
   @Output() submit = new EventEmitter<HojaEnfermeria>();
 
   hojaForm: FormGroup;
-  medicamentos: FormArray;
   isSubmitting = false; // Indica si la solicitud está en curso
 
-  constructor(private fb: FormBuilder, private hojaService: HojaEnfermeriaService , private route:Router) {
+  constructor(private fb: FormBuilder, private hojaService: HospitalizacionService, private route: Router) {
     this.hojaForm = this.fb.group({
       nombrePaciente: ['', Validators.required],
       numeroCamilla: ['', Validators.required],
       diagnostico: ['', Validators.required],
       indicacionesMedicas: [''],
-      medicamentos: this.fb.array([])
+      nombre: ['', Validators.required],
+      presentacion: ['', Validators.required],
+      dosis: ['', Validators.required],
+      via: ['', Validators.required],
+      hora: ['', Validators.required],
+      diaTratamiento: ['', Validators.required]
     });
-
-    this.medicamentos = this.hojaForm.get('medicamentos') as FormArray;
   }
 
   ngOnInit(): void {
     if (this.hojaEnfermeriaData) {
+      // Cargar los datos de la hoja de enfermería en el formulario
       this.hojaForm.patchValue({
         nombrePaciente: this.hojaEnfermeriaData.nombrePaciente,
         numeroCamilla: this.hojaEnfermeriaData.numeroCamilla,
         diagnostico: this.hojaEnfermeriaData.diagnostico,
-        indicacionesMedicas: this.hojaEnfermeriaData.indicacionesMedicas
-      });
-      this.hojaEnfermeriaData.medicamentos.forEach((med) => {
-        this.addMedicamento(med);
+        indicacionesMedicas: this.hojaEnfermeriaData.indicacionesMedicas,
+        nombre: this.hojaEnfermeriaData.nombre,
+        presentacion: this.hojaEnfermeriaData.presentacion,
+        dosis: this.hojaEnfermeriaData.dosis,
+        via: this.hojaEnfermeriaData.via,
+        hora: this.hojaEnfermeriaData.hora,
+        diaTratamiento: this.hojaEnfermeriaData.diaTratamiento
       });
     }
   }
 
-  get medicamentoControls() {
-    return (this.hojaForm.get('medicamentos') as FormArray).controls;
-  }
-
-  addMedicamento(medicamento?: Medicamento): void {
-    const medicamentoForm = this.fb.group({
-      nombre: [medicamento?.nombre || '', Validators.required],
-      presentacion: [medicamento?.presentacion || '', Validators.required],
-      dosis: [medicamento?.dosis || '', Validators.required],
-      via: [medicamento?.via || '', Validators.required],
-      hora: [medicamento?.hora || '', Validators.required],
-      diaTratamiento: [medicamento?.diaTratamiento || '', Validators.required]
-    });
-
-    this.medicamentos.push(medicamentoForm);
-  }
-
-  removeMedicamento(index: number): void {
-    this.medicamentos.removeAt(index);
-  }
-
-  onClose(): void {
-    this.close.emit();
-  }
-
+  // Método para enviar el formulario
   onSubmit(): void {
-
     if (!this.hojaForm.valid) {
       this.hojaForm.markAllAsTouched();
-      this.validateMedicamentos();
       alert('Por favor complete todos los campos obligatorios.');
       return;
     }
 
-    if (this.medicamentos.length === 0) {
-      alert('Debe agregar al menos un medicamento.');
+    // Verificar que todos los campos requeridos estén completos
+    if (!this.hojaForm.value.nombre || !this.hojaForm.value.presentacion || !this.hojaForm.value.dosis ||
+        !this.hojaForm.value.via || !this.hojaForm.value.hora || !this.hojaForm.value.diaTratamiento) {
+      alert('Debe completar todos los campos de medicamentos.');
       return;
     }
 
     this.isSubmitting = true;
     const formData: HojaEnfermeria = this.hojaForm.value;
 
-    this.hojaService.createHojaEnfermeria(formData).subscribe({
+    this.hojaService.addHospitalizacion(formData).subscribe({
       next: (response) => {
         console.log('Datos enviados correctamente:', response);
         this.submit.emit(formData);
         this.isSubmitting = false;
         this.hojaForm.reset();
         alert('Hoja de enfermería guardada exitosamente.');
-        this.route.navigate(['user'])
+        this.route.navigate(['user']);
       },
       error: (error) => {
         console.error('Error al enviar los datos:', error);
@@ -104,8 +85,8 @@ export class HojaComponent {
     });
   }
 
-  validateMedicamentos(): void {
-    this.medicamentos.controls.forEach((control) => control.markAllAsTouched());
+  // Método para cerrar el modal
+  onClose(): void {
+    this.close.emit();
   }
-
 }
