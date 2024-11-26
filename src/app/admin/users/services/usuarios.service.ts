@@ -8,7 +8,7 @@ import { catchError } from 'rxjs';
 })
 export class UsuariosService {
 
-  private crearUsuarios = 'http://localhost:5000/usuarios/users';
+  private crearUsuarios = 'http://3.208.177.101/usuarios/users';
   private OptenerUsuarios = 'http://localhost:5000/usuarios/profile';
   private eliminarUsuario = 'http://localhost:5000/usuarios/users'; // Endpoint para eliminar usuario
   private editarUsuario = 'http://localhost:5000/usuarios/edit'; // Endpoint para editar usuario

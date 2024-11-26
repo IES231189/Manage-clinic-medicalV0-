@@ -9,7 +9,7 @@ import { Observable, tap } from 'rxjs';
 })
 
 export class AuthServiceService {
-  private apiUrl = 'http://localhost:5000/usuarios';
+  private apiUrl = 'http://3.208.177.101/usuarios';
 
   constructor(private http: HttpClient, private jwtHelper: JwtHelperService) { }
 
