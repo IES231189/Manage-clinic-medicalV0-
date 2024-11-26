@@ -8,12 +8,14 @@ import { UsersDashboardComponent } from './dashboard/dashboard.component';
 import { HojaComponent } from './hoja_enfermeria/components/hoja/hoja.component';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MedicamentosTableComponent } from './medicamentos/components/medicamentos-table/medicamentos-table.component';
 
 @NgModule({
   declarations: [
     UsersDashboardComponent,
     UserViewComponentComponent,
-    HojaComponent
+    HojaComponent,
+    MedicamentosTableComponent
   ],
   imports: [
     CommonModule,

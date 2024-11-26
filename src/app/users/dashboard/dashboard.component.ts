@@ -19,7 +19,7 @@ export class UsersDashboardComponent {
 
 
   cards = [
-    { nombre: 'Pacientes', icono: '../../../assets/recetario.png', ruta: 'user/Pacientes' },
+    { nombre: 'Pacientes', icono: '../../../assets/recetario.png', ruta: 'user/hoja-enfermeria' },
     { nombre: 'Medicamentos', icono: '../../../assets/Medicamentos.png', ruta: 'user/medicamentos' }
 
   ]

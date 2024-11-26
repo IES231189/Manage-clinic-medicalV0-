@@ -9,7 +9,7 @@ const routes: Routes = [
     children:[
       {path: 'dashboard' , component:UsersDashboardComponent},
       {path:'' ,redirectTo:'dashboard' , pathMatch:'full'},
-      {path:'medicamentos' , component:HojaComponent}
+      {path:'hoja-enfermeria' , component:HojaComponent}
     ]
   }
 ];
