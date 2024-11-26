@@ -15,17 +15,19 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let medicamento of data">
-        <td>{{ medicamento.nombre }}</td>
-        <td>{{ medicamento.precioCompra }}</td>
-        <td>{{ medicamento.precio }}</td>
-        <td>{{ medicamento.patente }}</td>
-        <td>{{ medicamento.gramaje }}</td>
-        <td>{{ medicamento.presentacion }}</td>
-        <td>{{ medicamento.fechaCaducidad }}</td>
+      <tr *ngFor="let medicamentoTotal of presentaciones">
+        <td>{{ medicamentoTotal.nombre }}</td>
+        <td>{{ medicamentoTotal.precioCompra }}</td>
+        <td>{{ medicamentoTotal.precio }}</td>
+        <td>{{ medicamentoTotal.patente }}</td>
+        <td>{{medicamentoTotal.gramaje}}</td>
+        <td>{{medicamentoTotal.presentacion}}</td>
+        <td>{{ medicamentoTotal.fechaCaducidad }}</td>
         <td>
-          <button (click)="onEdit(medicamento)">Editar</button>
-          <button (click)="onDelete(medicamento)">Eliminar</button>
+          <button>actualizar</button>
+        </td>
+        <td>
+          
         </td>
       </tr>
     </tbody>
@@ -45,3 +47,5 @@
     <button (click)="onCancel()">Cerrar</button>
   </div>
 </div>
+
+

@@ -17,12 +17,12 @@ export class FormAddUsuariosComponent implements OnInit {
     private usuarios: UsuariosService
   ) {
     this.usuariosForms = this.fb.group({
+      rol : ['',Validators.required],
       nombre: ['', Validators.required],
-      apellidoPaterno: ['', Validators.required],
-      apellidoMaterno: ['', Validators.required],
-      correo: ['', [Validators.required, Validators.email]],
-      usuario: ['', Validators.required],
-      contrasena: ['', [Validators.required, Validators.minLength(6)]]
+      apellido: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      contra: ['', [Validators.required, Validators.minLength(6)]],
+      num_tel : ['',[Validators.required,Validators.minLength(10)]]
     });
   }
 
@@ -33,11 +33,11 @@ export class FormAddUsuariosComponent implements OnInit {
       this.usuarios.crearUsuario(this.usuariosForms.value).subscribe(
         (response) => {
           console.log('Enfermera registrada con éxito:', response);
-          this.router.navigate(['/admin/all-usuarios']);
+          // this.router.navigate(['/admin/all-usuarios']);
         },
         (error) => {
           console.error('Error al registrar enfermera:', error);
-          this.router.navigate(['admin/dashboard/usuarios'])
+          // this.router.navigate(['admin/dashboard/usuarios'])
         }
       );
     } else {

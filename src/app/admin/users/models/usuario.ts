@@ -1,9 +1,9 @@
 export interface Usuario {
-  id?: number;
+  id_user : number;
+  rol: string;
   nombre: string;
-  apellidoPaterno: string;
-  apellidoMaterno: string;
+  apellido: string;
   correo: string;
-  usuario: string;
   contrasena: string;
+  num_tel: string;
 }

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Consulta } from '../models/consulta';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ConsultaService {
 
@@ -13,29 +13,73 @@ export class ConsultaService {
 
   constructor(private http: HttpClient) {}
 
+
+  // Headers con Token JWT (si aplica)
+
   // Mostrar todas las consultas
   getConsultas(): Observable<Consulta[]> {
-    return this.http.get<Consulta[]>(`${this.apiUrl}/view-consults`);
+    const token = localStorage.getItem('token');
+    if (!token) {
+      throw new Error('Token no encontrado');
+    }
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,  // El token debe ir en el encabezado 'Authorization'
+      'Content-Type': 'application/json'  // El tipo de contenido para enviar JSON
+    });
+    return this.http.get<Consulta[]>(`${this.apiUrl}/view-consults`,{headers});
   }
 
-  // Crear nueva consulta
+  // Buscar consulta por nombre
+  getConsultaByNombre(nombre: string): Observable<Consulta> {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      throw new Error('Token no encontrado');
+    }
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,  // El token debe ir en el encabezado 'Authorization'
+      'Content-Type': 'application/json'  // El tipo de contenido para enviar JSON
+    });
+    return this.http.get<Consulta>(`${this.apiUrl}/view-consult/${nombre}`,{headers});
+  }
+
+  // Crear una nueva consulta
   createConsulta(consulta: Consulta): Observable<Consulta> {
-    return this.http.post<Consulta>(`${this.apiUrl}/add-consult`, consulta);
+    const token = localStorage.getItem('token');
+    if (!token) {
+      throw new Error('Token no encontrado');
+    }
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,  // El token debe ir en el encabezado 'Authorization'
+      'Content-Type': 'application/json'  // El tipo de contenido para enviar JSON
+    });
+
+    return this.http.post<Consulta>(`http://localhost:3000/consults/add-consult`,consulta,{headers});
   }
 
-  // Actualizar una consulta
-  updateConsulta(consulta: Consulta): Observable<Consulta> {
-    return this.http.put<Consulta>(`${this.apiUrl}/edit-consult/${consulta.id}`, consulta);
+  // Actualizar una consulta existente
+  updateConsulta(id: string, consulta: Consulta): Observable<Consulta> {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      throw new Error('Token no encontrado');
+    }
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,  // El token debe ir en el encabezado 'Authorization'
+      'Content-Type': 'application/json'  // El tipo de contenido para enviar JSON
+    });
+    return this.http.put<Consulta>(`http://localhost:3000/consults/edit-consult/${id}`, consulta,{headers});
   }
 
-  // Eliminar consulta por ID
+  // Eliminar una consulta por su ID
   deleteConsulta(id: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/delete-consult/${id}`);
-  }
+    const token = localStorage.getItem('token');
+    if (!token) {
+      throw new Error('Token no encontrado');
+    }
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,  // El token debe ir en el encabezado 'Authorization'
+      'Content-Type': 'application/json'  // El tipo de contenido para enviar JSON
+    });
+    return this.http.delete<void>(`http://localhost:3000/consults/delete-consult/${id}`,{headers});
 
-  // Obtener consulta por nombre (requiere autenticación)
-  getConsultaByName(nombre: string, token: string): Observable<Consulta> {
-    const headers = { Authorization: `Bearer ${token}` }; 
-    return this.http.get<Consulta>(`${this.apiUrl}/view-consult/${nombre}`, { headers });
   }
 }

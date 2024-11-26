@@ -93,7 +93,7 @@
         <small>Este campo es obligatorio.</small>
       </div>
 
-      <!-- Otros campos (dieta, medicamento, medidas generales) -->
+     
       <label for="dieta">Dieta:</label>
       <textarea 
         id="dieta" 
@@ -127,7 +127,11 @@
         <small>Este campo es obligatorio.</small>
       </div>
 
-      <!-- Botones -->
+
+     
+      <input type="hidden" [(ngModel)]="consulta.id" name="id">
+
+
       <div class="button-group">
         <button type="button" (click)="closeModal()">Cancelar</button>
         <button type="submit" [disabled]="consultaForm.invalid">Guardar</button>

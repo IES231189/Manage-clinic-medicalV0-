@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   {
     path:'user',
-    component:UserViewComponentComponent,
+    loadChildren:()=> import('./users/users.module').then(m => m.UsersModule)
     /*canActivate:[userGuard]*/
   },
   {

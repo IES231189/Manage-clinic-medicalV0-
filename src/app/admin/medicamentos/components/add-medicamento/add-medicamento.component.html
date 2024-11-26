@@ -16,10 +16,22 @@
     </div> -->
     <div class="form-group">
       <label for="formula">seleccione la formula</label>
-      <select name="" class="select">
-        <option *ngFor="let item of data" class="select-option">{{item.nombre}}</option>
+      <select name="" class="select"  formControlName="nombre" required>
+        <option *ngFor="let medicamento of data" [value]="medicamento.nombre">
+      {{ medicamento.nombre }}
+    </option>
       </select>
     </div>
+
+
+<!-- <div class="form-group">
+  <select formControlName="nombre" required>
+    <option value="">Selecciona un medicamento</option>
+    <option *ngFor="let medicamento of data" [value]="medicamento.nombre">
+      {{ medicamento.nombre }}
+    </option>
+  </select>
+</div> -->
 
     <div class="form-group">
       <label for="precio">Precio:</label>

@@ -32,8 +32,10 @@ const routes: Routes = [
       {path:'calendario',component:CalendarioCitasComponent},
       {path:'citas' , component:CalendarioCitasComponent} ,
       {path:'register' , component:FormAddUsuariosComponent},
+
       {path:'all-usuarios' , component: VerUsuariosComponent},
       {path:'Pacientes' , component:HospitalizacionComponent}
+
     ]
   },
 

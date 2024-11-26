@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
+  nombre = localStorage.getItem('nombre')
   isChildRoute = false;
 
   constructor(private router:Router , private route:ActivatedRoute ){

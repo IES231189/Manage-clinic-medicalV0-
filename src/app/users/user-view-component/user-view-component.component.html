@@ -1,1 +1,14 @@
-<p>user-view-component works!</p>
+<div class="header-tests">
+  <app-header [userName]="'Ana palacios'" [role]="'enfermera'" [navLinks]="[
+    { label: 'Inicio', path: '/admin/dashboard' },
+    { label: '', path: '/user/inventario' },
+    { label: '', path: '/user/Enfermeras' },
+  ]">
+
+  </app-header>
+</div>
+
+<div class="container-admin">
+  <router-outlet></router-outlet>
+</div>
+
