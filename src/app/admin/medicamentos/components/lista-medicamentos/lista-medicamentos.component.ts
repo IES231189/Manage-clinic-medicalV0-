@@ -31,6 +31,7 @@ export class ListaMedicamentosComponent implements OnInit {
         this.presentaciones = response && response.length > 0 ? response : [];
         this.isLoading = false;
       //  this.extraerPresentaciones();
+     
       },
       (error) => {
         console.error('Error al obtener los medicamentos:', error);
@@ -39,6 +40,16 @@ export class ListaMedicamentosComponent implements OnInit {
     );
   }
 
+
+
+  isDoctor():boolean{
+
+    let umm = localStorage.getItem('rol')
+    if(umm!='admin'){
+        return false
+    }
+      return true
+  }
 
 
   onEdit(row: Medicamentos): void {
@@ -51,9 +62,10 @@ export class ListaMedicamentosComponent implements OnInit {
     this.showDeleteModal = true;
   }
 
-  onDeleteConfirm(): void {
-    if (this.selectedRow) {
-      this.medicamentoService.deleteMedicamentos(this.selectedRow.nombre).subscribe({
+  onDeleteConfirm(id:string,nombre:string): void {
+
+      this.medicamentoService.deleteMedicamentos(id,nombre).subscribe({
+
         next: (response) => {
           if (response && response.success) {
             this.data = this.data.filter(item => item.nombre !== this.selectedRow!.nombre);
@@ -71,7 +83,7 @@ export class ListaMedicamentosComponent implements OnInit {
           this.selectedRow = null;
         }
       });
-    }
+
   }
 
   onCancel(): void {

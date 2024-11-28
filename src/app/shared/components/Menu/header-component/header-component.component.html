@@ -2,35 +2,44 @@
 
   <div class="content-navbar">
 
+    <!-- Logo -->
     <div class="Logo">
       <img src="../../../../../assets/logo.png" alt="Logo" width="44px" height="44px">
     </div>
 
+    <!-- Menú de navegación -->
     <nav class="nav-menu">
-
-      <a *ngFor="let link of navLinks" [routerLink]="link.path" class="nav-item">
+      <a *ngFor="let link of navLinks" [routerLink]="link.path" class="nav-item" [ngClass]="{'active': isActive(link)}">
         {{link.label}}
       </a>
-
     </nav>
 
+    <!-- Iconos de usuario y notificación -->
     <div class="profile-user-role">
       <div class="contenido">
         <img src="../../../../../assets/notificacion.png" width="34px" height="34px">
         <div class="users-info">
-          <p>
-            {{userName}}
-          </p>
-
+          <p>{{userName}}</p>
           <span>{{role}}</span>
         </div>
-        <img src="./../../../../../assets/bac78a9eb0706006b895449f6cbd30dc.png" width="34px" height="34px">
-
+        <img src="../../../../../assets/bac78a9eb0706006b895449f6cbd30dc.png" width="34px" height="34px">
       </div>
-
     </div>
 
+    <!-- Menú Hamburguesa -->
+    <div class="menu-toggle" (click)="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
 
   </div>
+
+  <!-- Menú para móviles -->
+  <nav class="nav-menu mobile-menu" *ngIf="showMobileMenu">
+    <a *ngFor="let link of navLinks" [routerLink]="link.path" class="nav-item" [ngClass]="{'active': isActive(link)}">
+      {{link.label}}
+    </a>
+  </nav>
 
 </header>

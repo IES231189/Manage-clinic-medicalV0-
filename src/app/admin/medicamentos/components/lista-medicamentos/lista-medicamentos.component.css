@@ -1,73 +1,138 @@
-/* Contenedor principal para centrar la tabla en la página */
-.container {
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  min-height: 100vh; /* Altura mínima para centrar verticalmente */
-  padding: 20px;
-  box-sizing: border-box;
+  height: 100vh;
 }
 
-/* Estilos de la tabla */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+
+}
+
+/* Table styling */
 table {
   width: 100%;
-  max-width: 800px; /* Tamaño máximo de la tabla */
   border-collapse: collapse;
-  background-color: #f9f9f9;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  overflow: hidden;
+  margin-top: 20px;
+  position: relative;
+  top: 190px;
+  left: 300px;
 }
 
 th, td {
   padding: 12px;
   text-align: left;
-  border-bottom: 1px solid #ddd;
 }
 
-/* Cabecera de la tabla */
-thead {
-  background-color: #4CAF50;
+th {
+  background-color: #003366;
   color: white;
 }
 
-/* Fila destacada al pasar el ratón */
-tbody tr:hover {
-  background-color: #f1f1f1;
+td {
+  background-color: #f8f8f8;
 }
 
-/* Botones de acción */
+tr:nth-child(even) td {
+  background-color: #eaeaea;
+}
+
+/* Loading text */
+.isLoading {
+  color: #003366;
+  font-size: 18px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* Buttons */
 button {
-  padding: 5px 10px;
-  margin: 0 5px;
+  background-color: #003366;
+  color: white;
+  padding: 10px 15px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 16px;
 }
 
 button:hover {
-  opacity: 0.8;
+  background-color: #00509e;
 }
 
-button:nth-child(1) {
-  background-color: #4CAF50;
+/* Modal styling */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: white;
 }
 
-button:nth-child(2) {
-  background-color: #f44336;
-  color: white;
+.modal div {
+  background-color: #003366;
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
 }
 
-/* Responsividad */
-@media (max-width: 600px) {
-  th, td {
+.modal img{
+  position: relative;
+  width: 150px;
+  height: 150px;
+  left:90px;
+  margin: 50px;
+}
+
+.modal button {
+  background-color: #ff3333;
+  margin-top: 15px;
+  margin-left: 10px;
+}
+
+.modal button:hover {
+  background-color: #d22a2a;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  table {
     font-size: 14px;
+    top: 200px;
+    left: auto;
+    width: auto;
+  }
+
+  th, td {
     padding: 8px;
   }
-  table {
-    max-width: 100%;
+
+  .container {
+    width: 95%;
+    padding: 10px;
   }
 
+  button {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  .modal div {
+    padding: 20px;
+  }
 }
