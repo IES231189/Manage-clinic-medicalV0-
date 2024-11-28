@@ -1,40 +1,72 @@
 <div class="modal-overlay">
-  <div class="modal-content" >
-      <button (click)="onClose()" class="close-button">X</button>
+  <div class="modal-content">
+    <!-- Botón para cerrar el modal -->
+    <button (click)="onClose()" class="close-button">X</button>
+
     <div id="hoja-enfermeria-content">
-
-      <div class="container-title" >
-        <img src="./../../../../assets/logo2.png" alt="" width="74px" height="64px">
-        <h2>CLINICA LA PAZ</h2>
-
+      <!-- Contenedor del título y logo de la clínica -->
+      <div class="container-title">
+        <img src="./../../../../assets/logo2.png" alt="Logo" width="74px" height="64px">
+        <h2>CLÍNICA LA PAZ</h2>
       </div>
-          <h3>Paciente: {{ paciente.nombre }}</h3>
 
+      <!-- Mostrar nombre del paciente -->
+      <h3>Paciente: {{ paciente?.nombrePaciente }}</h3>
+
+      <!-- Mostrar mensaje de carga mientras se obtienen los datos -->
       <div *ngIf="isLoading">Cargando datos...</div>
-      <div *ngIf="!isLoading" >
-        <p><strong>Fecha:</strong> {{ hojaEnfermeria.fecha | date }}</p>
-        <p><strong>Signos Vitales:</strong></p>
-        <ul>
-          <li>Temperatura: {{ hojaEnfermeria.signosVitales.temperatura }} °C</li>
-          <li>Presión Arterial: {{ hojaEnfermeria.signosVitales.presionArterial }}</li>
-          <li>Frecuencia Cardíaca: {{ hojaEnfermeria.signosVitales.frecuenciaCardiaca }} bpm</li>
-          <li>Saturación de Oxígeno: {{ hojaEnfermeria.signosVitales.saturacionOxigeno }} %</li>
-        </ul>
-        <p><strong>Medicamentos Administrados:</strong></p>
-        <ul>
-          <li *ngFor="let med of hojaEnfermeria.medicamentosAdministrados">
-            {{ med.nombre }} - {{ med.dosis }} ({{ med.hora }})
-          </li>
-        </ul>
-        <p><strong>Notas:</strong> {{ hojaEnfermeria.notas }}</p>
-        <p><strong>Enfermero Responsable:</strong> {{ hojaEnfermeria.enfermeroResponsable }}</p>
+
+      <!-- Mostrar contenido de la hoja de enfermería -->
+      <div *ngIf="!isLoading">
+        <!-- Mostrar hoja de enfermería -->
+        <table *ngIf="hojaEnfermeria">
+          <tr>
+            <td><strong>Nombre del Paciente:</strong></td>
+            <td>{{ hojaEnfermeria.nombrePaciente }}</td>
+          </tr>
+          <tr>
+            <td><strong>Número de Camilla:</strong></td>
+            <td>{{ hojaEnfermeria.numeroCamilla }}</td>
+          </tr>
+          <tr>
+            <td><strong>Diagnóstico:</strong></td>
+            <td>{{ hojaEnfermeria.diagnostico }}</td>
+          </tr>
+          <tr>
+            <td><strong>Indicaciones Médicas:</strong></td>
+            <td>{{ hojaEnfermeria.indicacionesMedicas }}</td>
+          </tr>
+          <tr>
+            <td><strong>Medicamento:</strong></td>
+            <td>{{ hojaEnfermeria.nombre }}</td>
+          </tr>
+          <tr>
+            <td><strong>Presentación:</strong></td>
+            <td>{{ hojaEnfermeria.presentacion }}</td>
+          </tr>
+          <tr>
+            <td><strong>Dosis:</strong></td>
+            <td>{{ hojaEnfermeria.dosis }}</td>
+          </tr>
+          <tr>
+            <td><strong>Vía:</strong></td>
+            <td>{{ hojaEnfermeria.via }}</td>
+          </tr>
+          <tr>
+            <td><strong>Hora de Administración:</strong></td>
+            <td>{{ hojaEnfermeria.hora }}</td>
+          </tr>
+          <tr>
+            <td><strong>Día de Tratamiento:</strong></td>
+            <td>{{ hojaEnfermeria.diaTratamiento }}</td>
+          </tr>
+        </table>
+        
+   
       </div>
     </div>
 
-     <button (click)="printHojaEnfermeria()" class="imprimir">Imprimir</button>
+    <!-- Botón para imprimir la hoja de enfermería -->
+    <button (click)="printHojaEnfermeria()" class="imprimir">Imprimir</button>
   </div>
-
-
-
-
 </div>

@@ -9,16 +9,16 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let paciente of data">
+      <!-- Iterar sobre los pacientes (solo los campos nombre y camilla) -->
+      <tr *ngFor="let paciente of objectKeys(data)">
         <td *ngFor="let column of columns">
           <ng-container *ngIf="column.type === 'text'">
-            {{ paciente[column.key] }}
-          </ng-container>
-          <ng-container *ngIf="column.type === 'number'">
-            {{ paciente[column.key] }}
+            <!-- Mostrar los datos de nombre y camilla -->
+            {{ data[paciente][column.key] }}
           </ng-container>
           <ng-container *ngIf="column.type === 'button'">
-            <button (click)="onOpenHoja(paciente)" class="btn-open-hoja">
+            <!-- Botón para abrir la hoja de enfermería -->
+            <button (click)="onOpenHoja(data[paciente])" class="btn-open-hoja">
               {{ column.name }}
             </button>
           </ng-container>
@@ -27,10 +27,11 @@
     </tbody>
   </table>
 
-  
+  <!-- Modal de hoja de enfermería -->
   <app-hoja-enfermeria-modal
     *ngIf="showHojaModal"
     [paciente]="selectedPaciente"
+    [hojaEnfermeria]="hojaEnfermeria"
     (close)="onCloseModal()">
   </app-hoja-enfermeria-modal>
 </div>

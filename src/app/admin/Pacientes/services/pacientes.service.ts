@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class HospitalizacionService {
 
-  private apiUrl = 'http://localhost:3000/consults'; 
+  private apiUrl = 'http://localhost:3000/hospitalizacion'; 
 
   constructor(private http: HttpClient) {}
 
@@ -17,8 +17,8 @@ export class HospitalizacionService {
   }
 
   
-  getHospitalizacionesPorNombre(nombre: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/view-host/${nombre}`);
+  getHospitalizacionesPorNombre(nombrePaciente: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/view-host/${nombrePaciente}`);
   }
 
   

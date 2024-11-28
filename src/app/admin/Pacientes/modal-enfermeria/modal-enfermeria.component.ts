@@ -1,51 +1,114 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { HospitalizacionService } from '../services/pacientes.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-hoja-enfermeria-modal',
   templateUrl: './modal-enfermeria.component.html',
   styleUrls: ['./modal-enfermeria.component.css']
 })
-export class HojaEnfermeriaModalComponent {
-  @Input() paciente: any;
-  @Output() close = new EventEmitter<void>();
+export class HojaEnfermeriaModalComponent implements OnInit, OnChanges {
+  @Input() paciente: any; // Paciente seleccionado
+  @Input() hojaEnfermeria: any; // Hoja de enfermería seleccionada
+  @Output() close = new EventEmitter<void>(); // Evento para cerrar el modal
 
-  hojaEnfermeria: any = null; 
-  isLoading = true;
+  isLoading = false; // Indicador de carga
+  errorMessage: string = ''; // Mensaje de error
+  data: any[] = []; // Datos obtenidos
+  subscription: Subscription | null = null; // Suscripción activa
+  lastPaciente: any = null; // Último paciente procesado para evitar recargas innecesarias
 
   constructor(private hojaService: HospitalizacionService) {}
 
   ngOnInit(): void {
+    console.log('Inicialización del componente. Paciente recibido:', this.paciente);
     if (this.paciente) {
       this.cargarHojaEnfermeria();
     }
   }
 
-  cargarHojaEnfermeria(): void {
-    this.isLoading = true;
-    this.hojaService.getHospitalizacionesPorNombre(this.paciente.nombre).subscribe(
-      (data) => {
-        this.hojaEnfermeria = data;
-        this.isLoading = false;
-      },
-      (error) => {
-        console.error('Error al cargar la hoja de enfermería:', error);
-        this.isLoading = false;
-        alert('No se encontraron datos...');
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('Cambios detectados en inputs:', changes);
+    if (changes['paciente'] && changes['paciente'].currentValue) {
+      const nuevoPaciente = changes['paciente'].currentValue;
+      if (nuevoPaciente !== this.lastPaciente) {
+        console.log('Nuevo paciente detectado. Cargando datos para:', nuevoPaciente);
+        this.lastPaciente = nuevoPaciente; // Actualizar el paciente procesado
+        this.cargarHojaEnfermeria();
+      } else {
+        console.log('El paciente no cambió. No se recargan los datos.');
       }
-    );
-  }
-  
-  onClose(): void {
-    this.close.emit();
+    }
   }
 
+  cargarHojaEnfermeria(): void {
+    if (this.isLoading) {
+      console.warn('Carga en progreso. Evitando solicitud duplicada.');
+      return; // Evitar solicitudes múltiples
+    }
+
+    const nombrePaciente = this.paciente?.nombrePaciente;
+    if (!nombrePaciente) {
+      console.error('Error: El paciente no tiene nombre.');
+      this.errorMessage = 'No se ha proporcionado el nombre del paciente.';
+      return;
+    }
+
+    console.log('Solicitando datos para el paciente:', nombrePaciente);
+
+    this.isLoading = true; // Inicia la carga
+    this.errorMessage = '';
+
+    // Cancelar suscripciones anteriores
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+
+    // Realizar la solicitud
+    this.subscription = this.hojaService.getHospitalizacionesPorNombre(nombrePaciente).subscribe({
+      next: (data) => {
+        console.log('Datos recibidos del servicio:', data);
+
+        // Validar datos recibidos
+        if (Array.isArray(data) && data.length > 0) {
+          this.data = data;
+          this.hojaEnfermeria = data[0]; // Usar el primer resultado
+          console.log('Hoja de enfermería asignada:', this.hojaEnfermeria);
+        } else {
+          console.warn('No se encontraron hojas de enfermería para el paciente:', nombrePaciente);
+          this.errorMessage = 'No se encontraron hojas de enfermería para este paciente.';
+        }
+
+        this.isLoading = false; // Finaliza la carga
+      },
+      error: (err) => {
+        console.error('Error en la solicitud al servicio:', err);
+        this.errorMessage = 'Hubo un problema al cargar los datos. Intenta de nuevo más tarde.';
+        this.isLoading = false; // Finaliza la carga
+      }
+    });
+  }
+
+  onClose(): void {
+    console.log('Cerrando modal y limpiando recursos.');
+    // Cancelar suscripciones activas al cerrar el modal
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+      this.subscription = null;
+    }
+    this.close.emit(); // Emitir evento de cierre
+  }
 
   printHojaEnfermeria(): void {
     const printContent = document.getElementById('hoja-enfermeria-content')?.innerHTML;
-    const newWindow = window.open('', '', 'width=800, height=600');
+    if (!printContent) {
+      console.error('Contenido de impresión no encontrado.');
+      this.errorMessage = 'No se pudo encontrar el contenido de la hoja de enfermería para imprimir.';
+      return;
+    }
 
-    // Aquí se insertan los estilos CSS directamente en el contenido de impresión
+    console.log('Imprimiendo hoja de enfermería.');
+    const newWindow = window.open('', '', 'width=800, height=600');
     newWindow?.document.write(`
       <html>
         <head>
@@ -72,17 +135,14 @@ export class HojaEnfermeriaModalComponent {
             .imprimir {
               display: none; /* Ocultar el botón de imprimir en la vista previa */
             }
-            /* Puedes agregar más estilos aquí para personalizar la impresión */
           </style>
         </head>
         <body>
-          ${printContent || ''}
+          ${printContent}
         </body>
       </html>
     `);
-
     newWindow?.document.close();
     newWindow?.print();
   }
-
 }
