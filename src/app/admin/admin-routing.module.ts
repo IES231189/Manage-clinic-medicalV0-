@@ -13,14 +13,17 @@ import { FormAddUsuariosComponent } from './users/components/form-add-usuarios/f
 import { VerUsuariosComponent } from './users/components/ver-usuarios/ver-usuarios.component';
 import { HospitalizacionComponent } from './Pacientes/hospitalizacion/hospitalizacion.component';
 
-
+import { authGuard } from '../guards/auth.guard';
+import { adminGuard } from '../guards/admin.guard';
 
 const routes: Routes = [
   {
     path:'' ,
     component: AdminViewComponentComponent,
     children:[
-      { path: 'dashboard', loadChildren:() =>import('../admin/dashboard/dashboard.module').then(m=>m.DashboardModule) },
+      { path: 'dashboard', loadChildren:() =>import('../admin/dashboard/dashboard.module').then(m=>m.DashboardModule) ,
+        canActivate: [authGuard, adminGuard],
+       },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       {path:'all-medicamentos' , component: ListaMedicamentosComponent},
 

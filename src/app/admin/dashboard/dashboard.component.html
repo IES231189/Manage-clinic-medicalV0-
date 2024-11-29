@@ -1,8 +1,6 @@
+<app-profile-user-component></app-profile-user-component>
 
-<app-profile-user-component [userName]="'ESDRAZ GABRIEL'" [role]="'admin'"  ></app-profile-user-component>
-
-<div class="dashboard"
->
+<div class="dashboard">
   <h3 class="title"> Administrador</h3>
   <div class="cards">
     <div class="card" *ngFor="let card of cards" (click)="navigateTo(card.ruta)">

@@ -85,7 +85,7 @@ export class ListaMedicamentosComponent implements OnInit {
       });
 
   }
-  
+
 
   onCancel(): void {
     this.showEditModal = false;
