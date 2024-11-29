@@ -31,7 +31,6 @@ export class ListaMedicamentosComponent implements OnInit {
         this.presentaciones = response && response.length > 0 ? response : [];
         this.isLoading = false;
       //  this.extraerPresentaciones();
-     
       },
       (error) => {
         console.error('Error al obtener los medicamentos:', error);
