@@ -14,7 +14,7 @@ export class ListaMedicamentosComponent implements OnInit {
   presentaciones: Presentacion[] = [];
   isLoading = true;
   selectedRow: Medicamentos | null = null;
-  showEditModal = false;
+  showEditModal = true;
   showDeleteModal = false;
 
   constructor(private medicamentoService: ServicesMedicamentoService) {}
@@ -31,7 +31,7 @@ export class ListaMedicamentosComponent implements OnInit {
         this.presentaciones = response && response.length > 0 ? response : [];
         this.isLoading = false;
       //  this.extraerPresentaciones();
-     
+
       },
       (error) => {
         console.error('Error al obtener los medicamentos:', error);
@@ -85,11 +85,14 @@ export class ListaMedicamentosComponent implements OnInit {
       });
 
   }
+  
 
   onCancel(): void {
     this.showEditModal = false;
     this.showDeleteModal = false;
   }
+
+
 
   // extraerPresentaciones(): void {
   //   this.presentaciones = [];

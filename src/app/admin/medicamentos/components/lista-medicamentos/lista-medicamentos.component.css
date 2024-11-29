@@ -91,6 +91,37 @@ button:hover {
   text-align: center;
 }
 
+input{
+  color: #003366;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  position: relative;
+  left: 200px;
+}
+
+.modal .f1 label{
+  position: relative;
+  display: flex;
+  left: 230px;
+  margin-top: -35px;
+  top: 34px;
+}
+
+.modal .f1{
+  color: #003366;
+  background-color: #eaeaea;
+  width: 600px;
+  height: 750px;
+}
+
+.modal .f1 button {
+  background-color: #ff3333;
+  margin-top: 15px;
+  margin-left: 10px;
+  position: relative;
+  top: 80px;
+  right: 30px;
+}
+
 .modal img{
   position: relative;
   width: 150px;

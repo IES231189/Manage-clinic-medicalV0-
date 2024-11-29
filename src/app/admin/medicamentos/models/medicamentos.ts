@@ -15,7 +15,7 @@ export interface Medicamentos {
 export interface Presentacion {
   id: string,
   nombre : string,
-  precio : string,
+  precio : number,
   precioCompra : string,
   cantidadCajas : string,
   cantidadUnidadesCaja : number,

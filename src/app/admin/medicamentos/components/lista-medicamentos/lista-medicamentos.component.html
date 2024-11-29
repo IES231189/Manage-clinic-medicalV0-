@@ -29,7 +29,7 @@
         <td>{{medicamentoTotal.cantidadUnidadesCaja }}</td>
         <td>
           <button (click)="showDeleteModal = true">eliminar</button>
-          <!-- <button (click)="showEditModal= true">actualizar</button> -->
+          <button (click)="showEditModal= true">actualizar</button>
         </td>
       </tr>
     </tbody>
@@ -48,9 +48,28 @@
 
   <!-- Modal para editar -->
   <div *ngIf="showEditModal" class="modal">
-    <div>
-      <p>Editando: {{ selectedRow?.nombre }}</p>
-      <button (click)="onCancel()">Cerrar</button>
-    </div>
+
+      <form action="" *ngFor="let item of presentaciones" class="f1">
+          <label for="">nombre</label><br><br>
+          <input type="text" value="{{item.nombre}}">
+          <label for="">precio de compra</label><br><br>
+          <input type="text" value="{{item.precioCompra}}">
+          <label for="">precio de venta</label><br><br>
+          <input type="text" value="{{item.precio}}">
+          <label for="">patente</label><br><br>
+          <input type="text" value="{{item.patente}}">
+          <label for="">gramaje</label><br><br>
+          <input type="text" value="{{item.gramaje}}">
+          <label for="">presentacion</label><br><br>
+          <input type="text" value="{{item.presentacion}}">
+          <label for="">fecha de caducidad</label><br><br>
+          <input type="date" value="{{item.fechaCaducidad}}">
+          <label for="">cantidad de cajas</label><br><br>
+          <input type="text" value="{{item.cantidadCajas}}">
+          <label for="">unidades por cajas</label><br><br>
+          <input type="text" value="{{item.cantidadUnidadesCaja}}">
+          <button>Confirmar</button>
+          <button (click)="onCancel()">Cancelar</button>
+      </form>
   </div>
 </div>
