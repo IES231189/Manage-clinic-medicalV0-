@@ -29,7 +29,7 @@ export class AuthServiceService {
       credentials
     ).pipe(
       tap((response: { mensaje: string; token: string; rol: string; nombre : string }) => {
-        // Guardar el token y el rol en el localStorage
+       
         localStorage.setItem('token', response.token);
         localStorage.setItem('rol', response.rol);
         localStorage.setItem('nombre',response.nombre)
