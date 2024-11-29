@@ -1,26 +1,21 @@
-import { Component, OnInit , Input} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthServiceService } from '../../../../auth/services/auth-service.service';
 
 @Component({
   selector: 'app-profile-user-component',
   templateUrl: './profile-user-component.component.html',
-  styleUrl: './profile-user-component.component.css'
+  styleUrls: ['./profile-user-component.component.css']
 })
-export class ProfileUserComponentComponent {
-    @Input() userName:string | null = '';
-    @Input() role :string  | null= '';
+export class ProfileUserComponentComponent implements OnInit {
+  userName: string | null = null;
+  role: string | null = null;
 
-  constructor(private authService: AuthServiceService) { }
-/*
+  constructor(private authService: AuthServiceService) {}
+
   ngOnInit(): void {
+    // Obtén el nombre de usuario y rol desde el servicio
     this.userName = this.authService.getUsername();
-    if (this.authService.isAdmin()) {
-      this.role = "admin";
-    } else if (this.authService.isUser()) {
-      this.role = "user"
-    }
+    this.role = this.authService.getRole();
   }
-
-*/
-
 }
+
