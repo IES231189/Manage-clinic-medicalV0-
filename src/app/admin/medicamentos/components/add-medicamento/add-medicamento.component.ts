@@ -12,7 +12,7 @@ import { Medicamentos } from '../../models/medicamentos';
 })
 export class AddMedicamentoComponent implements OnInit {
   medicamentoForm: FormGroup;
-  data: Medicamentos[] = [];
+  data: any[] = [];
   @ViewChild(BarcodeScannerComponent) barcodeScanner!: BarcodeScannerComponent;
 
   constructor(
@@ -24,6 +24,8 @@ export class AddMedicamentoComponent implements OnInit {
       nombre: ['', Validators.required],
       precio: ['', [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)]],
       precioCompra: ['', [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)]],
+      cantidadCajas: ['', [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)]],
+      cantidadUnidadesCaja: ['', [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)]],
       patente: ['', Validators.required],
       gramaje: ['', Validators.required],
       presentacion: ['', Validators.required],
@@ -37,7 +39,7 @@ export class AddMedicamentoComponent implements OnInit {
 
   fetchData(): void {
     this.medicamentosService.getName().subscribe(
-      (response: Medicamentos[]) => {
+      (response: any[]) => {
         console.log('Datos recibidos:', response);
         this.data = response && response.length > 0 ? response : [];
       },
@@ -52,11 +54,11 @@ export class AddMedicamentoComponent implements OnInit {
 
       const formData = this.medicamentoForm.getRawValue();
       const nombre = formData.nombre;
-
       this.medicamentosService.addPresentacion(nombre, formData).subscribe(
         (response) => {
           console.log('Medicamento agregado con éxito:', response);
-          // this.router.navigate(['/admin']);
+          alert('producto agregado')
+         this.router.navigate(['/admin']);
         },
         (error) => {
           console.error('Error al enviar el medicamento:', error);

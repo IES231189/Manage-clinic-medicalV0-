@@ -13,11 +13,14 @@ export interface Medicamentos {
 
 
 export interface Presentacion {
+  id: string,
   nombre : string,
   precio : string,
   precioCompra : string,
+  cantidadCajas : string,
+  cantidadUnidadesCaja : number,
   patente : string,
   gramaje : string,
   presentacion : string,
-  fechaCaducidad : string
+  fechaCaducidad : Date
 }

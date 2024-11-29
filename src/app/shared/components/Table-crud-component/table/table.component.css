@@ -1,61 +1,81 @@
 .table {
-
   overflow-x: auto;
   display: block;
   width: 100%;
-  margin-right: 3rem;
+  margin-right: 2rem;
+  border-radius: 8px;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  background-color: #1a1a2e; /* Azul marino oscuro */
+  color: #ffffff; /* Texto blanco */
 }
 
 thead {
   width: 100%;
-  background-color: #408CB9;
-  color: antiquewhite;
-  font-weight: lighter;
+  background-color: #162447; /* Azul marino profundo */
+  color: #f8f9fa; /* Blanco suave */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: medium;
+  font-size: 16px;
+  text-transform: uppercase;
 }
 
 td {
-  background-color: rgb(248, 247, 252);
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  font-weight: lighter;
-  font-size: small;
-  padding: 2rem;
+  background-color: #1f4068; /* Azul marino intermedio */
+  font-family: 'Arial', sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+  padding: 1rem;
+  color: #ffffff;
 }
-
 
 table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0 8px;
 }
 
 th, td {
   text-align: center;
-  padding: 10px;
-  border-bottom: 1px solid #408CB9;
-  
+  padding: 12px;
+  border-bottom: none;
 }
 
-.edit{
-  background-color: #408CB9;
-  color: aliceblue;
-  padding:0.5rem;
-  border: 1px solid #408CB9;
-  border-radius: 1rem;
+th {
+  border-bottom: 2px solid #e43f5a; /* Rojo suave */
 }
 
-.delete{
-  background-color: brown;
-  color: aliceblue;
-  padding: 0.5rem;
-  border: 1px solid #408CB9;
-  border-radius: 1rem;
+.edit {
+  background-color: #0f3460; /* Azul marino claro */
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border: 1px solid #0f3460;
+  border-radius: 5px;
+  transition: all 0.3s ease;
 }
 
+.edit:hover {
+  background-color: #1f4068; /* Azul marino oscuro */
+  border-color: #e43f5a; /* Rojo suave */
+  color: #e43f5a;
+}
+
+.delete {
+  background-color: #e43f5a; /* Rojo oscuro */
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border: 1px solid #e43f5a;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.delete:hover {
+  background-color: #162447; /* Azul marino profundo */
+  border-color: #ffffff;
+  color: #ffffff;
+}
 
 @media (max-width: 768px) {
   .table {
-    margin: 2rem;
+    margin: 1.5rem;
     padding: 1rem;
   }
 
@@ -66,26 +86,28 @@ th, td {
   }
 
   th, td {
-    font-size: 14px;
-    padding: 8px;
+    font-size: 13px;
+    padding: 10px;
   }
-
 
   td {
     display: block;
     width: 100%;
+    text-align: left;
   }
-
 
   tr {
     display: block;
     margin-bottom: 10px;
+    background-color: #162447;
+    border-radius: 5px;
+    padding: 10px;
   }
 }
 
 @media (max-width: 480px) {
   th, td {
     font-size: 12px;
-    padding: 5px;
+    padding: 8px;
   }
 }

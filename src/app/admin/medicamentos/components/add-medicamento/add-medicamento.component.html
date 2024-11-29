@@ -1,19 +1,10 @@
 
+<h3 class="title">Agregar Presentacion de Medicamentos</h3>
+
  <div class="body">
    <div class="form-container">
 
-      <!-- <div class="image-background">
-        <img src="/src/assets/istockphoto-1363129327-2048x2048-removebg-preview.png" alt="debe haber una img" srcset="">
-      </div> -->
-
-      <h3 class="title">Agregar Presentacion de Medicamentos</h3>
-
   <form [formGroup]="medicamentoForm" (ngSubmit)="onSubmit()">
-    <!-- Campos del formulario -->
-    <!-- <div class="form-group">
-      <label for="nombre">Nombre:</label>
-      <input id="nombre" formControlName="nombre" type="text" />
-    </div> -->
     <div class="form-group">
       <label for="formula">seleccione la formula</label>
       <select name="" class="select"  formControlName="nombre" required>
@@ -22,16 +13,6 @@
     </option>
       </select>
     </div>
-
-
-<!-- <div class="form-group">
-  <select formControlName="nombre" required>
-    <option value="">Selecciona un medicamento</option>
-    <option *ngFor="let medicamento of data" [value]="medicamento.nombre">
-      {{ medicamento.nombre }}
-    </option>
-  </select>
-</div> -->
 
     <div class="form-group">
       <label for="precio">Precio:</label>
@@ -43,11 +24,11 @@
     </div>
     <div class="form-group">
       <label for="precioCompra">cantidad de cajas:</label>
-      <input id="precioCompra" formControlName="precioCompra" type="number" />
+      <input id="precioCompra" formControlName="cantidadCajas" type="number" />
     </div>
     <div class="form-group">
       <label for="precioCompra">unidades  por caja:</label>
-      <input id="precioCompra" formControlName="precioCompra" type="number" />
+      <input id="precioCompra" formControlName="cantidadUnidadesCaja" type="number" />
     </div>
     <div class="form-group">
       <label for="patente">Patente:</label>

@@ -21,6 +21,7 @@ export class HeaderComponentComponent {
 
   ngOnInit(): void {
     this.userName = this.authService.getUsername();
+    this.role = this.authService.getRole()
   }
 
 

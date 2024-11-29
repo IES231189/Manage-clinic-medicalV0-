@@ -11,7 +11,7 @@ body {
 }
 
 .container {
-  width: 90%;
+  width: 100%;
   max-width: 1200px;
   background-color: #fff;
   padding: 20px;
@@ -91,9 +91,18 @@ button:hover {
   text-align: center;
 }
 
+.modal img{
+  position: relative;
+  width: 150px;
+  height: 150px;
+  left:90px;
+  margin: 50px;
+}
+
 .modal button {
   background-color: #ff3333;
   margin-top: 15px;
+  margin-left: 10px;
 }
 
 .modal button:hover {
@@ -104,9 +113,9 @@ button:hover {
 @media (max-width: 768px) {
   table {
     font-size: 14px;
-    top: auto;
+    top: 200px;
     left: auto;
-
+    width: auto;
   }
 
   th, td {

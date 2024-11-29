@@ -9,7 +9,7 @@ import { Consulta } from '../models/consulta';
 export class ConsultaService {
 
 
-  private apiUrl = 'http://52.203.29.27/consults';
+  private apiUrl = 'http://localhost:3000/consults';
 
   constructor(private http: HttpClient) {}
 
@@ -53,7 +53,7 @@ export class ConsultaService {
       'Content-Type': 'application/json'  // El tipo de contenido para enviar JSON
     });
 
-    return this.http.post<Consulta>(`http://52.203.29.27/consults/add-consult`,consulta,{headers});
+    return this.http.post<Consulta>(`http://localhost:3000/consults/add-consult`,consulta,{headers});
   }
 
   // Actualizar una consulta existente
@@ -79,7 +79,7 @@ export class ConsultaService {
       'Authorization': `Bearer ${token}`,  // El token debe ir en el encabezado 'Authorization'
       'Content-Type': 'application/json'  // El tipo de contenido para enviar JSON
     });
-    return this.http.delete<void>(`http://52.203.29.27/consults/delete-consult/${id}`,{headers});
+    return this.http.delete<void>(`http://localhost:3000/consults/delete-consult/${id}`,{headers});
 
   }
 }

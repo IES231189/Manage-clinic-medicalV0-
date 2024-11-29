@@ -11,6 +11,8 @@
         <th>Gramaje</th>
         <th>Presentación</th>
         <th>Fecha de Caducidad</th>
+        <th>cantidad de cajas</th>
+        <th>unidades por cajas</th>
         <th>Acciones</th>
       </tr>
     </thead>
@@ -22,9 +24,12 @@
         <td>{{ medicamentoTotal.patente }}</td>
         <td>{{medicamentoTotal.gramaje}}</td>
         <td>{{medicamentoTotal.presentacion}}</td>
-        <td>{{ medicamentoTotal.fechaCaducidad }}</td>
+        <td>{{ medicamentoTotal.fechaCaducidad | date:'shortDate'}}</td>
+        <td>{{medicamentoTotal.cantidadCajas}}</td>
+        <td>{{medicamentoTotal.cantidadUnidadesCaja }}</td>
         <td>
-          <button *ngIf="isDoctor()">actualizar</button>
+          <button (click)="showDeleteModal = true">eliminar</button>
+          <!-- <button (click)="showEditModal= true">actualizar</button> -->
         </td>
       </tr>
     </tbody>
@@ -33,8 +38,10 @@
   <!-- Modal de confirmación para eliminar -->
   <div *ngIf="showDeleteModal" class="modal">
     <div>
-      <p>¿Estás seguro de que deseas eliminar el medicamento {{ selectedRow?.nombre }}?</p>
-      <button (click)="onDeleteConfirm()">Confirmar</button>
+      <tr *ngFor="let medicamentoTotal of presentaciones">
+      <p>¿Estás seguro de que deseas eliminar el medicamento {{ medicamentoTotal.nombre }}?</p>
+      <img src="../../../../../assets/borrar (1).png" alt="" srcset="">
+      <button (click)="onDeleteConfirm(medicamentoTotal.id,medicamentoTotal.nombre)">Confirmar</button>
       <button (click)="onCancel()">Cancelar</button>
     </div>
   </div>
