@@ -22,7 +22,7 @@ const routes: Routes = [
     component: AdminViewComponentComponent,
     children:[
       { path: 'dashboard', loadChildren:() =>import('../admin/dashboard/dashboard.module').then(m=>m.DashboardModule) ,
-        //canActivate: [authGuard, adminGuard],
+        canActivate: [authGuard, adminGuard],
        },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       {path:'all-medicamentos' , component: ListaMedicamentosComponent},
