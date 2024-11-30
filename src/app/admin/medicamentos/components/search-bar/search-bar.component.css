@@ -1,0 +1,22 @@
+.search-bar {
+  width: 100%;
+  max-width: 400px; /* Ajusta el ancho máximo según tus necesidades */
+  margin: 0 auto; /* Centra la barra de búsqueda en el contenedor */
+  padding-top: 4rem;
+  margin-left: 89%;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #4CAF50; /* Verde cuando está enfocado */
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Sombra verde */
+}

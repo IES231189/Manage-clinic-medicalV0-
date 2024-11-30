@@ -1,6 +1,12 @@
 <div class="container">
+
+  <!-- Barra de búsqueda -->
+  <app-search-bar (searchQuery)="onSearch($event)"></app-search-bar>
+
+  <!-- Mostrar loading -->
   <div *ngIf="isLoading" class="isLoading">Cargando medicamentos...</div>
 
+  <!-- Tabla de medicamentos -->
   <table *ngIf="!isLoading">
     <thead>
       <tr>
@@ -11,46 +17,39 @@
         <th>Gramaje</th>
         <th>Presentación</th>
         <th>Fecha de Caducidad</th>
-        <th>cantidad de cajas</th>
-        <th>unidades por cajas</th>
+        <th>Cantidad de Cajas</th>
+        <th>Unidades por Caja</th>
         <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let medicamentoTotal of presentaciones">
+      <tr *ngFor="let medicamentoTotal of filteredPresentaciones">
         <td>{{ medicamentoTotal.nombre }}</td>
         <td>{{ medicamentoTotal.precioCompra }}</td>
         <td>{{ medicamentoTotal.precio }}</td>
         <td>{{ medicamentoTotal.patente }}</td>
-        <td>{{medicamentoTotal.gramaje}}</td>
-        <td>{{medicamentoTotal.presentacion}}</td>
-        <td>{{ medicamentoTotal.fechaCaducidad | date:'shortDate'}}</td>
-        <td>{{medicamentoTotal.cantidadCajas}}</td>
-        <td>{{medicamentoTotal.cantidadUnidadesCaja }}</td>
-        <td>
-          <button (click)="showDeleteModal = true">eliminar</button>
-          <!-- <button (click)="showEditModal= true">actualizar</button> -->
+        <td>{{ medicamentoTotal.gramaje }}</td>
+        <td>{{ medicamentoTotal.presentacion }}</td>
+        <td>{{ medicamentoTotal.fechaCaducidad | date: 'shortDate' }}</td>
+        <td>{{ medicamentoTotal.cantidadCajas }}</td>
+        <td>{{ medicamentoTotal.cantidadUnidadesCaja }}</td>
+        <td class="container-button">
+          <button (click)="onDelete(medicamentoTotal)">Eliminar</button>
+          <button (click)="onEdit(medicamentoTotal)">Editar</button>
         </td>
       </tr>
     </tbody>
   </table>
 
-  <!-- Modal de confirmación para eliminar -->
-  <div *ngIf="showDeleteModal" class="modal">
-    <div>
-      <tr *ngFor="let medicamentoTotal of presentaciones">
-      <p>¿Estás seguro de que deseas eliminar el medicamento {{ medicamentoTotal.nombre }}?</p>
-      <img src="../../../../../assets/borrar (1).png" alt="" srcset="">
-      <button (click)="onDeleteConfirm(medicamentoTotal.id,medicamentoTotal.nombre)">Confirmar</button>
-      <button (click)="onCancel()">Cancelar</button>
-    </div>
-  </div>
+  <!-- Modal de edición -->
+  <app-edit-from-table *ngIf="showEditModal" [registroTable]="selectedRow" (GuardarCambios)="onSaveChanges($event)"></app-edit-from-table>
 
-  <!-- Modal para editar -->
-  <div *ngIf="showEditModal" class="modal">
-    <div>
-      <p>Editando: {{ selectedRow?.nombre }}</p>
-      <button (click)="onCancel()">Cerrar</button>
-    </div>
-  </div>
+  <!-- Modal de confirmación de eliminación -->
+  <app-delete-from-table
+    *ngIf="showDeleteModal"
+    [registroTable]="selectedRow"
+    (confirmDelete)="onConfirmDelete()"
+    (cancelDelete)="onCancelDelete()">
+  </app-delete-from-table>
+
 </div>

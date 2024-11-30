@@ -14,18 +14,18 @@ body {
   width: 100%;
   max-width: 1200px;
   background-color: #fff;
-  padding: 20px;
   border-radius: 8px;
-
+  padding: 2rem;
 }
 
 /* Table styling */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
+  /*margin-top: 20px;
+  */
   position: relative;
-  top: 190px;
+    top: 2rem;
   left: 300px;
 }
 
@@ -64,10 +64,18 @@ button {
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
+
 }
 
 button:hover {
   background-color: #00509e;
+}
+
+
+.container-button{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
 }
 
 /* Modal styling */
