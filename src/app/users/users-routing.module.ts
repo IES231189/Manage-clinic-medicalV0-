@@ -10,7 +10,7 @@ import { userGuard } from '../guards/user.guard';
 const routes: Routes = [
   {path:'' , component:UserViewComponentComponent ,
     children:[
-      {path: 'dashboard' , component:UsersDashboardComponent ,
+      {path: 'dashboard' , component:UsersDashboardComponent
          canActivate:[authGuard , userGuard]
          },
       {path:'' ,redirectTo:'dashboard' , pathMatch:'full'},

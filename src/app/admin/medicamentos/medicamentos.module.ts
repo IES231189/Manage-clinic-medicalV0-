@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BarcodeScannerComponent } from './components/barcode-scanner-component/barcode-scanner-component.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AddMedicamentoGeneralComponent } from './components/add-medicamento-general/add-medicamento-general.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 
 
@@ -19,7 +20,8 @@ import { AddMedicamentoGeneralComponent } from './components/add-medicamento-gen
     AddMedicamentoComponent,
     ListaMedicamentosComponent,
    BarcodeScannerComponent,
-   AddMedicamentoGeneralComponent
+   AddMedicamentoGeneralComponent,
+   SearchBarComponent
   ],
   imports: [
     CommonModule,

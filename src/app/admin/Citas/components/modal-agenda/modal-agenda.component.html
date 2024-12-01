@@ -1,4 +1,3 @@
-<!-- src/app/components/modal-agenda/modal-agenda.component.html -->
 <div *ngIf="selectedDate" class="modal-overlay">
   <div class="modal">
     <h2>Agregar Cita</h2>
@@ -14,13 +13,6 @@
 
           <label for="patientPhone">Número de Teléfono:</label>
           <input id="patientPhone" type="tel" [(ngModel)]="patientPhone" name="patientPhone" required>
-                  <!-- <div class="flex2">
-                    <img src="../../../../../assets/citas_agenda.png" width="130px" height="100px">
-                    <button type="submit">GuardarCita</button>
-
-                    <button type="button" (click)="closeModal()">Cancelar</button>
-                    <button *ngIf="selectedDate" (click)="deleteEvent()">Eliminar</button>
-                  </div> -->
 
           <label for="appointmentTime">Hora de la Cita:</label>
           <input id="appointmentTime" [value]="selectedTime | date:'shortTime'" readonly>
@@ -30,10 +22,9 @@
           <img src="../../../../../assets/citas_agenda.png" width="130px" height="100px">
           <button type="submit">Guardar Cita</button>
           <br>
-          <button type="button" (click)="closeModal()">Cancelar</button>
+          <button type="button" (click)="resetForm()">Cancelar</button>
         </div>
       </div>
     </form>
   </div>
-
 </div>

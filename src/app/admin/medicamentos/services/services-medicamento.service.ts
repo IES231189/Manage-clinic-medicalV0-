@@ -18,19 +18,21 @@ export class ServicesMedicamentoService {
 
   getMedicamentos(): Observable<Presentacion[]> {
     const token = localStorage.getItem('token');
+
     if (!token) {
-      throw new Error('Token no encontrado');
+      console.warn('Token no encontrado. Devolviendo datos predeterminados.');
+      return of([]); // Devuelve un Observable vacío en lugar de lanzar un error
     }
 
-
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`,  // El token debe ir en el encabezado 'Authorization'
-      'Content-Type': 'application/json'  // El tipo de contenido para enviar JSON
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
     });
-    return this.http.get<Presentacion[]>('http://localhost:3000/inventory/view-all',{headers}).pipe(
+
+    return this.http.get<Presentacion[]>('http://localhost:3000/inventory/view-all', { headers }).pipe(
       catchError(error => {
         console.error('Error al obtener medicamentos:', error);
-        return of([]);
+        return of([]); // Devuelve datos predeterminados en caso de error
       })
     );
   }

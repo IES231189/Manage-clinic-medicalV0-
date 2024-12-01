@@ -30,4 +30,6 @@ export class EditFromTableComponent implements OnChanges {
     const excludedKeys = ['id', 'idx'];
     return Object.keys(obj).filter(key => !excludedKeys.includes(key));
   }
+
+  
 }
