@@ -25,7 +25,7 @@ export class EditFromTableComponent implements OnChanges {
     this.editedData = { ...this.registroTable };
   }
 
-
+  
   getFilteredKeys(obj: any): string[] {
     const excludedKeys = ['id', 'idx'];
     return Object.keys(obj).filter(key => !excludedKeys.includes(key));

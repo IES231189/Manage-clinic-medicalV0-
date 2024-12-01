@@ -14,7 +14,7 @@ export class ListaMedicamentosComponent implements OnInit {
   presentaciones: Presentacion[] = [];
   isLoading = true;
   selectedRow: Medicamentos | null = null;
-  showEditModal = true;
+  showEditModal = false;
   showDeleteModal = false;
 
   constructor(private medicamentoService: ServicesMedicamentoService) {}
@@ -71,6 +71,7 @@ export class ListaMedicamentosComponent implements OnInit {
             this.data = this.data.filter(item => item.nombre !== this.selectedRow!.nombre);
             this.showDeleteModal = false;
             this.selectedRow = null;
+            
           } else {
             console.error(response?.message || 'Error desconocido');
             this.showDeleteModal = false;
