@@ -15,7 +15,7 @@ export class ListaMedicamentosComponent implements OnInit {
   showDeleteModal = false;  // Controlar el modal de eliminación
   showEditModal = false;  // Controlar el modal de edición
   query: string = '';  // Esta es la variable que se usará para la búsqueda
-
+  isAdmin : boolean = false;
   // Datos predeterminados
   defaultData: Presentacion[] = [
     {
@@ -35,6 +35,7 @@ export class ListaMedicamentosComponent implements OnInit {
   constructor(private medicamentoService: ServicesMedicamentoService) {}
 
   ngOnInit(): void {
+    this.isAdmin = this.definirRol()
     this.fetchData();
   }
 
@@ -75,13 +76,13 @@ export class ListaMedicamentosComponent implements OnInit {
       this.presentaciones[index] = updatedData;  // Actualizar la lista
       this.filteredPresentaciones = [...this.presentaciones];  // Actualizar lista filtrada
     }
-    this.showEditModal = false;  // Cerrar el modal
+    this.showEditModal = false; 
   }
 
   // Método para mostrar el modal de eliminación
   onDelete(row: Presentacion): void {
     this.selectedRow = row;
-    this.showDeleteModal = true;  // Mostrar el modal de eliminación
+    this.showDeleteModal = true; 
   }
 
 
@@ -91,6 +92,17 @@ export class ListaMedicamentosComponent implements OnInit {
     this.showEditModal = false;
     this.showDeleteModal = false;
   }
+
+
+
+  definirRol():boolean{
+   let rol = localStorage.getItem('rol')
+      if(rol != "admin"){
+        return false
+      }
+      return true
+  }
+ 
 
 
 

@@ -23,11 +23,14 @@ export class LoginComponentComponent {
         this.rol = response.rol
         console.log(this.rol);
 
-        if (typeof token === 'string') {
+        if ( this.rol == "admin") {
           localStorage.setItem('token', token);
           this.router.navigate(['/admin'])
-        } else {
-          console.error('El token recibido no es un string:', token);
+        } else if(this.rol == "enfermero"){
+          localStorage.setItem('token', token);
+          console.log("no sirve la ruta xd");
+
+          this.router.navigate(['/user'])
         }
       },
 

@@ -29,7 +29,7 @@ export class AuthServiceService {
       credentials
     ).pipe(
       tap((response: { mensaje: string; token: string; rol: string; nombre : string }) => {
-       
+
         localStorage.setItem('token', response.token);
         localStorage.setItem('rol', response.rol);
         localStorage.setItem('nombre',response.nombre)
@@ -62,7 +62,7 @@ export class AuthServiceService {
   }
 
   isUser(): boolean {
-    return this.getRole() === 'user';
+    return this.getRole() === 'enfermero';
   }
 
   getUsername(): string | null {

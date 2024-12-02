@@ -40,7 +40,7 @@ export class ServicesService {
       'Authorization': `Bearer ${token}`,  // El token debe ir en el encabezado 'Authorization'
       'Content-Type': 'application/json'  // El tipo de contenido para enviar JSON
     });
-    return this.http.get<Calendario[]>('http://52.203.29.27/calendario/get',{headers});
+    return this.http.get<Calendario[]>('http://localhost:3000/calendario/get',{headers});
   }
 
 

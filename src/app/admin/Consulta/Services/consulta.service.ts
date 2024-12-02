@@ -66,7 +66,7 @@ export class ConsultaService {
       'Authorization': `Bearer ${token}`,  // El token debe ir en el encabezado 'Authorization'
       'Content-Type': 'application/json'  // El tipo de contenido para enviar JSON
     });
-    return this.http.put<Consulta>(`http://52.203.29.27/consults/edit-consult/${id}`, consulta,{headers});
+    return this.http.put<Consulta>(`http://localhost:3000/consults/edit-consult/${id}`, consulta,{headers});
   }
 
   // Eliminar una consulta por su ID
